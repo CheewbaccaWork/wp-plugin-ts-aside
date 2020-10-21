@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Menu/ico-trading</title>
+    <g id="Menu/ico-trading" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#8491A3" stroke-width="1.6" x="4" y="11" width="5.8" height="4" rx="1"></rect>
+        <rect id="Rectangle" fill="#8491A3" x="6" y="4" width="1.6" height="7"></rect>
+        <rect id="Rectangle-Copy-2" fill="#8491A3" x="6" y="15" width="1.6" height="5"></rect>
+        <rect id="Rectangle-Copy-3" fill="#8491A3" x="16" y="18" width="1.6" height="5"></rect>
+        <rect id="Rectangle-Copy-4" fill="#8491A3" x="16" y="1" width="1.6" height="4"></rect>
+        <rect id="Rectangle-Copy" stroke="#8491A3" stroke-width="1.6" x="14" y="5" width="5.8" height="13" rx="1"></rect>
+    </g>
+</svg>

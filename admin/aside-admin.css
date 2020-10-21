@@ -1,0 +1,91 @@
+.previewImg img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.previewIcon img{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.tradesmarter-aside-admin table tbody tr{ 
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tradesmarter-aside-admin table tbody tr td{
+    display: inline-flex;
+    align-items: center;
+}
+
+.tradesmarter-aside-admin table tbody tr td input{
+    margin-left: 15px;
+}
+
+.tradesmarter-aside-admin table tbody tr td .addSubmenu,
+.tradesmarter-aside-admin table tbody tr td .addMenu,
+.tradesmarter-aside-admin table tbody tr td .addMenuTopPanel,
+.tradesmarter-aside-admin table tbody tr td .minus{
+    text-decoration: none;
+    margin-left: 15px;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #0073aa;
+    color: #ffffff;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tradesmarter-aside-admin table tbody tr td .addSubmenu{
+    background-color: green;
+}
+
+.tradesmarter-aside-admin table tbody tr td .minus{
+    background-color: red;
+}
+
+.tradesmarter-aside-admin table tbody .submenu{
+    padding-left: 50px;
+    width: 100%;
+}
+
+.tradesmarter-aside-admin table tbody .big-tr{
+    align-items: flex-start;
+}
+
+.tradesmarter-aside-admin table tbody .big-tr input{
+    margin-left: initial;
+}
+
+.tradesmarter-aside-admin table tbody .big-tr td{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start
+}
+
+.tradesmarter-aside-admin table tbody .big-tr td>*{
+    margin-bottom: 15px;
+}
+
+.submenu__th{
+    vertical-align: top; 
+    text-align: left; 
+    padding: 20px 10px 20px 0;
+    width: 200px;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+.submenu__content{
+    display:flex;
+    align-items: center; 
+    margin-left: 15px
+}
