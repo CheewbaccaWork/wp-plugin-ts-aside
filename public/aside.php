@@ -263,7 +263,7 @@
     if ( strcasecmp ( $result_general[0]->api_host , 'brokers-domain.com' ) == 0){
       $GLOBALS['login'] = 'bd-api';
       $GLOBALS['password'] = '5c5918d8';
-      $GLOBALS['url'] = "https://admin-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
+      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
     } else if ($result_general[0]->api_host == 'tradesmarter.com'){
       $GLOBALS['login'] = 'tsdemoapi';
       $GLOBALS['password'] = 'redUzg2PgsfDW34V';
@@ -312,7 +312,7 @@ $accountLevel = "";
     if ( strcasecmp ( $result_general[0]->api_host , 'brokers-domain.com' ) == 0){
       $GLOBALS['login'] = 'bd-api';
       $GLOBALS['password'] = '5c5918d8';
-      $GLOBALS['url2'] = "https://admin-api.ap-b.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
+      $GLOBALS['url2'] = "https://platform-api.ap-b.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
     } else if ($result_general[0]->api_host == 'tradesmarter.com'){
       $GLOBALS['login'] = 'tsdemoapi';
       $GLOBALS['password'] = 'redUzg2PgsfDW34V';
