@@ -5,7 +5,7 @@
  * Version: 1.0
  * Text Domain:       github-updater
  * GitHub Plugin URI: https://gitlab.geniusee.com/tradesmater/wp-plugin
- * GitHub Branch: final
+ * GitHub Branch: main
  */
 
 require_once __DIR__ . '/AsideClass.php';
