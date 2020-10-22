@@ -260,9 +260,23 @@
   $session = " ";
   if($_COOKIE['userID']){
     $handle = curl_init();
-    $login = 'bd-api';
-    $password = '5c5918d8';
-    $url = "https://admin-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
+    if ($result_general[0]->api_host == 'brokers-domain.com'){
+      $login = 'bd-api';
+      $password = '5c5918d8';
+      $url = "https://admin-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
+    } else if ($result_general[0]->api_host == 'tradesmarter.com'){
+      $login = 'tsdemoapi';
+      $password = 'redUzg2PgsfDW34V';
+      $url = "https://platform-api.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
+    } else if ($result_general[0]->api_host == 'w-options.com') {
+      $login = 'woptions-api';
+      $password = '79997219';
+      $url = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
+    } else if ($result_general[0]->api_host == 'mintesamarkets.com') {
+      $login = 'mintesa-api';
+      $password = 'cec7a39d';
+      $url = "https://platform-api.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
+    }
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL,$url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
@@ -283,9 +297,23 @@ $accountLevel = "";
 
   if($_COOKIE['userID']){
     $handle = curl_init();
-    $login = 'bd-api';
-    $password = '5c5918d8';
-    $url = "https://admin-api.ap-b.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
+    if ($result_general[0]->api_host == 'brokers-domain.com'){
+      $login = 'bd-api';
+      $password = '5c5918d8';
+      $url = "https://admin-api.ap-b.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
+    } else if ($result_general[0]->api_host == 'tradesmarter.com'){
+      $login = 'tsdemoapi';
+      $password = 'redUzg2PgsfDW34V';
+      $url = "https://platform-api.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
+    } else if ($result_general[0]->api_host == 'w-options.com') {
+      $login = 'woptions-api';
+      $password = '79997219';
+      $url = "https://platform-api.ap-b.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
+    } else if ($result_general[0]->api_host == 'mintesamarkets.com') {
+      $login = 'mintesa-api';
+      $password = 'cec7a39d';
+      $url = "https://platform-api.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
+    }
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL,$url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
