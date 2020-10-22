@@ -260,7 +260,7 @@
   $session = " ";
   if($_COOKIE['userID']){
     $handle = curl_init();
-    if ($result_general[0]->api_host == 'brokers-domain.com'){
+    if ( strval( $result_general[0]->api_host ) == 'brokers-domain.com'){
       $login = 'bd-api';
       $password = '5c5918d8';
       $url = "https://admin-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
