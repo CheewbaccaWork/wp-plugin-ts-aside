@@ -283,11 +283,6 @@
     $login = $GLOBALS['login']; 
     $password = $GLOBALS['password'];
 
-    echo $result_general[0]->api_host;
-    echo $url;
-    echo $login;
-    echo $password;
-
     curl_setopt($ch, CURLOPT_URL,$url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
     curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
@@ -296,8 +291,6 @@
     curl_close($ch);  
     $sessionObj = json_decode($sessionResponse);
     $GLOBALS['session'] = $sessionObj->session;
-     
-    var_dump($sessionObj);
   }
 ?>
 <?php
