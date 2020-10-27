@@ -363,6 +363,24 @@
                 </tr>
                 <tr>
                     <th scope="row">
+                        <label>FAQ simple: </label>
+                    </th>
+                    <td> 
+                        <input <?php echo ($result[0]->show_faq_simple == '1' ? 'checked' : ''); ?> class="hide_panels" name="show_faq_simple" type="checkbox" id="show_faq_simple" value="<?php echo ($result[0]->show_faq_simple ? $result[0]->show_faq_simple : "0"); ?>">
+                    Show</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label>FAQ FX trade: </label>
+                    </th>
+                    <td> 
+                        <input <?php echo ($result[0]->show_faq_fx == '1' ? 'checked' : ''); ?> class="hide_panels" name="show_faq_fx" type="checkbox" id="show_faq_fx" value="<?php echo ($result[0]->show_faq_fx ? $result[0]->show_faq_fx : "0"); ?>">
+                    Show</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
                         <label>Default theme: </label>
                     </th>
                     <td>
