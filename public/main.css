@@ -156,7 +156,7 @@ body .aside_wrapper #optionsContainer {
 	#loginPopUp__wrapper #bpwidgets_popup{
 		width: 90% !important;
 		max-width: 90% !important;
-		max-height: 80% !important;
+		max-height: 90% !important;
 	}
 }
 
@@ -206,6 +206,25 @@ body .aside_wrapper #optionsContainer {
     position: relative;
 	max-height: 90% !important;
 	overflow-y: scroll;
+}
+
+@media screen and (max-width: 500px){
+	#bpwidgets_popup_login{
+		display: none;
+		width: 90% !important;
+		max-width: 90% !important;
+		position: relative;
+		max-height: 90% !important;
+	}
+	
+	#bpwidgets_popup_signup{
+		display: none;
+		width: 90% !important;
+		max-width: 90% !important;
+		position: relative;
+		max-height: 90% !important;
+		overflow-y: scroll;
+	}
 }
 
 .user-info{
@@ -1419,8 +1438,9 @@ body .aside_wrapper .top-section__burger-closed {
 	.mobile_logo,
 	.right_burger,
 	.left_burger-content,
-	.right_burger-content{
-		display: none;
+	.right_burger-content,
+	.login_block-mobile	{
+		display: none !important;
 	}
 }
 
@@ -1438,6 +1458,11 @@ body .aside_wrapper .top-section__burger-closed {
 		padding: 20px 12px;
 		transform: translate(-200%);
 		transition: transform .3s;
+	}
+
+	.login_block-mobile #LoginPopUp,
+	.login_block-mobile #OpenPopUp{
+		font-size: 12px;
 	}
 
 	.right_burger-content{

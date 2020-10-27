@@ -443,95 +443,108 @@ $accountLevel = "";
     </div>
     <div class="left_burger">
     </div>
-    <a class="mobile_logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top_mobile : $result_general[0]->img_top_white_mobile); ?>" alt=""></a>
-    <div class="right_burger">
-      <?php if ($_COOKIE['userID']){ ?>
-        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540.4 540.3">
-          <g>
-            <path fill="var(--clock-color)" d="M306,381.1A91.1,91.1,0,1,0,215,290,91.3,91.3,0,0,0,306,381.1Z" transform="translate(-35.8 -40.3)"/>
-            <path fill="var(--clock-color)" d="M379.7,382.6c-20.5,16-46.3,25.8-73.6,25.8a117.6,117.6,0,0,1-72.9-25c-82,41.7-94.1,116.2-95.6,138.2,46.3,37.2,104.8,59.2,169.4,59.2a270.5,270.5,0,0,0,169.2-59.9C473.8,497.2,460.9,424.3,379.7,382.6Z" transform="translate(-35.8 -40.3)"/>
-            <path fill="var(--clock-color)" d="M306,40.3C157.3,40.3,35.8,161.8,35.8,310.5A265,265,0,0,0,113.3,498c6.8-35.7,29.6-96.4,100.1-135.8-15.2-20.5-25-45.5-25-72.9a118.4,118.4,0,0,1,236.8,0c0,27.3-9.1,53.1-25,72.9C470,401.6,492.8,462.3,500.3,498a268.4,268.4,0,0,0,75.9-187.5C576.2,161.8,454.8,40.3,306,40.3Z" transform="translate(-35.8 -40.3)"/>
-          </g>
-        </svg>
-      <?php } ?>
-    </div>
-    <div class="right_burger-content">
-      <div class="left_burger-content-top">
-        <a class="top_section__logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top : $result_general[0]->img_top_white); ?>" alt=""></a>
-        <div class="left_burger-content-top_cross"></div>
+    <?php if($_COOKIE['userID']){?>
+      <a class="mobile_logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top_mobile : $result_general[0]->img_top_white_mobile); ?>" alt=""></a>
+    <?php } ?>
+    <?php if ($_COOKIE['userID']) { ?>
+      <div class="right_burger">
+        <?php if ($_COOKIE['userID']){ ?>
+          <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540.4 540.3">
+            <g>
+              <path fill="var(--clock-color)" d="M306,381.1A91.1,91.1,0,1,0,215,290,91.3,91.3,0,0,0,306,381.1Z" transform="translate(-35.8 -40.3)"/>
+              <path fill="var(--clock-color)" d="M379.7,382.6c-20.5,16-46.3,25.8-73.6,25.8a117.6,117.6,0,0,1-72.9-25c-82,41.7-94.1,116.2-95.6,138.2,46.3,37.2,104.8,59.2,169.4,59.2a270.5,270.5,0,0,0,169.2-59.9C473.8,497.2,460.9,424.3,379.7,382.6Z" transform="translate(-35.8 -40.3)"/>
+              <path fill="var(--clock-color)" d="M306,40.3C157.3,40.3,35.8,161.8,35.8,310.5A265,265,0,0,0,113.3,498c6.8-35.7,29.6-96.4,100.1-135.8-15.2-20.5-25-45.5-25-72.9a118.4,118.4,0,0,1,236.8,0c0,27.3-9.1,53.1-25,72.9C470,401.6,492.8,462.3,500.3,498a268.4,268.4,0,0,0,75.9-187.5C576.2,161.8,454.8,40.3,306,40.3Z" transform="translate(-35.8 -40.3)"/>
+            </g>
+          </svg>
+        <?php } ?>
       </div>
-        <?php if ($_COOKIE['userID']) { ?>
-          <ul class="modes">
-            <li class="getLoginPopUp">
-              <a href="<?php echo $result_top_panel[0]->deposit_link; ?>"><?php echo $result_top_panel[0]->deposit; ?></a>
+      <div class="right_burger-content">
+        <div class="left_burger-content-top">
+          <a class="top_section__logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top : $result_general[0]->img_top_white); ?>" alt=""></a>
+          <div class="left_burger-content-top_cross"></div>
+        </div>
+          <?php if ($_COOKIE['userID']) { ?>
+            <ul class="modes">
+              <li class="getLoginPopUp">
+                <a href="<?php echo $result_top_panel[0]->deposit_link; ?>"><?php echo $result_top_panel[0]->deposit; ?></a>
+              </li>
+            </ul>
+          <?php } ?>
+            
+          <ul class="top-section__navigation">
+            <?php if($_COOKIE['userID']){?>
+              <li> 
+                <a href="<?php echo $result_top_panel[0]->my_acc_link ?>"><?php echo $result_top_panel[0]->my_acc ?></a>
+              </li>
+            <?php }?>
+            <?php
+              $top_menu = json_decode($result_top_panel[0]->menu_items, true);
+              $top_links = json_decode($result_top_panel[0]->menu_links, true);
+
+              if ($top_menu && $top_menu != " "){
+                for($i = 0; $i < count($top_menu); $i++ ){
+                  ?>
+                    <li> 
+                      <a href="<?php echo $top_links[$i] ?>"><?php echo $top_menu[$i] ?></a>
+                    </li>
+                  <?php
+                }
+              }
+            ?>
+          </ul>
+          <ul class="languages">
+            <?php 
+              $langArr = [
+                'en' => 'English',
+                'de' => 'Deutsch',
+                'es' => 'Español',
+                'fr' => 'Français',
+                'it' => 'Italiano',  
+                'ja' => '日本語',
+                'ko' => '한국어',
+                'nl' => 'Dutch', 
+                'pt' => 'Português',
+                'ru' => 'Русский',
+                'zh_cn' => '简体中文',
+                'zh_tw' => '繁體中文',
+                'ar' => 'العربية',
+                'id' => 'Indonesian',
+                'ms' => 'Malay',
+                'vi' => 'Vietnamese',
+                'th' => 'ภาษาไทย',
+                'pl' => 'Polski'
+              ];
+            ?>
+            <li class="li__with_items current_language"> <img src="<?php echo plugin_dir_url( $file ) . 'wp-plugin-ts-aside/public/img/' .  ( $langArr[$_COOKIE['userLanguage']] ? $langArr[$_COOKIE['userLanguage']] : 'English') . '.svg' ?>" alt=""><a href="#"><?php echo $langArr[$_COOKIE['userLanguage']] ? $langArr[$_COOKIE['userLanguage']] : 'English' ?></a></li>
+            <li> 
+              <ul class="languages_dropdown">
+                <?php
+                  $langShort = json_decode(json_encode($readyLanguages), true);
+                  for($i = 0; $i < count($langShort); $i++){
+                    ?>
+                    <li> 
+                      <img src="<?php echo plugin_dir_url( $file ) . 'wp-plugin-ts-aside/public/img/' .  $langArr[ $langShort[$i]['lang_id'] ] . '.svg' ?>" alt="">
+                      <a href="#"><?php echo $langArr[ $langShort[$i]['lang_id'] ] ?></a>
+                    </li>
+                <?php
+                  }
+                ?>
+              </ul>
             </li>
           </ul>
-        <?php } ?>
-          
-        <ul class="top-section__navigation">
-          <?php if($_COOKIE['userID']){?>
-            <li> 
-              <a href="<?php echo $result_top_panel[0]->my_acc_link ?>"><?php echo $result_top_panel[0]->my_acc ?></a>
-            </li>
-          <?php }?>
-          <?php
-            $top_menu = json_decode($result_top_panel[0]->menu_items, true);
-            $top_links = json_decode($result_top_panel[0]->menu_links, true);
 
-            if ($top_menu && $top_menu != " "){
-              for($i = 0; $i < count($top_menu); $i++ ){
-                ?>
-                  <li> 
-                    <a href="<?php echo $top_links[$i] ?>"><?php echo $top_menu[$i] ?></a>
-                  </li>
-                <?php
-              }
-            }
-          ?>
-        </ul>
-        <ul class="languages">
-          <?php 
-            $langArr = [
-              'en' => 'English',
-              'de' => 'Deutsch',
-              'es' => 'Español',
-              'fr' => 'Français',
-              'it' => 'Italiano',  
-              'ja' => '日本語',
-              'ko' => '한국어',
-              'nl' => 'Dutch', 
-              'pt' => 'Português',
-              'ru' => 'Русский',
-              'zh_cn' => '简体中文',
-              'zh_tw' => '繁體中文',
-              'ar' => 'العربية',
-              'id' => 'Indonesian',
-              'ms' => 'Malay',
-              'vi' => 'Vietnamese',
-              'th' => 'ภาษาไทย',
-              'pl' => 'Polski'
-            ];
-          ?>
-          <li class="li__with_items current_language"> <img src="<?php echo plugin_dir_url( $file ) . 'wp-plugin-ts-aside/public/img/' .  ( $langArr[$_COOKIE['userLanguage']] ? $langArr[$_COOKIE['userLanguage']] : 'English') . '.svg' ?>" alt=""><a href="#"><?php echo $langArr[$_COOKIE['userLanguage']] ? $langArr[$_COOKIE['userLanguage']] : 'English' ?></a></li>
-          <li> 
-            <ul class="languages_dropdown">
-              <?php
-                $langShort = json_decode(json_encode($readyLanguages), true);
-                for($i = 0; $i < count($langShort); $i++){
-                  ?>
-                  <li> 
-                    <img src="<?php echo plugin_dir_url( $file ) . 'wp-plugin-ts-aside/public/img/' .  $langArr[ $langShort[$i]['lang_id'] ] . '.svg' ?>" alt="">
-                    <a href="#"><?php echo $langArr[ $langShort[$i]['lang_id'] ] ?></a>
-                  </li>
-              <?php
-                }
-              ?>
-            </ul>
-          </li>
-        </ul>
-
-        <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
-    </div>
+          <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
+      </div>
+    <?php }else { ?>
+      <ul class="login_block login_block-mobile">
+        <li>
+          <a id="LoginPopUp" href="<?php echo $result_top_panel[0]->login_link ?>"><?php echo $result_top_panel[0]->login ?></a>
+        </li>
+        <li>
+          <a id="OpenPopUp" class="sign_in" href="<?php echo $result_top_panel[0]->open_link ?>"><?php echo $result_top_panel[0]->open ?></a>
+        </li>
+      </ul>
+    <?php } ?>
     <a class="top_section__logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top : $result_general[0]->img_top_white); ?>" alt=""></a>
       <div class="top-section-align-block">
         <div class="top-section__burger">

@@ -142,7 +142,7 @@ ready(function() {
             window.location.href=window.location.href;
         }); 
     }catch(e){
-        console.log(e);
+        console.log('Only 1 theme is installed');
     }
 
     var aside_imgs = document.querySelectorAll('nav ul li ul li img');
@@ -236,7 +236,7 @@ ready(function() {
             });
         }
     }catch(e){
-        console.log(e);
+        console.log("List item do not have children");
     }
 
     var asideMenuButtons = document.querySelectorAll('.aside-frame-button');
@@ -255,8 +255,6 @@ ready(function() {
     document.querySelectorAll('a[href^="wow"]').forEach(function(element){
         element.parentElement.classList.add('getLoginPopUp');
     });
-
-    console.log(document.location.href);
 
     // XXX: popup
 
@@ -494,35 +492,40 @@ ready(function() {
     //     }
     // });
 
-    var left_burger = document.getElementsByClassName('left_burger')[0];
-    var left_burger_content = document.getElementsByClassName('left_burger-content')[0];
-    var right_burger = document.getElementsByClassName('right_burger')[0];
-    var right_burger_content = document.getElementsByClassName('right_burger-content')[0];
-    
-    left_burger.addEventListener('click', function(){
-        left_burger_content.classList.add('opened_left_burger-content');
-    });
+    try{
+        var left_burger = document.getElementsByClassName('left_burger')[0];
+        var left_burger_content = document.getElementsByClassName('left_burger-content')[0];
+        var right_burger = document.getElementsByClassName('right_burger')[0];
+        var right_burger_content = document.getElementsByClassName('right_burger-content')[0];
+        
+        left_burger.addEventListener('click', function(){
+            left_burger_content.classList.add('opened_left_burger-content');
+        });
 
-    right_burger.addEventListener('click', function(){
-        right_burger_content.classList.add('opened_right_burger-content');
-    });
+        right_burger.addEventListener('click', function(){
+            right_burger_content.classList.add('opened_right_burger-content');
+        });
 
-    var left_burger_content_top_cross = document.getElementsByClassName('left_burger-content-top_cross')[0];
-    var right_burger_content_top_cross = document.getElementsByClassName('left_burger-content-top_cross')[1];
+        var left_burger_content_top_cross = document.getElementsByClassName('left_burger-content-top_cross')[0];
+        var right_burger_content_top_cross = document.getElementsByClassName('left_burger-content-top_cross')[1];
 
-    left_burger_content_top_cross.addEventListener('click', function(){
-        left_burger_content.classList.remove('opened_left_burger-content');
-    });
+        left_burger_content_top_cross.addEventListener('click', function(){
+            left_burger_content.classList.remove('opened_left_burger-content');
+        });
 
-    right_burger_content_top_cross.addEventListener('click', function(){
-        right_burger_content.classList.remove('opened_right_burger-content');
-    });
+        right_burger_content_top_cross.addEventListener('click', function(){
+            right_burger_content.classList.remove('opened_right_burger-content');
+        });
+    }catch(e){
+        console.log('Not a mobile view');
+    }
 
     var temp_window_link = window.location.href;
 
     if (window.location.href.substr(-1) == '/'){
         temp_window_link = window.location.href.slice(0, -1);
     }
+    
 
     // XXX: FAQ section
 
