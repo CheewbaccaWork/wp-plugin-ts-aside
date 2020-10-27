@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Tradesmarter aside
  * Description: Display aside using shortcode to insert in a page 
- * Version: 1.4.1
+ * Version: 1.4.3
  */
 
 require_once __DIR__ . '/AsideClass.php';
