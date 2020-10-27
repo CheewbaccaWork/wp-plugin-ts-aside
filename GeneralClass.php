@@ -49,8 +49,6 @@ class GeneralClass{
                 hide_theme_switcher TINYINT(1), 
                 show_documents TINYINT(1), 
                 show_account TINYINT(1), 
-                show_faq_simple TINYINT(1), 
-                show_faq_fx TINYINT(1), 
                 default_theme VARCHAR(255),
                 light_theme_platform VARCHAR(255),
                 dark_theme_platform VARCHAR(255),
@@ -97,8 +95,6 @@ class GeneralClass{
                     'hide_theme_switcher' => '0',
                     'show_documents' => '1',
                     'show_account' => '1',
-                    'show_faq_simple' => '1', 
-                    'show_faq_fx' => '1', 
                     'light_theme_platform' => 'white-blue',
                     'dark_theme_platform' => 'black-green',
                     'light_theme_widget' => 'white-green',
@@ -115,17 +111,17 @@ class GeneralClass{
 
     public static function upgrade()
     {   
-        global $wpdb;
+        // global $wpdb;
         
-        $row = $wpdb->get_row("SELECT * FROM wp_aside_general");
+        // $row = $wpdb->get_row("SELECT * FROM wp_aside_general");
 
-        if (!isset($row->show_faq_simple)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD show_faq_simple TINYINT(1)");
-        }
+        // if (!isset($row->show_faq_simple)) {
+        //     $wpdb->query("ALTER TABLE wp_aside_general ADD show_faq_simple TINYINT(1)");
+        // }
 
-        if (!isset($row->show_faq_fx)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD show_faq_fx TINYINT(1)");
-        }
+        // if (!isset($row->show_faq_fx)) {
+        //     $wpdb->query("ALTER TABLE wp_aside_general ADD show_faq_fx TINYINT(1)");
+        // }
 
         update_option( 'my_plugin_version', self::version );
     }
@@ -201,8 +197,6 @@ class GeneralClass{
         $hide_theme_switcher = $_POST['hide_theme_switcher'];
         $show_documents = $_POST['show_documents'];
         $show_account = $_POST['show_account'];
-        $show_faq_simple = $_POST['show_faq_simple'];
-        $show_faq_fx = $_POST['show_faq_fx'];
         $default_theme = $_POST['default_theme'];
         $light_theme_platform =  $_POST['light_theme_platform'];
         $dark_theme_platform = $_POST['dark_theme_platform'];
@@ -247,8 +241,6 @@ class GeneralClass{
                     'hide_theme_switcher' => $hide_theme_switcher,
                     'show_documents' => $show_documents,
                     'show_account' => $show_account,
-                    'show_faq_simple' => $show_faq_simple,
-                    'show_faq_fx' => $show_faq_fx,
                     'default_theme' => $default_theme,
                     'light_theme_platform' => $light_theme_platform,
                     'dark_theme_platform' => $dark_theme_platform,
