@@ -171,8 +171,18 @@ ready(function() {
     });
 
     var menuItems = document.querySelectorAll('nav ul li');
+    var menuItemsMobile = document.querySelectorAll('.left_burger-content ul li');
 
     menuItems.forEach( function(element){
+
+        if (element.querySelectorAll('ul li').length > 1){
+            element.querySelectorAll('ul li')[0].classList.add('li__with_items');
+            element.querySelectorAll('ul li')[0].classList.add('target_li');
+        }
+
+    });
+
+    menuItemsMobile.forEach( function(element){
 
         if (element.querySelectorAll('ul li').length > 1){
             element.querySelectorAll('ul li')[0].classList.add('li__with_items');
@@ -194,9 +204,11 @@ ready(function() {
 
                     visible_inside = false;
 
-                    for(var i = 1; i < this.parentElement.children.length ; i++){
-                        if ( this.parentElement.children[i].classList.contains('active') && !document.getElementById('aside').classList.contains('aside__hide')){
-                            visible_inside = true;
+                    if (window.innerWidth > 501){
+                        for(var i = 1; i < this.parentElement.children.length ; i++){
+                            if ( this.parentElement.children[i].classList.contains('active') && !document.getElementById('aside').classList.contains('aside__hide')){
+                                visible_inside = true;
+                            }
                         }
                     }
 
@@ -482,22 +494,85 @@ ready(function() {
     //     }
     // });
 
+    var left_burger = document.getElementsByClassName('left_burger')[0];
+    var left_burger_content = document.getElementsByClassName('left_burger-content')[0];
+    var right_burger = document.getElementsByClassName('right_burger')[0];
+    var right_burger_content = document.getElementsByClassName('right_burger-content')[0];
+    
+    left_burger.addEventListener('click', function(){
+        left_burger_content.classList.add('opened_left_burger-content');
+    });
+
+    right_burger.addEventListener('click', function(){
+        right_burger_content.classList.add('opened_right_burger-content');
+    });
+
+    var left_burger_content_top_cross = document.getElementsByClassName('left_burger-content-top_cross')[0];
+    var right_burger_content_top_cross = document.getElementsByClassName('left_burger-content-top_cross')[1];
+
+    left_burger_content_top_cross.addEventListener('click', function(){
+        left_burger_content.classList.remove('opened_left_burger-content');
+    });
+
+    right_burger_content_top_cross.addEventListener('click', function(){
+        right_burger_content.classList.remove('opened_right_burger-content');
+    });
+
     var temp_window_link = window.location.href;
 
     if (window.location.href.substr(-1) == '/'){
         temp_window_link = window.location.href.slice(0, -1);
     }
 
-    document.querySelectorAll('a[href="' + temp_window_link + '"]').forEach(element => {
-        element.parentElement.classList.toggle('active');
-        if (element.parentElement.parentElement.children[0].classList.contains('target_li') && !document.getElementById('aside').classList.contains('aside__hide') ){
-            element.parentElement.parentElement.children[0].classList.remove('li__with_items');
-            element.parentElement.parentElement.children[0].classList.add('li__with_items_opened');
-            for(var i = 1; i < element.parentElement.parentElement.children.length ; i++){
-                element.parentElement.parentElement.children[i].style.display = 'inline-flex';
-            }
+    // XXX: FAQ section
+
+    try{
+        var switcher = document.querySelectorAll('.faq__page-navigation ul li');
+
+        function removeSwitcher(){
+            switcher.forEach( element => {
+                element.classList.remove('active');
+            });
         }
-    } );
+
+        switcher.forEach( element => {
+            element.addEventListener('click', function(e){
+                e.preventDefault();
+                removeSwitcher();
+                this.classList.add('active');
+                if (this.getAttribute('id') == 'fx_faq'){
+                    document.getElementById('simple_content').classList.add('hidded');
+                    document.getElementById('fx_content').classList.remove('hidded');
+                } else {
+                    document.getElementById('simple_content').classList.remove('hidded');
+                    document.getElementById('fx_content').classList.add('hidded');
+                }
+            });
+        } );
+
+        var answer_toggler = document.querySelectorAll('.answer_toggler');
+
+        answer_toggler.forEach(element => {
+            element.addEventListener('click', function(e){
+                this.parentElement.classList.toggle('with_answer');
+            });
+        });
+    }catch(e){
+        console.log("this is not FAQ page");
+    }
+
+    if (window.innerWidth > 500){
+        document.querySelectorAll('a[href="' + temp_window_link + '"]').forEach(element => {
+            element.parentElement.classList.toggle('active');
+            if (element.parentElement.parentElement.children[0].classList.contains('target_li') && !document.getElementById('aside').classList.contains('aside__hide') ){
+                element.parentElement.parentElement.children[0].classList.remove('li__with_items');
+                element.parentElement.parentElement.children[0].classList.add('li__with_items_opened');
+                for(var i = 1; i < element.parentElement.parentElement.children.length ; i++){
+                    element.parentElement.parentElement.children[i].style.display = 'inline-flex';
+                }
+            }
+        } );
+    }
 
 });
 

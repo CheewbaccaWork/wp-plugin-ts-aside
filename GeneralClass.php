@@ -24,6 +24,8 @@ class GeneralClass{
                 img_white VARCHAR(255),
                 img_top VARCHAR(255),
                 img_top_white VARCHAR(255),
+                img_top_mobile VARCHAR(255),
+                img_top_white_mobile VARCHAR(255),
                 switch_btn_color VARCHAR(255),
                 active_link VARCHAR(255),
                 active_link_light VARCHAR(255),
@@ -75,6 +77,8 @@ class GeneralClass{
                     'img_white' => plugin_dir_url( __FILE__ ) . '/public/img/logo.png',
                     'img_top' => plugin_dir_url( __FILE__ ) . '/public/img/trade-Logo.png',
                     'img_top_white' => plugin_dir_url( __FILE__ ) . '/public/img/trade-Logo.png',
+                    'img_top_mobile' => plugin_dir_url( __FILE__ ) . '/public/img/logo.png',
+                    'img_top_white_mobile' => plugin_dir_url( __FILE__ ) . '/public/img/logo.png',
                     'switch_btn_color' => "#07fe76",
                     'color_dark' => '#ffffff',
                     'color_light' => '#000000',
@@ -101,14 +105,24 @@ class GeneralClass{
                 )
             );
         }
-        if ( self::my_plugin_is_current_version() ){
+        // if ( self::my_plugin_is_current_version() ){
             self::upgrade();
-        }
+        // }
     }
 
     public static function upgrade()
-    {
+    {   
+        global $wpdb;
         
+        $row = $wpdb->get_row("SELECT * FROM wp_aside_general");
+
+        if (!isset($row->img_top_mobile)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD img_top_mobile VARCHAR(255)");
+        }
+
+        if (!isset($row->img_top_white_mobile)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD img_top_white_mobile VARCHAR(255)");
+        }
 
         update_option( 'my_plugin_version', self::version );
     }
@@ -159,6 +173,8 @@ class GeneralClass{
         $DBP_logo_white = $_POST['logo_white'];
         $DBP_logo_top = $_POST['logo_top'];
         $DBP_logo_top_white = $_POST['logo_top_white'];
+        $logo_top_mobile = $_POST['logo_top_mobile'];
+        $logo_top_mobile_white = $_POST['logo_top_mobile_white'];
         $switch_btn_color = $_POST['switch_btn_color'];
         $active_color = $_POST['color-active'];
         $active_color_light = $_POST['color-active-light'];
@@ -201,6 +217,8 @@ class GeneralClass{
                     'img_white' => $DBP_logo_white,
                     'img_top' => $DBP_logo_top,
                     'img_top_white' => $DBP_logo_top_white,
+                    'img_top_mobile' => $logo_top_mobile,
+                    'img_top_white_mobile' => $logo_top_mobile_white,
                     'switch_btn_color' => $switch_btn_color,
                     'color_dark' => $color_dark,
                     'color_light' => $color_light,

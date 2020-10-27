@@ -106,8 +106,44 @@
     --clock-color: <?php echo $result_general[0]->color_light ?> !important;
   }
 
+  .left_burger{
+    border-top: 1px solid <?php echo $result_general[0]->color_dark ?> !important;
+    border-bottom: 1px solid <?php echo $result_general[0]->color_dark ?> !important;
+  }
+
+  .left_burger::after{
+    background-color: <?php echo $result_general[0]->color_dark ?> !important;
+  }
+
+  .right_burger::after{
+    color: <?php echo $result_general[0]->color_dark ?> !important;
+  }
+
+  .left_burger-content-top_cross::after,
+  .left_burger-content-top_cross::before{
+    background-color: <?php echo $result_general[0]->color_dark ?> !important;
+  }
+
+  .top-section__wrapper .right_burger svg{
+    --clock-color: <?php echo $result_general[0]->color_dark ?> !important;
+  }
+
+  .top-section__wrapper.light .right_burger svg{
+    --clock-color: <?php echo $result_general[0]->color_light ?> !important;
+  }
+
   .top-section__wrapper .user-block svg{
     --clock-color: <?php echo $result_general[0]->color_dark ?> !important;
+  }
+
+  .top-section__wrapper .left_burger-content,
+  .top-section__wrapper .right_burger-content{
+    background-color: <?php echo $result_general[0]->dark_bg ?> !important;
+  }
+
+  .top-section__wrapper.light .left_burger-content,
+  .top-section__wrapper.light .right_burger-content{
+    background-color: <?php echo $result_general[0]->light_bg ?> !important;
   }
 
   body .aside_wrapper .top-section__wrapper #top_section_burger::after,
@@ -146,6 +182,18 @@
 
   body .aside_wrapper .top-section__wrapper .languages li .languages_dropdown{
     background-color: <?php echo $result_general[0]->dark_bg ?> !important;
+  }
+
+  .right_burger-content .languages li a, 
+  .right_burger-content .languages li ul li a,
+  .right_burger-content .languages li a::after,
+  .right_burger-content a{
+    color: <?php echo $result_general[0]->color_dark ?> !important;
+  }
+
+  .left_burger-content ul li ul li span,
+  .left_burger-content ul li ul li a{
+    color: <?php echo $result_general[0]->color_dark ?> !important;
   }
 
   body .aside_wrapper .top-section__wrapper.light .languages li .languages_dropdown{
@@ -340,6 +388,150 @@ $accountLevel = "";
 ?>
 
 <div id="top_panel" class="top-section__wrapper">
+    <div class="left_burger-content">
+      <div class="left_burger-content-top">
+        <a class="top_section__logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top : $result_general[0]->img_top_white); ?>" alt=""></a>
+        <div class="left_burger-content-top_cross"></div>
+      </div>
+      <ul> 
+        <?php
+          $name = json_decode($result_aside[0]->menu, true);
+          $menu_link = json_decode($result_aside[0]->menu_link, true);
+          $subname = json_decode($result_aside[0]->submenu, true);
+          $links = json_decode($result_aside[0]->link, true);
+          $icons = json_decode($result_aside[0]->icon, true);
+          $sub_icons = json_decode($result_aside[0]->sub_icon, true);
+
+          for($i = 0; $i < count($name); $i++){
+            ?>
+              <?php if ($i > 2 || $_COOKIE['userID']) { ?>
+              <li>
+                <ul>
+                  <li>
+                    <?php 
+                      if($menu_link[$i] && $menu_link[$i] != " "){
+                        ?>
+                        <a href="<?php echo $menu_link[$i]?>"><?php echo $name[$i]; ?></a>
+                        <?php
+                      } else {
+                        ?>
+                          <span><?php echo $name[$i]; ?></span>
+                        <?php
+                      }
+                    ?>
+                  </li>
+                  <?php 
+                    if ($subname[$i]){
+                      for($j = 0; $j < count($subname[$i]); $j++){
+                        ?>
+                        <?php  if ($subname[$i][$j] != " "){ ?>
+                          <li>
+                            <a href="<?php echo $links[$i][$j]; ?>"><?php echo $subname[$i][$j]; ?></a> 
+                          </li>
+                        <?php
+                        }
+                      }
+                    }
+                  ?>
+                </ul>
+              </li>
+            <?php
+              }
+          } 
+        ?>
+      </ul>
+    </div>
+    <div class="left_burger">
+    </div>
+    <a class="mobile_logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top_mobile : $result_general[0]->img_top_white_mobile); ?>" alt=""></a>
+    <div class="right_burger">
+      <?php if ($_COOKIE['userID']){ ?>
+        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540.4 540.3">
+          <g>
+            <path fill="var(--clock-color)" d="M306,381.1A91.1,91.1,0,1,0,215,290,91.3,91.3,0,0,0,306,381.1Z" transform="translate(-35.8 -40.3)"/>
+            <path fill="var(--clock-color)" d="M379.7,382.6c-20.5,16-46.3,25.8-73.6,25.8a117.6,117.6,0,0,1-72.9-25c-82,41.7-94.1,116.2-95.6,138.2,46.3,37.2,104.8,59.2,169.4,59.2a270.5,270.5,0,0,0,169.2-59.9C473.8,497.2,460.9,424.3,379.7,382.6Z" transform="translate(-35.8 -40.3)"/>
+            <path fill="var(--clock-color)" d="M306,40.3C157.3,40.3,35.8,161.8,35.8,310.5A265,265,0,0,0,113.3,498c6.8-35.7,29.6-96.4,100.1-135.8-15.2-20.5-25-45.5-25-72.9a118.4,118.4,0,0,1,236.8,0c0,27.3-9.1,53.1-25,72.9C470,401.6,492.8,462.3,500.3,498a268.4,268.4,0,0,0,75.9-187.5C576.2,161.8,454.8,40.3,306,40.3Z" transform="translate(-35.8 -40.3)"/>
+          </g>
+        </svg>
+      <?php } ?>
+    </div>
+    <div class="right_burger-content">
+      <div class="left_burger-content-top">
+        <a class="top_section__logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top : $result_general[0]->img_top_white); ?>" alt=""></a>
+        <div class="left_burger-content-top_cross"></div>
+      </div>
+        <?php if ($_COOKIE['userID']) { ?>
+          <ul class="modes">
+            <li class="getLoginPopUp">
+              <a href="<?php echo $result_top_panel[0]->deposit_link; ?>"><?php echo $result_top_panel[0]->deposit; ?></a>
+            </li>
+          </ul>
+        <?php } ?>
+          
+        <ul class="top-section__navigation">
+          <?php if($_COOKIE['userID']){?>
+            <li> 
+              <a href="<?php echo $result_top_panel[0]->my_acc_link ?>"><?php echo $result_top_panel[0]->my_acc ?></a>
+            </li>
+          <?php }?>
+          <?php
+            $top_menu = json_decode($result_top_panel[0]->menu_items, true);
+            $top_links = json_decode($result_top_panel[0]->menu_links, true);
+
+            if ($top_menu && $top_menu != " "){
+              for($i = 0; $i < count($top_menu); $i++ ){
+                ?>
+                  <li> 
+                    <a href="<?php echo $top_links[$i] ?>"><?php echo $top_menu[$i] ?></a>
+                  </li>
+                <?php
+              }
+            }
+          ?>
+        </ul>
+        <ul class="languages">
+          <?php 
+            $langArr = [
+              'en' => 'English',
+              'de' => 'Deutsch',
+              'es' => 'Español',
+              'fr' => 'Français',
+              'it' => 'Italiano',  
+              'ja' => '日本語',
+              'ko' => '한국어',
+              'nl' => 'Dutch', 
+              'pt' => 'Português',
+              'ru' => 'Русский',
+              'zh_cn' => '简体中文',
+              'zh_tw' => '繁體中文',
+              'ar' => 'العربية',
+              'id' => 'Indonesian',
+              'ms' => 'Malay',
+              'vi' => 'Vietnamese',
+              'th' => 'ภาษาไทย',
+              'pl' => 'Polski'
+            ];
+          ?>
+          <li class="li__with_items current_language"> <img src="<?php echo plugin_dir_url( $file ) . 'wp-plugin-ts-aside/public/img/' .  ( $langArr[$_COOKIE['userLanguage']] ? $langArr[$_COOKIE['userLanguage']] : 'English') . '.svg' ?>" alt=""><a href="#"><?php echo $langArr[$_COOKIE['userLanguage']] ? $langArr[$_COOKIE['userLanguage']] : 'English' ?></a></li>
+          <li> 
+            <ul class="languages_dropdown">
+              <?php
+                $langShort = json_decode(json_encode($readyLanguages), true);
+                for($i = 0; $i < count($langShort); $i++){
+                  ?>
+                  <li> 
+                    <img src="<?php echo plugin_dir_url( $file ) . 'wp-plugin-ts-aside/public/img/' .  $langArr[ $langShort[$i]['lang_id'] ] . '.svg' ?>" alt="">
+                    <a href="#"><?php echo $langArr[ $langShort[$i]['lang_id'] ] ?></a>
+                  </li>
+              <?php
+                }
+              ?>
+            </ul>
+          </li>
+        </ul>
+
+        <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
+    </div>
     <a class="top_section__logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top : $result_general[0]->img_top_white); ?>" alt=""></a>
       <div class="top-section-align-block">
         <div class="top-section__burger">
@@ -700,11 +892,51 @@ $accountLevel = "";
     </div>
 
     <?php if ( $atts ) { 
-        if  ($atts['state'] == 'text'){ ?>
+        if  ( $atts['state'] == 'text'){ ?>
           <div class="text__page">
             <?php echo $content; ?>
           </div>
       <?php } else
+          if ( $atts['state'] == 'faq' ){ ?>
+          <div class="faq__page">
+            <div class="faq__page-navigation" >
+              <ul>
+                <li class='active' id="simple_faq">
+                  <a href="#">Simple trader</a>
+                </li>
+                <li id="fx_faq">
+                  <a href="#">FX Trading</a>
+                </li>
+              </ul>
+            </div>
+            <div class="faq__page-content" id="simple_content">
+              <div class="faq__container-content-item with_answer">
+                <div class="answer_toggler"></div>
+                <h2 class="main-text">How does pricing work?</h2>
+                <div class="faq__container-content-item_answer">
+                    <p class="small-text">Traders and investors around the world tell us they're frustrated by traditional brokerages. It's difficult to understand the fees and they're often caught off guard by hidden fees such as custody or inactivity fees. With Stake. you know exactly whet you pay fot what you'll never pay for and clear peony on our premium pecks. What's more, our premium pecks are free until 1 January 2021.</p>
+                </div>
+              </div>
+              <div class="faq__container-content-item">
+                <div class="answer_toggler"></div>
+                <h2 class="main-text">How does pricing work?</h2>
+                <div class="faq__container-content-item_answer">
+                    <p class="small-text">Traders and investors around the world tell us they're frustrated by traditional brokerages. It's difficult to understand the fees and they're often caught off guard by hidden fees such as custody or inactivity fees. With Stake. you know exactly whet you pay fot what you'll never pay for and clear peony on our premium pecks. What's more, our premium pecks are free until 1 January 2021.</p>
+                </div>
+              </div>
+          </div>
+          <div class="faq__page-content hidded" id="fx_content">
+            <div class="faq__container-content-item with_answer">
+              <div class="answer_toggler"></div>
+              <h2 class="main-text">How does pricing work?</h2>
+              <div class="faq__container-content-item_answer">
+                  <p class="small-text">Traders and investors around the world tell us they're frustrated by traditional brokerages. It's difficult to understand the fees and they're often caught off guard by hidden fees such as custody or inactivity fees. With Stake. you know exactly whet you pay fot what you'll never pay for and clear peony on our premium pecks. What's more, our premium pecks are free until 1 January 2021.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+        <?php  } else 
           if  ( strpos($atts['state'], 'http') === 0){ ?>
             <div>
               <img style="width: 100%; height: 100%;" src="<?php echo $atts['state'] ?>" alt="img">
