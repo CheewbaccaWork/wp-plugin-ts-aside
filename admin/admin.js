@@ -77,6 +77,61 @@ jQuery(function($){
             $(this).remove();
         });
 
+        if ($('.wrap h1').text() == 'Faq simple'){
+
+            $(document).on('click', '.addQuestion' , function(e){
+                e.preventDefault();
+                $(this).parent().parent().after(
+                    `<tr class="faq" data-num="${$(this).parent().parent().data('num') + 1}">
+                        <th scope="row">
+                            <label >Question and answer</label>
+                        </th>
+                        <td>
+                            <input type="text" name="questions[${$(this).parent().parent().data('num') + 1}]" class="questions" placeholder="Question">
+                            <textarea name="answers[${$(this).parent().parent().data('num') + 1}]" cols="30" rows="10"></textarea>
+                            <a href="#" title="Add Menu Item" class="addQuestion">+</a>
+                            <a href="#" title="Remove Menu Item" class="minusQuestion">-</a>
+                        </td>
+                    </tr>`
+                );
+    
+                $(this).remove();
+            });
+
+            $(document).on('click', '.minusQuestion', function(e){
+                e.preventDefault();
+    
+                $(this).parent().parent().remove();
+            });
+
+        }else if ($('.wrap h1').text() == 'Faq FX'){
+            $(document).on('click', '.addQuestion' , function(e){
+                e.preventDefault();
+                $(this).parent().parent().after(
+                    `<tr class="faq" data-num="${$(this).parent().parent().data('num') + 1}">
+                        <th scope="row">
+                            <label >Question and answer</label>
+                        </th>
+                        <td>
+                            <input type="text" name="questions_fx[${$(this).parent().parent().data('num') + 1}]" class="questions" placeholder="Question">
+                            <textarea name="answers_fx[${$(this).parent().parent().data('num') + 1}]" cols="30" rows="10"></textarea>
+                            <a href="#" title="Add Menu Item" class="addQuestion">+</a>
+                            <a href="#" title="Remove Menu Item" class="minusQuestion">-</a>
+                        </td>
+                    </tr>`
+                );
+    
+                $(this).remove();
+            });
+
+            $(document).on('click', '.minusQuestion', function(e){
+                e.preventDefault();
+
+                $(this).parent().parent().remove();
+                
+            });
+        }
+
         $(document).on('click', '.addMenuTopPanel' , function(e){
             e.preventDefault();
             $(this).parent().parent().after(

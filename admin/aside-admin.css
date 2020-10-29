@@ -17,19 +17,34 @@
     flex-wrap: wrap;
 }
 
+.tradesmarter-aside-admin table tbody tr.faq{ 
+    align-items: flex-start;
+}
+
 .tradesmarter-aside-admin table tbody tr td{
     display: inline-flex;
     align-items: center;
 }
 
+.tradesmarter-aside-admin table tbody tr.faq td{ 
+    align-items: flex-start;
+}
+
+
 .tradesmarter-aside-admin table tbody tr td input{
+    margin-left: 15px;
+}
+
+.tradesmarter-aside-admin table tbody tr.faq td textarea{ 
     margin-left: 15px;
 }
 
 .tradesmarter-aside-admin table tbody tr td .addSubmenu,
 .tradesmarter-aside-admin table tbody tr td .addMenu,
+.tradesmarter-aside-admin table tbody tr td .addQuestion,
 .tradesmarter-aside-admin table tbody tr td .addMenuTopPanel,
-.tradesmarter-aside-admin table tbody tr td .minus{
+.tradesmarter-aside-admin table tbody tr td .minus,
+.tradesmarter-aside-admin table tbody tr td .minusQuestion{
     text-decoration: none;
     margin-left: 15px;
     padding: 5px;
@@ -47,7 +62,8 @@
     background-color: green;
 }
 
-.tradesmarter-aside-admin table tbody tr td .minus{
+.tradesmarter-aside-admin table tbody tr td .minus,
+.tradesmarter-aside-admin table tbody tr td .minusQuestion{
     background-color: red;
 }
 

@@ -15,6 +15,8 @@ class GeneralClass{
 
         $wp_summary_db_version = self::version;
 
+        $row = $wpdb->get_row("SELECT * FROM wp_aside_general");
+
         if ($wpdb->get_var("SHOW TABLES LIKE 'wp_aside_general'" ) != $ptbd_table_name ) {
             $sql  = 'CREATE TABLE '. 'wp_aside_general' .' (
                 id INT(20) AUTO_INCREMENT,
@@ -27,6 +29,9 @@ class GeneralClass{
                 img_top_mobile VARCHAR(255),
                 img_top_white_mobile VARCHAR(255),
                 switch_btn_color VARCHAR(255),
+                switch_btn_color_light VARCHAR(255),
+                switch_btn_color_text VARCHAR(255),
+                switch_btn_color_text_light VARCHAR(255),
                 active_link VARCHAR(255),
                 active_link_light VARCHAR(255),
                 color_dark VARCHAR(255),    
@@ -80,6 +85,9 @@ class GeneralClass{
                     'img_top_mobile' => plugin_dir_url( __FILE__ ) . '/public/img/logo.png',
                     'img_top_white_mobile' => plugin_dir_url( __FILE__ ) . '/public/img/logo.png',
                     'switch_btn_color' => "#07fe76",
+                    'switch_btn_color_light' => "#07fe76",
+                    'switch_btn_color_text' => "#ffffff",
+                    'switch_btn_color_text_light' => "#000000",
                     'color_dark' => '#ffffff',
                     'color_light' => '#000000',
                     'active_link' => 'rgb(0, 128, 0)',	
@@ -111,19 +119,24 @@ class GeneralClass{
 
     public static function upgrade()
     {   
-        // global $wpdb;
+        global $wpdb;
         
-        // $row = $wpdb->get_row("SELECT * FROM wp_aside_general");
+        if (!isset($row->switch_btn_color_light)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD switch_btn_color_light VARCHAR(255)");
+        }
 
-        // if (!isset($row->show_faq_simple)) {
-        //     $wpdb->query("ALTER TABLE wp_aside_general ADD show_faq_simple TINYINT(1)");
-        // }
+        if (!isset($row->switch_btn_color_text)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD switch_btn_color_text VARCHAR(255)");
+        }
 
-        // if (!isset($row->show_faq_fx)) {
-        //     $wpdb->query("ALTER TABLE wp_aside_general ADD show_faq_fx TINYINT(1)");
-        // }
+        if (!isset($row->switch_btn_color_text_light)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD switch_btn_color_text_light VARCHAR(255)");
+        }
 
-        update_option( 'my_plugin_version', self::version );
+        $wpdb->query("UPDATE wp_aside_general SET switch_btn_color_text_light = '#000000'");
+        $wpdb->query("UPDATE wp_aside_general SET switch_btn_color_text = '#ffffff'");
+        $wpdb->query("UPDATE wp_aside_general SET switch_btn_color_light = '#07fe76'");
+
     }
 
     public static function my_plugin_is_current_version(){
@@ -175,6 +188,9 @@ class GeneralClass{
         $logo_top_mobile = $_POST['logo_top_mobile'];
         $logo_top_mobile_white = $_POST['logo_top_mobile_white'];
         $switch_btn_color = $_POST['switch_btn_color'];
+        $switch_btn_color_light = $_POST['switch_btn_color_light'];
+        $switch_btn_color_text = $_POST['switch_btn_color_text'];
+        $switch_btn_color_text_light = $_POST['switch_btn_color_text_light'];
         $active_color = $_POST['color-active'];
         $active_color_light = $_POST['color-active-light'];
         $dark_bg = $_POST['color-bg-dark'];
@@ -219,6 +235,9 @@ class GeneralClass{
                     'img_top_mobile' => $logo_top_mobile,
                     'img_top_white_mobile' => $logo_top_mobile_white,
                     'switch_btn_color' => $switch_btn_color,
+                    'switch_btn_color_light' => $switch_btn_color_light,
+                    'switch_btn_color_text' => $switch_btn_color_text,
+                    'switch_btn_color_text_light' => $switch_btn_color_text_light,
                     'color_dark' => $color_dark,
                     'color_light' => $color_light,
                     'active_link' => $active_color,	

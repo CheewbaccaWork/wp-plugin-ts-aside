@@ -1052,6 +1052,9 @@ body .aside_wrapper .top-section__wrapper .languages {
 		display: flex;
 		list-style-type: none !important;
 	}
+	body .aside_wrapper .top-section__wrapper .languages:hover li .languages_dropdown {
+		margin: initial !important;
+	}
 }
 
 body .aside_wrapper .top-section__navigation li {
@@ -1711,7 +1714,7 @@ body .aside_wrapper .top-section__burger-closed {
 
 @media screen and (max-width:500px) {
 	.faq__page .faq__page-navigation ul{
-		width: 250px
+		width: 300px
 	}
 }
 

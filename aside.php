@@ -2,16 +2,20 @@
 /**
  * Plugin Name: Tradesmarter aside
  * Description: Display aside using shortcode to insert in a page 
- * Version: 1.4.3
+ * Version: 2.0.0
+ * Text Domain: github-updater
+ * GitHub Plugin URI: https://github.com/CheewbaccaWork/wp-plugin-ts-aside
+ * GitHub Branch: main
  */
 
 require_once __DIR__ . '/AsideClass.php';
 require_once __DIR__ . '/TopPanelClass.php';
 require_once __DIR__ . '/GeneralClass.php';
-
+require_once __DIR__ . '/FaqClass.php';
 
 register_activation_hook( __FILE__, array('AsideClass', 'install'));
 register_activation_hook( __FILE__, array('TopPanelClass', 'install'));
+register_activation_hook( __FILE__, array('FaqClass', 'install'));
 register_uninstall_hook( __FILE__, array('GeneralClass', 'uninstall'));
 register_activation_hook( __FILE__, array('GeneralClass', 'install'));
 
@@ -24,9 +28,12 @@ add_action('get_header', 'remove_admin_login_header');
 $hook = add_action('admin_menu', array('GeneralClass', 'addMenuItem'));
 $hook_aside = add_action('admin_menu', array('AsideClass', 'addMenuItem'));
 $hook_top_panel = add_action('admin_menu', array('TopPanelClass', 'addMenuItem'));
+$hook_faq = add_action('admin_menu', array('FaqClass', 'addMenuItem'));
+
 add_action( "load-$hook", [ 'GeneralClass', 'screen_option' ] );
 add_action( "load-$hook_aside", [ 'AsideClass', 'screen_option' ] );    
 add_action( "load-$hook_top_panel", [ 'TopPanelClass', 'screen_option' ] );
+add_action( "load-$hook_faq", [ 'FaqClass', 'screen_option' ] );
 
 function enqueue_style() {
     wp_enqueue_style(

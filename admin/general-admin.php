@@ -139,10 +139,34 @@
                 </tr>
                 <tr>
                     <th scope="row">
-                        <label>Background color for Deposit/Open an account</label>
+                        <label>Background color for Deposit button dark theme</label>
                     </th>
                     <td>                
                         <input name="switch_btn_color" type="text" value="<?php echo ($result[0]->switch_btn_color ? $result[0]->switch_btn_color : "#008000"); ?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label>Background color for Deposit button light theme</label>
+                    </th>
+                    <td>                
+                        <input name="switch_btn_color_light" type="text" value="<?php echo ($result[0]->switch_btn_color_light ? $result[0]->switch_btn_color_light : "#008000"); ?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label>Text color for Deposit button dark theme</label>
+                    </th>
+                    <td>                
+                        <input name="switch_btn_color_text" type="text" value="<?php echo ($result[0]->switch_btn_color_text ? $result[0]->switch_btn_color_text : "#008000"); ?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label>Text color for Deposit button light theme</label>
+                    </th>
+                    <td>                
+                        <input name="switch_btn_color_text_light" type="text" value="<?php echo ($result[0]->switch_btn_color_text_light ? $result[0]->switch_btn_color_text_light : "#008000"); ?>" />
                     </td>
                 </tr>
                 <tr>
