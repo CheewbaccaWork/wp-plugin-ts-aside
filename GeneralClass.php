@@ -119,23 +119,23 @@ class GeneralClass{
 
     public static function upgrade()
     {   
-        global $wpdb;
+        // global $wpdb;
         
-        if (!isset($row->switch_btn_color_light)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD switch_btn_color_light VARCHAR(255)");
-        }
+        // if (!isset($row->switch_btn_color_light)) {
+        //     $wpdb->query("ALTER TABLE wp_aside_general ADD switch_btn_color_light VARCHAR(255)");
+        // }
 
-        if (!isset($row->switch_btn_color_text)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD switch_btn_color_text VARCHAR(255)");
-        }
+        // if (!isset($row->switch_btn_color_text)) {
+        //     $wpdb->query("ALTER TABLE wp_aside_general ADD switch_btn_color_text VARCHAR(255)");
+        // }
 
-        if (!isset($row->switch_btn_color_text_light)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD switch_btn_color_text_light VARCHAR(255)");
-        }
+        // if (!isset($row->switch_btn_color_text_light)) {
+        //     $wpdb->query("ALTER TABLE wp_aside_general ADD switch_btn_color_text_light VARCHAR(255)");
+        // }
 
-        $wpdb->query("UPDATE wp_aside_general SET switch_btn_color_text_light = '#000000'");
-        $wpdb->query("UPDATE wp_aside_general SET switch_btn_color_text = '#ffffff'");
-        $wpdb->query("UPDATE wp_aside_general SET switch_btn_color_light = '#07fe76'");
+        // $wpdb->query("UPDATE wp_aside_general SET switch_btn_color_text_light = '#000000'");
+        // $wpdb->query("UPDATE wp_aside_general SET switch_btn_color_text = '#ffffff'");
+        // $wpdb->query("UPDATE wp_aside_general SET switch_btn_color_light = '#07fe76'");
 
     }
 
