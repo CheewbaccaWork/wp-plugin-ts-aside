@@ -277,11 +277,20 @@
   .aside_wrapper.light_content .text__page p{ 
     color: <?php echo $result_general[0]->paragraph_color_text_page_light ?> !important;
   }
-  .aside_wrapper .top-section__wrapper .top-section-align-block #time_lang .login_block .getLoginPopUp .sign_in,
-  .aside_wrapper .top-section__wrapper .top-section-align-block .top-section__burger .modes a, 
+  .aside_wrapper .top-section__wrapper .top-section-align-block #time_lang .login_block .getLoginPopUp .sign_in, 
   #widget_popup_cross::after,
   #widget_popup_cross::before {
     background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
+  }
+
+  .aside_wrapper .top-section__wrapper .top-section-align-block .top-section__burger .modes a{
+    background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
+    color: <?php echo $result_general[0]->switch_btn_color_text ?> !important;   
+  }
+
+  .aside_wrapper.light_content .top-section__wrapper .top-section-align-block .top-section__burger .modes a{
+    background-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;
+    color: <?php echo $result_general[0]->switch_btn_color_text_light ?> !important;  
   }
 
   .ts-aside.light .aside__content .download p {
@@ -912,42 +921,66 @@ $accountLevel = "";
       <?php } else
           if ( $atts['state'] == 'faq' ){ ?>
           <div class="faq__page">
+          <?php 
+            $FAQ_section = $wpdb->get_results('SELECT * FROM `wp_aside_faq` WHERE `lang_id` = "' . $lang  . '" ORDER BY `id` desc limit 1');
+            $questions = json_decode($FAQ_section[0]->questions, true);
+            $answers = json_decode($FAQ_section[0]->answers, true);
+
+            $questions_fx = json_decode($FAQ_section[0]->questions_fx, true);
+            $answers_fx = json_decode($FAQ_section[0]->answers_fx, true);
+          ?>
             <div class="faq__page-navigation" >
               <ul>
-                <li class='active' id="simple_faq">
+                <?php if ($questions && $questions_fx){ ?>
+                 <li class='active' id="simple_faq">
                   <a href="#">Simple trader</a>
                 </li>
                 <li id="fx_faq">
                   <a href="#">FX Trading</a>
                 </li>
+                <?php }else if ($questions){ ?>
+                  <li class='active solo' id="simple_faq">
+                    <a href="#">Simple trader</a>
+                 </li>
+                <?php }else if ($questions_fx){ ?>
+                  <li id="fx_faq" class="solo active">
+                  <a href="#">FX Trading</a>
+                </li>
+                <?php } ?>
               </ul>
             </div>
-            <div class="faq__page-content" id="simple_content">
-              <div class="faq__container-content-item with_answer">
-                <div class="answer_toggler"></div>
-                <h2 class="main-text">How does pricing work?</h2>
-                <div class="faq__container-content-item_answer">
-                    <p class="small-text">Traders and investors around the world tell us they're frustrated by traditional brokerages. It's difficult to understand the fees and they're often caught off guard by hidden fees such as custody or inactivity fees. With Stake. you know exactly whet you pay fot what you'll never pay for and clear peony on our premium pecks. What's more, our premium pecks are free until 1 January 2021.</p>
-                </div>
-              </div>
-              <div class="faq__container-content-item">
-                <div class="answer_toggler"></div>
-                <h2 class="main-text">How does pricing work?</h2>
-                <div class="faq__container-content-item_answer">
-                    <p class="small-text">Traders and investors around the world tell us they're frustrated by traditional brokerages. It's difficult to understand the fees and they're often caught off guard by hidden fees such as custody or inactivity fees. With Stake. you know exactly whet you pay fot what you'll never pay for and clear peony on our premium pecks. What's more, our premium pecks are free until 1 January 2021.</p>
-                </div>
-              </div>
-          </div>
-          <div class="faq__page-content hidded" id="fx_content">
-            <div class="faq__container-content-item with_answer">
-              <div class="answer_toggler"></div>
-              <h2 class="main-text">How does pricing work?</h2>
-              <div class="faq__container-content-item_answer">
-                  <p class="small-text">Traders and investors around the world tell us they're frustrated by traditional brokerages. It's difficult to understand the fees and they're often caught off guard by hidden fees such as custody or inactivity fees. With Stake. you know exactly whet you pay fot what you'll never pay for and clear peony on our premium pecks. What's more, our premium pecks are free until 1 January 2021.</p>
-              </div>
+
+            <?php if ($questions){ ?>
+
+            <div class="faq__page-content" <?php if ($questions && $questions_fx){ echo 'id="simple_content"'; } ?> >
+                <?php for($i = 0; $i < count($questions); $i++){ ?>
+                  <div class="faq__container-content-item <?php if ($i == 0){ echo 'with_answer'; } ?>">
+                    <div class="answer_toggler"></div>
+                    <h2 class="main-text"><?php echo $questions[$i] ?></h2>
+                    <div class="faq__container-content-item_answer">
+                        <p class="small-text"><?php echo $answers[$i] ?></p>
+                    </div>
+                  </div>
+                <?php } ?>
             </div>
-          </div>
-        </div>
+
+            <?php } ?>
+
+            <?php if ($questions_fx){ ?>
+
+              <div class="faq__page-content <?php if ($questions && $questions_fx){ echo 'hidded'; } ?>" <?php if ($questions && $questions_fx){ echo 'id="fx_content"'; } ?>>
+                  <?php for($i = 0; $i < count($questions_fx); $i++){ ?>
+                    <div class="faq__container-content-item <?php if ($i == 0){ echo 'with_answer'; } ?>">
+                      <div class="answer_toggler"></div>
+                      <h2 class="main-text"><?php echo $questions_fx[$i] ?></h2>
+                      <div class="faq__container-content-item_answer">
+                          <p class="small-text"><?php echo $answers_fx[$i] ?></p>
+                      </div>  
+                    </div>
+                  <?php } ?>
+              </div>
+
+              <?php } ?>
           
         <?php  } else 
           if  ( strpos($atts['state'], 'http') === 0){ ?>
