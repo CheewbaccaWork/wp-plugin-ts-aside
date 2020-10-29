@@ -288,13 +288,13 @@
   }
 
   .aside_wrapper .top-section__wrapper .top-section-align-block .top-section__burger .modes a,
-  .aside_wrapper .top-section__wrapper .login_block li a{
+  .aside_wrapper .top-section__wrapper .login_block li a#OpenPopUp{
     background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
     color: <?php echo $result_general[0]->switch_btn_color_text ?> !important;   
   }
 
   .aside_wrapper.light_content .top-section__wrapper .top-section-align-block .top-section__burger .modes a,
-  .aside_wrapper .top-section__wrapper.light .login_block li a{
+  .aside_wrapper .top-section__wrapper.light .login_block li a#OpenPopUp{
     background-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;
     color: <?php echo $result_general[0]->switch_btn_color_text_light ?> !important;  
   }
