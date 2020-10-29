@@ -168,14 +168,6 @@
     background-color: <?php echo $result_general[0]->light_bg ?> !important;
   }
 
-  .aside_wrapper .faq__page{
-    background-color: <?php echo $result_general[0]->dark_bg ?> !important;
-  }
-
-  .aside_wrapper.light_content .faq__page{
-    background-color: <?php echo $result_general[0]->light_bg ?> !important;
-  }
-
   body .aside_wrapper .top-section__navigation li a{ 
     color:  <?php echo $result_general[0]->color_dark ?> !important;
   }
@@ -212,10 +204,6 @@
     color: <?php echo $result_general[0]->color_dark ?> !important;
   }
 
-  body .aside_wrapper .top-section__wrapper.light .login_block li a{
-    color: <?php echo $result_general[0]->color_light ?> !important;
-  }
-
   body .aside_wrapper .top-section__navigation li:hover a{
 	  color: <?php echo $result_general[0]->active_link ?> !important;
   }
@@ -239,6 +227,14 @@
   }
 
   body .aside_wrapper #bpfxcfd{
+    background-color: <?php echo $result_general[0]->dark_bg ?> !important;
+  }
+
+  .aside_wrapper .faq__page{
+    background-color: <?php echo $result_general[0]->dark_bg ?> !important;
+  }
+
+  .aside_wrapper.light_content .faq__page{
     background-color: <?php echo $result_general[0]->dark_bg ?> !important;
   }
 
@@ -291,12 +287,14 @@
     background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
   }
 
-  .aside_wrapper .top-section__wrapper .top-section-align-block .top-section__burger .modes a{
+  .aside_wrapper .top-section__wrapper .top-section-align-block .top-section__burger .modes a,
+  .aside_wrapper .top-section__wrapper .login_block li a{
     background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
     color: <?php echo $result_general[0]->switch_btn_color_text ?> !important;   
   }
 
-  .aside_wrapper.light_content .top-section__wrapper .top-section-align-block .top-section__burger .modes a{
+  .aside_wrapper.light_content .top-section__wrapper .top-section-align-block .top-section__burger .modes a,
+  .aside_wrapper .top-section__wrapper.light .login_block li a{
     background-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;
     color: <?php echo $result_general[0]->switch_btn_color_text_light ?> !important;  
   }
