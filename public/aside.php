@@ -281,10 +281,16 @@
   .aside_wrapper.light_content .text__page p{ 
     color: <?php echo $result_general[0]->paragraph_color_text_page_light ?> !important;
   }
+
   .aside_wrapper .top-section__wrapper .top-section-align-block #time_lang .login_block .getLoginPopUp .sign_in, 
-  #widget_popup_cross::after,
-  #widget_popup_cross::before {
+  .ts-aside > div .bpwidgets_popup #widget_popup_cross::after,
+  .ts-aside > div .bpwidgets_popup #widget_popup_cross::before {
     background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
+  }
+
+  .ts-aside.light > div .bpwidgets_popup #widget_popup_cross::after,
+  .ts-aside.light > div .bpwidgets_popup #widget_popup_cross::before {
+    background-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;
   }
 
   .aside_wrapper .top-section__wrapper .top-section-align-block .top-section__burger .modes a,
