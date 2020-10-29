@@ -162,7 +162,11 @@ class GeneralClass{
 
     public static function shortcodeHandler( $atts, $content = null )
     {
+        ob_start();
+
         $html_string = include('public/aside.php');
+
+        $html_string = ob_get_clean();
 
         return $html_string;
     }
