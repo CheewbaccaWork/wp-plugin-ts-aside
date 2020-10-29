@@ -168,6 +168,14 @@
     background-color: <?php echo $result_general[0]->light_bg ?> !important;
   }
 
+  .aside_wrapper .faq__page{
+    background-color: <?php echo $result_general[0]->dark_bg ?> !important;
+  }
+
+  .aside_wrapper.light_content .faq__page{
+    background-color: <?php echo $result_general[0]->light_bg ?> !important;
+  }
+
   body .aside_wrapper .top-section__navigation li a{ 
     color:  <?php echo $result_general[0]->color_dark ?> !important;
   }
