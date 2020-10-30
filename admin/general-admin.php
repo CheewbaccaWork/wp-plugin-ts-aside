@@ -103,42 +103,6 @@
                 </tr>
                 <tr>
                     <th scope="row">
-                        <label for="logo">Choose please logo image for top panel mobile view or <a class="remove_img" href="#">remove</a></label>
-                    </th>
-                    <td>
-                    <?php
-                        if( $result[0]->img_top_mobile ) {
-
-                            echo '<a id="removedImg" href="#" class="img-upl previewImg"><img src="' . $result[0]->img_top_mobile . '" /></a>
-                                    <input id="img_top_mobile" type="hidden" name="img_top_mobile" value="' . $result[0]->img_top_mobile . '">'; 
-                        } else {
-                            
-                            echo '<a id="removedImg" href="#" class="img-upl previewImg">Upload image</a>
-                                <input id="img_top_mobile" type="hidden" name="img_top_mobile" value="">';
-                        }
-                        ?>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <label for="logo">Choose please logo image for top panel mobile view white theme or <a class="remove_img" href="#">remove</a></label>
-                    </th>
-                    <td>
-                    <?php
-                        if( $result[0]->img_top_white_mobile ) {
-
-                            echo '<a id="removedImg" href="#" class="img-upl previewImg"><img src="' . $result[0]->img_top_white_mobile . '" /></a>
-                                    <input id="img_top_white_mobile" type="hidden" name="img_top_white_mobile" value="' . $result[0]->img_top_white_mobile . '">'; 
-                        } else {
-                            
-                            echo '<a id="removedImg" href="#" class="img-upl previewImg">Upload image</a>
-                                <input id="img_top_white_mobile" type="hidden" name="img_top_white_mobile" value="">';
-                        }
-                        ?>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
                         <label>Background color for Deposit button dark theme</label>
                     </th>
                     <td>                

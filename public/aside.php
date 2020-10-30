@@ -111,17 +111,8 @@
     border-bottom: 1px solid <?php echo $result_general[0]->color_dark ?> !important;
   }
 
-  .left_burger::after{
-    background-color: <?php echo $result_general[0]->color_dark ?> !important;
-  }
-
   .right_burger::after{
     color: <?php echo $result_general[0]->color_dark ?> !important;
-  }
-
-  .left_burger-content-top_cross::after,
-  .left_burger-content-top_cross::before{
-    background-color: <?php echo $result_general[0]->color_dark ?> !important;
   }
 
   .top-section__wrapper .right_burger svg{
@@ -172,6 +163,10 @@
     color:  <?php echo $result_general[0]->color_dark ?> !important;
   }
 
+  body .aside_wrapper.light_content .top-section__navigation li a{ 
+    color:  <?php echo $result_general[0]->color_light ?> !important;
+  }
+
   .aside_wrapper top-section__wrapper .top-section__burger{
     background-color: <?php echo $result_general[0]->dark_bg ?> !important;
   }
@@ -182,13 +177,6 @@
 
   body .aside_wrapper .top-section__wrapper .languages li .languages_dropdown{
     background-color: <?php echo $result_general[0]->dark_bg ?> !important;
-  }
-
-  .right_burger-content .languages li a, 
-  .right_burger-content .languages li ul li a,
-  .right_burger-content .languages li a::after,
-  .right_burger-content a{
-    color: <?php echo $result_general[0]->color_dark ?> !important;
   }
 
   .left_burger-content ul li ul li span,
@@ -321,6 +309,64 @@
     background-color: <?php echo $result_general[0]->dwnld_block_backgorund_dark_color ?> !important;
   }
 
+  .top-section__wrapper .right_burger-content .modes li a{
+    background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
+    color: <?php echo $result_general[0]->switch_btn_color_text ?> !important;   
+  }
+
+  .top-section__wrapper.light .right_burger-content .modes li a{
+    background-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;
+    color: <?php echo $result_general[0]->switch_btn_color_text_light ?> !important;  
+  }
+
+  .top-section__wrapper .left_burger{
+    border-top: 1px solid <?php echo $result_general[0]->color_dark ?> !important;
+    border-bottom: 1px solid <?php echo $result_general[0]->color_dark ?> !important;
+  }
+
+  .top-section__wrapper.light .left_burger{
+    border-top: 1px solid <?php echo $result_general[0]->color_light ?> !important;
+    border-bottom: 1px solid <?php echo $result_general[0]->color_light ?> !important;
+  }
+
+  .top-section__wrapper .left_burger-content-top_cross::after,
+  .top-section__wrapper .left_burger-content-top_cross::before,
+  .top-section__wrapper .left_burger::after
+  {
+    background-color: <?php echo $result_general[0]->color_dark ?> !important;
+  }
+
+  .top-section__wrapper.light .left_burger-content-top_cross::after,
+  .top-section__wrapper.light .left_burger-content-top_cross::before,
+  .top-section__wrapper.light .left_burger::after
+  {
+    background-color: <?php echo $result_general[0]->color_light ?> !important;
+  }
+
+  .top-section__wrapper .right_burger-content .languages li a, 
+  .top-section__wrapper .right_burger-content .languages li ul li a,
+  .top-section__wrapper .right_burger-content .languages li a::after,
+  .top-section__wrapper .right_burger-content a,
+  .top-section__wrapper .left_burger-content ul li a,
+  .top-section__wrapper .left_burger-content ul li span,
+  .top-section__wrapper .left_burger-content ul li ul li.li__with_items span::after,
+  .top-section__wrapper .left_burger-content ul li ul li.li__with_items_opened span::after,
+  .top-section__wrapper .right_burger::after{
+    color: <?php echo $result_general[0]->color_dark ?> !important;
+  }
+
+  .top-section__wrapper.light .right_burger-content .languages li a, 
+  .top-section__wrapper.light .right_burger-content .languages li ul li a,
+  .top-section__wrapper.light .right_burger-content .languages li a::after,
+  .top-section__wrapper.light .right_burger-content a,
+  .top-section__wrapper.light .left_burger-content ul li a,
+  .top-section__wrapper.light .left_burger-content ul li span,
+  .top-section__wrapper.light .left_burger-content ul li ul li.li__with_items span::after,
+  .top-section__wrapper.light .left_burger-content ul li ul li.li__with_items_opened span::after,
+  .top-section__wrapper.light .right_burger::after{
+    color: <?php echo $result_general[0]->color_light ?> !important;
+  }
+
 </style>  
 
 <div class="aside_wrapper closet_left_panel <?php if ($result_general[0]->hide_top_panel){ echo ' hide_top_panel '; } ?> <?php if ($result_general[0]->hide_left_panel){ echo ' hide_left_panel '; } ?>">
@@ -429,6 +475,7 @@ $accountLevel = "";
               <li>
                 <ul>
                   <li>
+                      <img src="<?php echo $icons[$i] ?>" alt="">
                     <?php 
                       if($menu_link[$i] && $menu_link[$i] != " "){
                         ?>
@@ -457,19 +504,15 @@ $accountLevel = "";
                 </ul>
               </li>
             <?php
-              }
+             }
           } 
         ?>
       </ul>
     </div>
     <div class="left_burger">
     </div>
-    <?php if($_COOKIE['userID']){?>
-      <a class="mobile_logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top_mobile : $result_general[0]->img_top_white_mobile); ?>" alt=""></a>
-    <?php } ?>
-    <?php if ($_COOKIE['userID']) { ?>
+      <a class="mobile_logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img : $result_general[0]->img_white); ?>" alt=""></a>
       <div class="right_burger">
-        <?php if ($_COOKIE['userID']){ ?>
           <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540.4 540.3">
             <g>
               <path fill="var(--clock-color)" d="M306,381.1A91.1,91.1,0,1,0,215,290,91.3,91.3,0,0,0,306,381.1Z" transform="translate(-35.8 -40.3)"/>
@@ -477,7 +520,6 @@ $accountLevel = "";
               <path fill="var(--clock-color)" d="M306,40.3C157.3,40.3,35.8,161.8,35.8,310.5A265,265,0,0,0,113.3,498c6.8-35.7,29.6-96.4,100.1-135.8-15.2-20.5-25-45.5-25-72.9a118.4,118.4,0,0,1,236.8,0c0,27.3-9.1,53.1-25,72.9C470,401.6,492.8,462.3,500.3,498a268.4,268.4,0,0,0,75.9-187.5C576.2,161.8,454.8,40.3,306,40.3Z" transform="translate(-35.8 -40.3)"/>
             </g>
           </svg>
-        <?php } ?>
       </div>
       <div class="right_burger-content">
         <div class="left_burger-content-top">
@@ -553,19 +595,19 @@ $accountLevel = "";
               </ul>
             </li>
           </ul>
-
-          <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
+          <?php if($_COOKIE['userID']){?>
+            <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
+          <?php }else {?>
+            <ul class="login_block">
+              <li>
+                <a id="LoginPopUp" href="<?php echo $result_top_panel[0]->login_link ?>"><?php echo $result_top_panel[0]->login ?></a>
+              </li>
+              <li>
+                <a id="OpenPopUp" class="sign_in" href="<?php echo $result_top_panel[0]->open_link ?>"><?php echo $result_top_panel[0]->open ?></a>
+              </li>
+            </ul>
+          <?php } ?>
       </div>
-    <?php }else { ?>
-      <ul class="login_block login_block-mobile">
-        <li>
-          <a id="LoginPopUp" href="<?php echo $result_top_panel[0]->login_link ?>"><?php echo $result_top_panel[0]->login ?></a>
-        </li>
-        <li>
-          <a id="OpenPopUp" class="sign_in" href="<?php echo $result_top_panel[0]->open_link ?>"><?php echo $result_top_panel[0]->open ?></a>
-        </li>
-      </ul>
-    <?php } ?>
     <a class="top_section__logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top : $result_general[0]->img_top_white); ?>" alt=""></a>
       <div class="top-section-align-block">
         <div class="top-section__burger">

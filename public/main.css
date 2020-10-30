@@ -747,7 +747,8 @@ body .aside_wrapper .top-section__wrapper {
 body .aside_wrapper .top-section__wrapper .top_section__logo {
 	max-height: calc(100px - 20px - 20px);
 	-o-object-fit: cover;
-	object-fit: cover
+	object-fit: cover;
+	max-width: 50%;	
 }
 
 @media screen and (max-width:500px) {
@@ -1280,6 +1281,10 @@ body .aside_wrapper .top-section__wrapper .languages li .languages_dropdown li a
 @media screen and (max-width:500px) {
 	.modes li a{
 		font-size: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 15px
 	}
 }
 
@@ -1450,7 +1455,7 @@ body .aside_wrapper .top-section__burger-closed {
 @media screen and (max-width: 500px){
 	.left_burger-content,
 	.right_burger-content{
-		display: block;
+		/* display: block; */
 		position: fixed;
 		width: 100%;
 		height: 100%;
@@ -1461,6 +1466,8 @@ body .aside_wrapper .top-section__burger-closed {
 		padding: 20px 12px;
 		transform: translate(-200%);
 		transition: transform .3s;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.login_block-mobile #LoginPopUp,
@@ -1504,6 +1511,11 @@ body .aside_wrapper .top-section__burger-closed {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		padding-bottom: 20px;
+		border-bottom: 1px solid #263346
+	}
+
+	.left_burger-content .left_burger-content-top{
 		margin-bottom: 50px;
 	}
 
@@ -1514,6 +1526,20 @@ body .aside_wrapper .top-section__burger-closed {
 		list-style-type: none !important; 
 	}
 	
+	.right_burger-content .login_block li a{
+		font-size: 18px !important;
+		margin: initial !important;
+	}
+	
+	.right_burger-content .login_block li{
+		margin: initial !important;
+		width: 100%;
+	}
+
+	.right_burger-content .login_block li:not(:first-child){
+		margin-top: 15px !important;
+	}
+
 	.right_burger-content .top-section__navigation li{
 		margin: 15px 0px !important;
 	}
@@ -1533,7 +1559,7 @@ body .aside_wrapper .top-section__burger-closed {
 	.right_burger-content .languages{
 		padding: initial !important;
 		flex-direction: column;
-		margin: 15px 0 30px;
+		margin: auto 0 15px;
 	}
 
 	.right_burger-content .languages li{
@@ -1592,7 +1618,7 @@ body .aside_wrapper .top-section__burger-closed {
 	}
 
 	.left_burger-content ul li ul li:not(:first-child){
-		padding-left: 5px;
+		padding-left: 40px;
 		margin: 5px 0 !important;
 	}
 
@@ -1628,6 +1654,11 @@ body .aside_wrapper .top-section__burger-closed {
 		line-height: 1 !important;
 		display: inline-flex;
 		padding-bottom: 10px;
+		align-items: center;
+	}
+
+	.left_burger-content ul li ul li img {
+		margin-right: 15px;
 	}
 
 	.left_burger-content ul li a{
@@ -1647,8 +1678,8 @@ body .aside_wrapper .top-section__burger-closed {
 		height: 50px;
 	}
 	.left_burger{
-		width: 25px;
-		height: 25px;
+		width: 20px;
+		height: 13px;
 		border-top: 1px solid #fff;
 		border-bottom: 1px solid #fff;
 		position: relative;
