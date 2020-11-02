@@ -1463,7 +1463,7 @@ body .aside_wrapper .top-section__burger-closed {
 		left: 0;
 		bottom: 0;
 		overflow-y: scroll;
-		padding: 20px 12px;
+		padding: 20px 12px 100px;
 		transform: translate(-200%);
 		transition: transform .3s;
 		display: flex;
@@ -1629,13 +1629,15 @@ body .aside_wrapper .top-section__burger-closed {
 
 	.left_burger-content ul li ul li.li__with_items span::after{
 		content: "\25BC";
-		color: #788597;	
+		color: #788597;
 		position: absolute;
 		right: 0;
-		font-size: 18px;
+		font-size: 14px;
 		-webkit-transform: scaleY(.5) scaleX(1);
 		transform: scaleY(.5) scaleX(1);
 		color: #fff;
+		top: 50%;
+		margin-top: -7px;
 	}
 
 	.left_burger-content ul li ul li.li__with_items_opened span::after{
@@ -1643,8 +1645,9 @@ body .aside_wrapper .top-section__burger-closed {
 		color: #788597;	
 		position: absolute;
 		right: 0;
-		font-size: 18px;
-
+		font-size: 14px;
+		top: 50%;
+		margin-top: -7px;
 		color: #fff;
 		transform: scaleY(.5) scaleX(1) rotate(180deg);
 	}
