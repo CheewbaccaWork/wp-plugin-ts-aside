@@ -192,6 +192,10 @@
     color: <?php echo $result_general[0]->color_dark ?> !important;
   }
 
+  body .aside_wrapper.light_content .top-section__wrapper .login_block li a:not([class]){
+    color: <?php echo $result_general[0]->color_light ?> !important;
+  }
+
   body .aside_wrapper .top-section__navigation li:hover a{
 	  color: <?php echo $result_general[0]->active_link ?> !important;
   }
@@ -272,12 +276,20 @@
 
   .aside_wrapper .top-section__wrapper .top-section-align-block #time_lang .login_block .getLoginPopUp .sign_in, 
   .ts-aside > div .bpwidgets_popup #widget_popup_cross::after,
-  .ts-aside > div .bpwidgets_popup #widget_popup_cross::before {
+  .ts-aside > div .bpwidgets_popup #widget_popup_cross::before,
+  .aside_wrapper #loginPopUp__wrapper #bpwidgets_popup_login #widget_popup_cross::after,
+  .aside_wrapper #loginPopUp__wrapper #bpwidgets_popup_login #widget_popup_cross::before,
+  .aside_wrapper #loginPopUp__wrapper #bpwidgets_popup_signup #widget_popup_cross::after,
+  .aside_wrapper #loginPopUp__wrapper #bpwidgets_popup_signup #widget_popup_cross::before{
     background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
   }
 
   .ts-aside.light > div .bpwidgets_popup #widget_popup_cross::after,
-  .ts-aside.light > div .bpwidgets_popup #widget_popup_cross::before {
+  .ts-aside.light > div .bpwidgets_popup #widget_popup_cross::before,
+  .aside_wrapper.light_content  #loginPopUp__wrapper #bpwidgets_popup_login #widget_popup_cross::after,
+  .aside_wrapper.light_content  #loginPopUp__wrapper #bpwidgets_popup_login #widget_popup_cross::before,
+  .aside_wrapper.light_content  #loginPopUp__wrapper #bpwidgets_popup_signup #widget_popup_cross::after,
+  .aside_wrapper.light_content  #loginPopUp__wrapper #bpwidgets_popup_signup #widget_popup_cross::before{
     background-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;
   }
 
