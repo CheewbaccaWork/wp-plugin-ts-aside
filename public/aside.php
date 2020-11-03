@@ -402,7 +402,11 @@
     } else if ($result_general[0]->api_host == 'mintesamarkets.com') {
       $GLOBALS['login'] = 'mintesa-api';
       $GLOBALS['password'] = 'cec7a39d';
-      $GLOBALS['url'] = "https://platform-api.tradesmarter.com/user/info?session=" . $_COOKIE['userID'];;
+      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
+    } else if ($result_general[0]->api_host == 'wow-trader.com') {
+      $GLOBALS['login'] = 'wow-trader-api';
+      $GLOBALS['password'] = '83ddba02';
+      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
     }
     $ch = curl_init();
 
