@@ -93,7 +93,7 @@ Here you can create new navigation item with link, change previous settings, add
 
 This page developed for FAQ page on the site. You can add new pair question + answer or remove already added pairs
 
-## Plugin`s Architecture: 
+## Plugins Architecture: 
 
 Main file is called **aside.php** and you can find it here : "__wp-plugin-ts-aside/aside.php__" in plugin`s root
 
