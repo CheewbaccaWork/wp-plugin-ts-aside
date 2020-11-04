@@ -3,11 +3,15 @@ jQuery(function($){
 
         var removeImg = $('.remove_img');
 
+        // Remove value from image field, when user clicks on 'remove'
+
         removeImg.on('click', function(e){
             e.preventDefault();
             $(this).parent().parent().siblings('td').children('input').val(' ');
             $(this).parent().parent().siblings('td').children('a').children('img').attr('src', ' ');
         });
+
+        // Cookies functions: 
 
         function getCookie(name) { 
             var nameEQ = name + "="; 
@@ -31,6 +35,8 @@ jQuery(function($){
             document.cookie = name + "=" + (value || "")  + expires + "; path=/"; // setting cookie
         }
 
+        // select new language and choose language as selected 
+
         var select = $('select[name="language"]');
 
         var regex = /[?&]([^=#]+)=([^&#]*)/g,
@@ -43,6 +49,8 @@ jQuery(function($){
 
         select.children(`option[value="${params['language']}"]`).attr('selected', 'selected');
 
+        // Choose language only 1 time if comes another language
+
         if (getCookie('language_switcher') == 'yes'){
             window.location = window.location;
             setCookie('language_switcher', 'no', 360);
@@ -51,6 +59,8 @@ jQuery(function($){
         $('input[name="submit_lang"]').on('click', function(){
             setCookie('language_switcher', 'yes', 360);
         });
+
+        // Render new menu item in left panel with all scripts and values
 
         $(document).on('click', '.addMenu' , function(e){
             e.preventDefault();
@@ -77,7 +87,11 @@ jQuery(function($){
             $(this).remove();
         });
 
+        // If page is Faq simple
+
         if ($('.wrap h1').text() == 'Faq simple'){
+
+            // Render new field for question + answer
 
             $(document).on('click', '.addQuestion' , function(e){
                 e.preventDefault();
@@ -98,13 +112,20 @@ jQuery(function($){
                 $(this).remove();
             });
 
+            // remove field 
+
             $(document).on('click', '.minusQuestion', function(e){
                 e.preventDefault();
     
                 $(this).parent().parent().remove();
             });
 
+
+        // If page is Faq FX
         }else if ($('.wrap h1').text() == 'Faq FX'){
+
+            // Render new field for question + answer
+
             $(document).on('click', '.addQuestion' , function(e){
                 e.preventDefault();
                 $(this).parent().parent().after(
@@ -124,6 +145,8 @@ jQuery(function($){
                 $(this).remove();
             });
 
+            // remove field 
+
             $(document).on('click', '.minusQuestion', function(e){
                 e.preventDefault();
 
@@ -131,6 +154,8 @@ jQuery(function($){
                 
             });
         }
+
+        // render new Menu item in Top Panel
 
         $(document).on('click', '.addMenuTopPanel' , function(e){
             e.preventDefault();
@@ -152,6 +177,8 @@ jQuery(function($){
             $(this).remove();
         });
 
+        // Render new submenu Item in left panel
+
         $(document).on('click', '.addSubmenu' , function(e){
             e.preventDefault();
             $(this).parent().children('.menu_link').remove();
@@ -172,11 +199,15 @@ jQuery(function($){
             $(this).parent().parent('').children('input[name="sub-icon[][]"]').remove();
         });
 
+        // remove item
+
         $(document).on('click', '.minus', function(e){
             e.preventDefault();
 
             $(this).parent().parent().remove();
         });
+
+        // Select tag logic
 
         $(document).on('click', '.hide_panels', function(e){
             $(this).val($(this).val() == 0 ? 1 : 0);

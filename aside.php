@@ -8,10 +8,14 @@
  * GitHub Branch: main
  */
 
+// include all Classes with main logic 
+
 require_once __DIR__ . '/AsideClass.php';
 require_once __DIR__ . '/TopPanelClass.php';
 require_once __DIR__ . '/GeneralClass.php';
 require_once __DIR__ . '/FaqClass.php';
+
+// Call install method from classes
 
 register_activation_hook( __FILE__, array('AsideClass', 'install'));
 register_activation_hook( __FILE__, array('TopPanelClass', 'install'));
@@ -19,11 +23,15 @@ register_activation_hook( __FILE__, array('FaqClass', 'install'));
 register_uninstall_hook( __FILE__, array('GeneralClass', 'uninstall'));
 register_activation_hook( __FILE__, array('GeneralClass', 'install'));
 
+// Remove admin header 
+
 function remove_admin_login_header() {
     remove_action('wp_head', '_admin_bar_bump_cb');
 }
 
 add_action('get_header', 'remove_admin_login_header');
+
+// Call addMenuItem method from classes to add plugin in WP left menu
 
 $hook = add_action('admin_menu', array('GeneralClass', 'addMenuItem'));
 $hook_aside = add_action('admin_menu', array('AsideClass', 'addMenuItem'));
@@ -35,6 +43,8 @@ add_action( "load-$hook_aside", [ 'AsideClass', 'screen_option' ] );
 add_action( "load-$hook_top_panel", [ 'TopPanelClass', 'screen_option' ] );
 add_action( "load-$hook_faq", [ 'FaqClass', 'screen_option' ] );
 
+// Include public css
+
 function enqueue_style() {
     wp_enqueue_style(
         'aside-page-styles',
@@ -45,6 +55,8 @@ function enqueue_style() {
     );
 }
 
+// Include public js
+
 function enqueue_scripts() {
     wp_enqueue_script( 'aside_js', plugins_url( 'public/aside.js', __FILE__ ));
 }
@@ -54,6 +66,8 @@ add_action( 'wp_enqueue_scripts', 'enqueue_style' );
 add_action('wp_enqueue_scripts', 'enqueue_scripts');
 
 add_action( 'admin_enqueue_scripts', 'image_js' );
+
+// Add image js for picking image in admin side, add script for admin side add styles for admin side
  
 function image_js() {
   
@@ -73,9 +87,13 @@ function image_js() {
     );
 }
 
+// register Menu 
+
 function create_plugin_menu() {
     register_nav_menu('aside', 'Aside Menu' );
 }
+
+// Add script for color picker
 
 function add_admin_iris_scripts( $hook ){
 	wp_enqueue_script( 'wp-color-picker' );
@@ -85,6 +103,8 @@ function add_admin_iris_scripts( $hook ){
 }
 
 add_action( 'admin_enqueue_scripts', 'add_admin_iris_scripts' );
+
+// Call to shortcodeHandler method in GeneralClass to create shortcode
 
 add_shortcode( 'aside', array( 'GeneralClass', 'shortcodeHandler' ) );
 

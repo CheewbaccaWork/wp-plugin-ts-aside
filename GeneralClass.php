@@ -1,10 +1,16 @@
 <?php 
 
+// General class include all general settings
+
 class GeneralClass{
 
+    // Table name for general settings
     const table = 'wp_tradesmarter_aside';
     const version = '1.0';
     const titleName = 'Tradesmarter plugin';
+
+    // Install method 
+    // Creates table in DB if not exists and insert default values
 
     public static function install()
     {
@@ -17,10 +23,46 @@ class GeneralClass{
 
         $row = $wpdb->get_row("SELECT * FROM wp_aside_general");
 
+        // Create table if not exists, 
+        // Here you can add new table rows
+
+        // !Current rows: 
+
+        // api_host - Api host
+        // logo_link - link for top panel logo
+        // img - Logo for dark theme
+        // img_white - Logo for light theme
+        // img_top - Top panel logo for dark theme
+        // img_top_white - Top panel logo for light theme
+        // img_top_mobile - Top panel mobile view row for dark theme
+        // img_top_white_mobile - Top panel mobile view row for light theme
+        // switch_btn_color - Background-color for deposit and open an account buttons dark theme
+        // switch_btn_color_light - Background-color for deposit and open an account buttons light theme
+        // switch_btn_color_text - Top panel deposit and open an account buttons dark theme text color
+        // switch_btn_color_text_light - Top panel deposit and open an account buttons light theme text color
+        // active_link - Active link / Hover color for dark theme
+        // active_link_light - Active link / Hover color for light theme
+        // color_dark - text color for dark theme
+        // color_light - text color for light theme
+        // dark_bg - general background-color for dark theme
+        // light_bg - general background-color for light theme
+        // .... 
+        // dwnld_img - image for download block
+        // log_img - icon near logout button in left panel
+        // log_link - link for logout button in left panel
+        // login_img - icon near login button in left panel
+        // login_link - link for login button in left panel
+        // ... 
+        // show_documents - show or hide label if user do not confiremt documents
+        // show_account - show or hide label of user account level
+        // default_theme - dark / light
+        // ...
+
+
         if ($wpdb->get_var("SHOW TABLES LIKE 'wp_aside_general'" ) != $ptbd_table_name ) {
             $sql  = 'CREATE TABLE '. 'wp_aside_general' .' (
                 id INT(20) AUTO_INCREMENT,
-                api_host VARCHAR(255),
+                api_host VARCHAR(255), 
                 logo_link VARCHAR(255),
                 img VARCHAR(255),
                 img_white VARCHAR(255),
@@ -74,6 +116,8 @@ class GeneralClass{
 
             add_option('wp_tradesmarter_aside_db_version', $wp_summary_db_version);
 
+            // Insert default values in table rows 
+
             $wpdb->insert(
                 "wp_aside_general", 
                 array(
@@ -114,8 +158,12 @@ class GeneralClass{
             );
         }
 
+        // Call to upgrade function if you need to update plugin and add new rows in table
+
         self::upgrade();
     }
+
+    // Upgrade function to update tables and add new rows, or change existing
 
     public static function upgrade()
     {   
@@ -139,15 +187,22 @@ class GeneralClass{
 
     }
 
+    // Check plugins version
+
     public static function my_plugin_is_current_version(){
         $version = get_option( 'my_plugin_version' );
         return version_compare( $version, self::version, '=') ? false : true;
     }
 
+    // Here you can add logic on "uninstall" wordpress event
+
     public static function uninstall()
     {
       
     }
+
+    // addMenuItem function add Tradesmarter setting option in WP left menu
+    // Render general-admin view for general settings
 
     public static function addMenuItem()
     {
@@ -159,6 +214,8 @@ class GeneralClass{
             array('GeneralClass', 'renderGeneralSettings')
         );
     }
+    
+    // add plugins view to shortocode
 
     public static function shortcodeHandler( $atts, $content = null )
     {
@@ -171,6 +228,7 @@ class GeneralClass{
         return $html_string;
     }
 
+    // Render general-admin view for general settings 
 
     public static function renderGeneralSettings()
     {
@@ -178,6 +236,8 @@ class GeneralClass{
 
         self::sendData();
     }
+
+    // sendData function catch 'save' button and write fields values into DB table
 
     public static function sendData(){
 
@@ -225,6 +285,8 @@ class GeneralClass{
         $default_language = $_POST['default_language'];
         $dwnld_block_backgorund_color = $_POST['dwnld_block_backgorund_color'];
         $dwnld_block_backgorund_dark_color = $_POST['dwnld_block_backgorund_dark_color'];
+
+        // If click on submit button in general-admin.php updates default values
 
         if (isset($_POST['submit'])){
             $wpdb->update(

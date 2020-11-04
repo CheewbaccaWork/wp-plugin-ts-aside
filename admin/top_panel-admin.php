@@ -1,4 +1,5 @@
 <?php
+  // see description in aside-admin.php
   global $wpdb;
   $ptbd_table_name = $wpdb->prefix . 'tradesmarter_top_panel';
   $language = $_REQUEST['language'] ? $_REQUEST['language'] : 'en' ;

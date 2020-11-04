@@ -1,9 +1,16 @@
 <?php 
 
+// Top Panel class for top panel logic
+
 class TopPanelClass{ 
+
+    // DB table name 
     const table = 'wp_tradesmarter_top_panel';
     const version = '1.0';
     const titleName = 'Tradesmarter plugin';
+
+    // Install method 
+    // Creates table in DB if not exists and insert default values
 
     public static function install()
     {
@@ -12,6 +19,9 @@ class TopPanelClass{
         $ptbd_table_name = 'wp_tradesmarter_top_panel';
 
         $wp_summary_db_version = self::version;
+
+        // Create table if not exists, 
+        // Here you can add new table rows
 
         if ($wpdb->get_var("SHOW TABLES LIKE '". $ptbd_table_name . "'"  ) != $ptbd_table_name  ) {
             $sql  = 'CREATE TABLE ' . 'wp_tradesmarter_top_panel' .  ' (
@@ -45,7 +55,11 @@ class TopPanelClass{
 
             add_option('wp_tradesmarter_aside_db_version', $wp_summary_db_version);
 
+            // set default language
+
             $lang_temp = (string) 'en';
+
+            // Insert default values
 
             $wpdb->insert(
                 "wp_tradesmarter_top_panel", 
@@ -83,6 +97,8 @@ class TopPanelClass{
 
         }
 
+        // Check plugin`s version and updates plugin
+
         if ( self::my_plugin_is_current_version() ){
             self::upgrade();
         }
@@ -90,7 +106,8 @@ class TopPanelClass{
 
     public static function upgrade()
     {
-        
+        // Put here logic for new plugin version
+        // If you want to update table for top panel settings
 
         update_option( 'my_plugin_version', self::version );
     }
@@ -99,6 +116,8 @@ class TopPanelClass{
         $version = get_option( 'my_plugin_version' );
         return version_compare( $version, self::version, '=') ? false : true;
     }
+
+    // Add menu item Top panel settings in WP admin left menu
 
     public static function addMenuItem()
     {
@@ -112,12 +131,16 @@ class TopPanelClass{
         );
     }
 
+    // render top_panel-admin.php
+
     public static function renderTopPanelSetting()
     {
         include('admin/top_panel-admin.php');
 
         self::sendData();
     }
+
+    // sendData function catch 'save' button and write fields values into DB table
 
     public static function sendData(){
         global $wpdb;
@@ -150,10 +173,16 @@ class TopPanelClass{
             }
         }
 
+        // Get current language setted in admin as 'Current language'
+
         $currentLanguage = $_REQUEST['language'] ? $_REQUEST['language'] : 'en' ;
+
+        // If changed current language
 
         if ( isset($_GET['submit_lang']) ){
             $isExists = $wpdb->get_var("SELECT `id` FROM `wp_tradesmarter_top_panel` WHERE `lang_id` = '" . $currentLanguage . "'");
+
+            // Create information about new language if this language doesn`t exists
 
             if(!$isExists){
                 $wpdb->insert(
@@ -191,6 +220,8 @@ class TopPanelClass{
                 );
             }
         }
+
+        // if language is new you insert data into it
 
         if (isset($_POST['submit'])){
             $isExists = $wpdb->get_var("SELECT `id` FROM `wp_tradesmarter_top_panel` WHERE `lang_id` = '" . $currentLanguage . "'");
@@ -233,6 +264,7 @@ class TopPanelClass{
                     )
                 );
             } else {
+                // Else if language is old update values 
                 $wpdb->update(
                     "wp_tradesmarter_top_panel", 
                     array(

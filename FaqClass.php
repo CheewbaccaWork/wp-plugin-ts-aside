@@ -1,10 +1,16 @@
 <?php 
 
+// Aside class for left panel logic
+
 class FaqClass{
 
+    // DB table name 
     const table = 'wp_tradesmarter_aside';
     const version = '1.0';
     const titleName = 'Tradesmarter plugin';
+
+    // Install method 
+    // Creates table in DB if not exists and insert default values
 
     public static function install()
     {
@@ -14,6 +20,12 @@ class FaqClass{
         $ptbd_table_name = "wp_aside_faq";
 
         $wp_summary_db_version = self::version;
+
+        // Create table if not exists, 
+        // Here you can add new table rows
+
+        // questions - Question for FAQ simple page
+        // questions_fx - Question for FAQ FX page
 
         if ($wpdb->get_var("SHOW TABLES LIKE 'wp_aside_faq'" ) != $ptbd_table_name ) {
             $sql  = 'CREATE TABLE '. 'wp_aside_faq' .' (
@@ -37,11 +49,16 @@ class FaqClass{
 
         }
 
+        // Call to upgrade function if you need to update plugin and add new rows in table
+
         self::upgrade();
     }
 
     public static function upgrade()
     {   
+
+        // Put here logic for new plugin version
+        // If you want to update table for FAQ page settings
 
         update_option( 'my_plugin_version', self::version );
     }
@@ -55,6 +72,8 @@ class FaqClass{
     {
       
     }
+
+    // Add menu item FAQ simple and FAQ FX settings in WP admin left menu
 
     public static function addMenuItem()
     {
@@ -76,6 +95,8 @@ class FaqClass{
             array('FaqClass', 'renderFaqSettingFx')
         );
     }
+    
+    // render FAQ simple page
 
     public static function renderFaqSetting()
     {
@@ -84,12 +105,16 @@ class FaqClass{
         self::sendData();
     }
 
+    // render FAQ FX page
+
     public static function renderFaqSettingFx()
     {
         include('admin/faq_fx_admin.php');
 
         self::sendData();
     }
+
+    // sendData function catch 'save' button and write fields values into DB table
 
     public static function sendData(){
 
@@ -148,7 +173,13 @@ class FaqClass{
         $arr_fx = json_encode($temp_fx);
         $arr2_fx = json_encode($temp_answ_fx);
 
+        // Get current language from page
+
         $currentLanguage = $_REQUEST['language'] ? $_REQUEST['language'] : 'en' ;
+
+        // Insert new row for new language if this language doesn`t exists
+
+        // For Simple page
 
         if ( isset($_POST['submit']) && $_POST['questions']){
             $isExists = $wpdb->get_var("SELECT `id` FROM `wp_aside_faq` WHERE `lang_id` = '" . $currentLanguage . "'");
@@ -169,6 +200,7 @@ class FaqClass{
                     )
                 );
             } else {
+                // If this language already exists just update values
                 $wpdb->update(
                     "wp_aside_faq", 
                     array(
@@ -180,6 +212,7 @@ class FaqClass{
                     )
                 );
             }
+            // For FX page
         }else if ( isset($_POST['submit']) && $_POST['questions_fx']){
             $isExists = $wpdb->get_var("SELECT `id` FROM `wp_aside_faq` WHERE `lang_id` = '" . $currentLanguage . "'");
             if(!$isExists){

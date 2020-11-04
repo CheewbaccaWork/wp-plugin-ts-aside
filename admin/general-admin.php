@@ -1,4 +1,6 @@
 <?php
+
+  // See description in aside-admin.php
   global $wpdb;
   $result = $wpdb->get_results('SELECT * FROM `wp_aside_general` ' . " ORDER BY `id` desc limit 1");
 
@@ -285,6 +287,7 @@
                         <input value="<?php echo ($result[0]->log_link ? $result[0]->log_link : ""); ?>" type="text" name="log_link" placeholder="Link">
                     </td>
                 </tr>
+                <!-- put here image if you want to create image with link -->
                 <tr class="big-tr">
                     <th scope="row">
                         <label>Img with link</label>

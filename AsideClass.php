@@ -1,10 +1,16 @@
 <?php 
 
+// Aside class for left panel logic
+
 class AsideClass{
 
+    // DB table name 
     const table = 'wp_tradesmarter_aside';
     const version = '1.0';
     const titleName = 'Tradesmarter plugin';
+
+    // Install method 
+    // Creates table in DB if not exists and insert default values
 
     public static function install()
     {
@@ -14,6 +20,9 @@ class AsideClass{
         $wp_summary_db_version = self::version;
 
         $ptbd_table_name = 'wp_tradesmarter_aside';
+
+        // Create table if not exists, 
+        // Here you can add new table rows
 
         if ($wpdb->get_var("SHOW TABLES LIKE '". $ptbd_table_name . "_test'"  ) != $ptbd_table_name . "_test" ) {
             $sql  = 'CREATE TABLE '. $ptbd_table_name . "_test" .' (
@@ -38,6 +47,8 @@ class AsideClass{
 
             add_option('wp_tradesmarter_aside_db_version', $wp_summary_db_version);
 
+            // Here you can set default images for left panel main links
+
             $imgArr = ['ico-dashboard.svg', 'ico-profile.svg', 'ico-accounts.svg', 'ico-trading.svg', 'ico-tools.svg', 'ico-education.svg', 'ico-terms.svg'];
             $defaultImages = [];
 
@@ -46,6 +57,8 @@ class AsideClass{
             }
 
             $link1 = preg_replace('/[^a-zA-Z0-9-]/', '', $string);
+
+            // Insert default values
 
             $wpdb->insert(
                 "wp_tradesmarter_aside_test", 
@@ -90,6 +103,8 @@ class AsideClass{
             );
         }
 
+        // check if plugin version in up to date and made upgrade
+
         if ( self::my_plugin_is_current_version() ){
             self::upgrade();
         }
@@ -97,8 +112,8 @@ class AsideClass{
 
     public static function upgrade()
     {
-        
-
+        // Put here logic for new plugin version
+        // If you want to update table for left panel settings
         update_option( 'my_plugin_version', self::version );
     }
 
@@ -106,6 +121,8 @@ class AsideClass{
         $version = get_option( 'my_plugin_version' );
         return version_compare( $version, self::version, '=') ? false : true;
     }
+
+    // Add menu item Left panel settings in WP admin left menu
 
     public static function addMenuItem()
     {
@@ -119,12 +136,16 @@ class AsideClass{
         );
     }
 
+    // render aside-admin.php
+
     public static function renderAsideSetting()
     {
         include('admin/aside-admin.php');
 
         self::sendData();
     }
+
+    // sendData function catch 'save' button and write fields values into DB table
 
     public static function sendData(){
 
@@ -179,13 +200,21 @@ class AsideClass{
         $arr_sub_icons = json_encode($temp_sub_icon);
         $arr_links = json_encode($temp_links);
 
+        // Get current language setted in admin as 'Current language'
+
         $currentLanguage = $_REQUEST['language'] ? $_REQUEST['language'] : 'en' ;
+
+        // If changed current language
 
         if ( isset($_GET['submit_lang'])){
 
             $isExists = $wpdb->get_var("SELECT `id` FROM `wp_tradesmarter_aside_test` WHERE `lang_id` = '" . $currentLanguage . "'");
             $maxID = $wpdb->get_var("SELECT MAX(ID) FROM `wp_tradesmarter_aside_test`");
             $maxID = $maxID + 1;
+
+            // If choosed language doesn`t exists in table 
+            // Creates temporary table from English (default values) 
+            // Create copy of English row and add new language with settings like in English row
 
             if ( !$isExists ){
                 $wpdb->query( "CREATE TEMPORARY TABLE `tmptable` SELECT * FROM `wp_tradesmarter_aside_test` WHERE `lang_id` = 'en' ");
@@ -197,10 +226,16 @@ class AsideClass{
 
         }
 
+        // If you click on 'remove language' search for that language in DB and remove it
+
         if ( isset($_POST['remove_lang']) ){    
             $language_to_remove = $_POST['remove_lang'];
             $wpdb->query("DELETE FROM `wp_tradesmarter_aside_test` WHERE `lang_id` = '$language_to_remove'" );
         }   
+
+        // Then if language is already created push values from fields in aside-admin.php
+
+        // if language is new you insert data into it
 
         if ( isset($_POST['submit']) ){
             $isExists = $wpdb->get_var("SELECT `id` FROM `wp_tradesmarter_aside_test` WHERE `lang_id` = '" . $currentLanguage . "'");
@@ -233,6 +268,7 @@ class AsideClass{
                     )
                 );
             } else {
+                // Else if language is old update values 
                 $wpdb->update(
                     "wp_tradesmarter_aside_test", 
                     array(
