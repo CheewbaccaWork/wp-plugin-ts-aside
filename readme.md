@@ -24,13 +24,51 @@ where located plugin. **Note** that is important to check 'Push-to-Deploy' optio
 
 3. When the plugin is already installed and activated he already is ready to use
 
-4. Create all necessary pages (You can just export them from another site, eg http://client.tradesmarter.com/)
+4. Install 'Head and foot' plugin and put in head scripts: 
 
-5. In wordpress settings field go to Settings->Reading and choose homepage page
+<script>  
+  function getCookie(name) { 
+        var nameEQ = name + "="; 
+        var ca = document.cookie.split(';'); 
+        for(var i=0 ;i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return 0; // if user hasn`t visit site, return false to set cookies
+    }
+    
+    // This function set cookies for 1 year
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/"; // setting cookie
+    }
 
-6. If you use default Wordpress theme, be careful to disable all widgets
+    if (!getCookie('userLanguage')){
+      setCookie('userLanguage', 'en', 360);
+    } 
 
-7. Read the documentation.
+</script>
+<script src="https://trading.XXXXXXXX.com/options-fe/embed/options-iframe.js"></script>
+<script src="https://bpw.XXXXXXXX.com/BPWidgets/embed/widgets-iframe.js"></script>
+<script type="text/javascript" src="https://d2vl6u6wrj3tgq.cloudfront.net/assets/v5/js/json2.js"></script>
+<script type="text/javascript" src="https://d2vl6u6wrj3tgq.cloudfront.net/assets/v5/js/promos-cookies-2.js"></script>
+<script src="https://fx-trading.XXXXXXXX.com/bpFxCfd/embed/bpfxcfd-iframe.js"></script>
+
+> Instead of XXXXXXXX paste api host name, eg tradesmarter, w-options ....
+
+5. Create all necessary pages (You can just export them from another site, eg http://client.tradesmarter.com/)
+
+6. In wordpress settings field go to Settings->Reading and choose homepage page
+
+7. If you use default Wordpress theme, be careful to disable all widgets
+
+8. Read the documentation.
 
 ## Settings:
 
