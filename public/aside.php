@@ -992,21 +992,6 @@ $accountLevel = "";
           <div class="text__page">
             <?php echo $content; ?>
           </div>
-          <script>
-
-            try{
-              Array.prototype.forEach.call (document.querySelectorAll('table tbody tr td div iframe'), function (iframe) {
-                if ( getCookie('theme') == 'light' ){
-                    iframe.contentWindow.document.body.style.color = '<?php echo $result_general[0]->color_light ?>';
-                  } else {
-                    iframe.contentWindow.document.body.style.color = '<?php echo $result_general[0]->color_dark ?>'
-                  } 
-              });
-            }catch(e){
-              console.log("Any iframe with text")
-            }
-            
-          </script>
       <?php } else
           if ( $atts['state'] == 'faq' ){ ?>
           <div class="faq__page">
