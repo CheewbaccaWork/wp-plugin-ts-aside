@@ -274,6 +274,8 @@
     color: <?php echo $result_general[0]->paragraph_color_text_page_light ?> !important;
   }
 
+  .aside_wrapper #loginPopUp__wrapper #bpwidgets_popup #widget_popup_cross::after,
+  .aside_wrapper #loginPopUp__wrapper #bpwidgets_popup #widget_popup_cross::before,
   .aside_wrapper .top-section__wrapper .top-section-align-block #time_lang .login_block .getLoginPopUp .sign_in, 
   .ts-aside > div .bpwidgets_popup #widget_popup_cross::after,
   .ts-aside > div .bpwidgets_popup #widget_popup_cross::before,
@@ -284,6 +286,8 @@
     background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
   }
 
+  .aside_wrapper.light_content #loginPopUp__wrapper #bpwidgets_popup #widget_popup_cross::after,
+  .aside_wrapper.light_content #loginPopUp__wrapper #bpwidgets_popup #widget_popup_cross::before,
   .ts-aside.light > div .bpwidgets_popup #widget_popup_cross::after,
   .ts-aside.light > div .bpwidgets_popup #widget_popup_cross::before,
   .aside_wrapper.light_content  #loginPopUp__wrapper #bpwidgets_popup_login #widget_popup_cross::after,
