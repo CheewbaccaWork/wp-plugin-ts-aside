@@ -992,6 +992,15 @@ $accountLevel = "";
           <div class="text__page">
             <?php echo $content; ?>
           </div>
+          <script>
+            document.querySelectorAll('table tbody tr td div iframe').foreach(function(iframe){
+              if ( getCookie('theme') == 'light' ){
+                iframe.contentWindow.document.body.style.color = '<?php echo $result_general[0]->color_light ?>';
+              } else {
+                iframe.contentWindow.document.body.style.color = '<?php echo $result_general[0]->color_dark ?>'
+              }
+            })
+          </script>
       <?php } else
           if ( $atts['state'] == 'faq' ){ ?>
           <div class="faq__page">
