@@ -3,18 +3,25 @@
     $ptbd_table_name = 'wp_tradesmarter_aside';
     $result_general = $wpdb->get_results('SELECT * FROM `wp_aside_general` ORDER BY `id` desc limit 1');
 
+    // get user language from 'userLanguage' cookie or get default language
     if(!isset($_COOKIE['userLanguage'])){ setcookie('userLanguage', $result_general[0]->default_language , time()+31556926, '/'); $_COOKIE['userLanguage'] = $result_general[0]->default_language; $lang = result_general[0]->default_language; }
     if(isset($_COOKIE['userLanguage'])){ $lang = $_COOKIE['userLanguage']; }
 
+    // get tables data for selected language
     $result_aside = $wpdb->get_results('SELECT * FROM `wp_tradesmarter_aside_test` WHERE `lang_id` = "' . $lang  . '" ORDER BY `id` desc limit 1');
     $result_top_panel = $wpdb->get_results('SELECT * FROM `wp_tradesmarter_top_panel` WHERE `lang_id` = "' . $lang . '" ORDER BY `id` desc limit 1');
+    // get list of created language
     $readyLanguages = $wpdb->get_results('SELECT t1.lang_id from wp_tradesmarter_top_panel t1, wp_tradesmarter_aside_test t2 WHERE t1.lang_id = t2.lang_id ' );
     
+    // set ApiHost in cookie
     if(!isset($_COOKIE['apiHost'])){ setcookie('apiHost', $result_general[0]->api_host , time()+31556926, '/'); }
 
+    // set theme in cookie
     if (!isset($_COOKIE['theme'])){ setcookie('theme', $result_general[0]->default_theme , time()+31556926, '/'); $_COOKIE['theme'] = $result_general[0]->default_theme; };
   ?>
 
+
+<!-- Here defined all styles, that are coming from admin side -->
 <style>
 
   .aside__content nav ul{ 
@@ -385,9 +392,14 @@
 
 </style>  
 
+<!-- Template for site with hiden left panel or full template -->
+
 <div class="aside_wrapper closet_left_panel <?php if ($result_general[0]->hide_top_panel){ echo ' hide_top_panel '; } ?> <?php if ($result_general[0]->hide_left_panel){ echo ' hide_left_panel '; } ?>">
 
+
 <?php
+  // Get user ID from API
+
   $session = " ";
   if($_COOKIE['userID']){
     $handle = curl_init();
@@ -412,6 +424,14 @@
       $GLOBALS['password'] = '83ddba02';
       $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
     }
+    // Please, add here new statement for new site :
+
+    // else if ($result_general[0]->api_host == NEW_SITE_API_HOST) {
+    //   $GLOBALS['login'] = NEW_SITE_LOGIN;
+    //   $GLOBALS['password'] = NEW_SITE_PASSWORD;
+    //   $GLOBALS['url'] = NEW_SITE_API_ENDPOINT . $_COOKIE['userID'];;
+    // }
+
     $ch = curl_init();
 
     $url = $GLOBALS['url'];
@@ -436,6 +456,7 @@ $documentsVerified = "";
 $accountLevel = "";
 
   if($_COOKIE['userID']){
+    // Get user session from API
     $handle = curl_init();
     if ( strcasecmp ( $result_general[0]->api_host , 'brokers-domain.com' ) == 0){
       $GLOBALS['login'] = 'bd-api';
@@ -458,6 +479,15 @@ $accountLevel = "";
       $GLOBALS['password'] = '83ddba02';
       $GLOBALS['url2'] = "https://platform-api.ap-b.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
     }
+
+    // Please, add here new statement for new site :
+
+    // else if ($result_general[0]->api_host == NEW_SITE_API_HOST) {
+    //   $GLOBALS['login'] = NEW_SITE_LOGIN;
+    //   $GLOBALS['password'] = NEW_SITE_PASSWORD;
+    //   $GLOBALS['url2'] = NEW_SITE_API_ENDPOINT . $GLOBALS['session'];
+    // }
+
     $ch = curl_init();
 
     $url = $GLOBALS['url2'];
@@ -953,6 +983,7 @@ $accountLevel = "";
           </div>
         <?php } ?>
     </aside>
+    <!-- Login popup -->
     <div id="loginPopUp__wrapper" >
       <script>
         var widget_color_dark = '<?php echo $result_general[0]->dark_theme_widget; ?>';
@@ -974,7 +1005,7 @@ $accountLevel = "";
           redirectFailure: '<?php echo get_site_url(); ?>'
         }).render('#bpwidgets_popup_login')
       </script>
-      
+      <!-- SignUp popup -->
       <div id="bpwidgets_popup_signup"></div>
       <script>  
           var theme_widget_login; 
@@ -992,11 +1023,13 @@ $accountLevel = "";
     </div>
 
     <?php if ( $atts ) { 
+        // text page
         if  ( $atts['state'] == 'text'){ ?>
           <div class="text__page">
             <?php echo $content; ?>
           </div>
       <?php } else
+          // faq page
           if ( $atts['state'] == 'faq' ){ ?>
           <div class="faq__page">
           <?php 
@@ -1066,6 +1099,7 @@ $accountLevel = "";
               <img style="width: 100%; height: 100%;" src="<?php echo $atts['state'] ?>" alt="img">
             </div>
          <?php } else
+         // Simple platform page
           if ( $atts['state'] == "options" ){ ?>
             <div id="optionsContainer"></div>
             <script type="text/javascript">
@@ -1076,6 +1110,7 @@ $accountLevel = "";
               }).render('#optionsContainer');
             </script>
           <?php } else if ( $atts['state'] ) { ?>
+          <!-- Widgets popups -->
             <div id="bpwidgets"></div>
             <script>
               var theme_widget; 
@@ -1091,6 +1126,7 @@ $accountLevel = "";
             </script>
         <?php  }  ?>
         <?php } else {  ?>
+        <!-- FX & CFD platform page -->
           <div id="bpfxcfd"></div>
           <script type="text/javascript">
             var theme; 
