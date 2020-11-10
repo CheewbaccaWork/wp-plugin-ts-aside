@@ -66,7 +66,7 @@ where located plugin. **Note** that is important to check 'Push-to-Deploy' optio
 
 5. Create all necessary pages (You can just export them from another site, eg http://client.tradesmarter.com/)
 
-6. In wordpress settings field go to Settings->Reading and choose homepage page
+6. In wordpress settings field go to Settings->Reading and choose homepage page. In Setting->permalinks choose __post-name__
 
 7. If you use default Wordpress theme, be careful to disable all widgets
 
