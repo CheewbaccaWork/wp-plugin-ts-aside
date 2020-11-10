@@ -26,6 +26,7 @@ where located plugin. **Note** that is important to check 'Push-to-Deploy' optio
 
 4. Install 'Head and foot' plugin and put in head scripts: 
 
+```
 <script>  
   function getCookie(name) { 
         var nameEQ = name + "="; 
@@ -59,6 +60,7 @@ where located plugin. **Note** that is important to check 'Push-to-Deploy' optio
 <script type="text/javascript" src="https://d2vl6u6wrj3tgq.cloudfront.net/assets/v5/js/json2.js"></script>
 <script type="text/javascript" src="https://d2vl6u6wrj3tgq.cloudfront.net/assets/v5/js/promos-cookies-2.js"></script>
 <script src="https://fx-trading.XXXXXXXX.com/bpFxCfd/embed/bpfxcfd-iframe.js"></script>
+```
 
 > Instead of XXXXXXXX paste api host name, eg tradesmarter, w-options ....
 
