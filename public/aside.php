@@ -427,7 +427,12 @@
       $GLOBALS['login'] = 'upoptions-api';
       $GLOBALS['password'] = '7f9f177c';
       $GLOBALS['url'] = "https://Platform-api.hk-a.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
+    } else if ($result_general[0]->api_host == 'fsmclient.com') {
+      $GLOBALS['login'] = 'fsm-dash-api';
+      $GLOBALS['password'] = 'a7819a57';
+      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
     }
+
     // Please, add here new statement for new site :
 
     // else if ($result_general[0]->api_host == NEW_SITE_API_HOST) {
@@ -486,7 +491,11 @@ $accountLevel = "";
       $GLOBALS['login'] = 'upoptions-api';
       $GLOBALS['password'] = '7f9f177c';
       $GLOBALS['url2'] = "https://Platform-api.hk-a.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
-    }
+    } else if ($result_general[0]->api_host == 'fsmclient.com') {
+      $GLOBALS['login'] = 'fsm-dash-api';
+      $GLOBALS['password'] = 'a7819a57';
+      $GLOBALS['url2'] = "https://platform-api.ap-b.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
+    } 
 
     // Please, add here new statement for new site :
 
