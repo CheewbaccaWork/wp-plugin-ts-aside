@@ -10,6 +10,7 @@
     // get tables data for selected language
     $result_aside = $wpdb->get_results('SELECT * FROM `wp_tradesmarter_aside_test` WHERE `lang_id` = "' . $lang  . '" ORDER BY `id` desc limit 1');
     $result_top_panel = $wpdb->get_results('SELECT * FROM `wp_tradesmarter_top_panel` WHERE `lang_id` = "' . $lang . '" ORDER BY `id` desc limit 1');
+    $result_footer = $wpdb->get_results('SELECT * FROM `wp_tradesmarter_footer` WHERE `lang_id` = "' . $lang . '" ORDER BY `id` desc limit 1');
     // get list of created language
     $readyLanguages = $wpdb->get_results('SELECT t1.lang_id from wp_tradesmarter_top_panel t1, wp_tradesmarter_aside_test t2 WHERE t1.lang_id = t2.lang_id ' );
     
@@ -1155,5 +1156,10 @@ $accountLevel = "";
             }).render('#bpfxcfd');
           </script>
         <?php } ?>
-
+      
+      <footer class="footer">
+          <div class="footer_content">
+            <p><?php echo $result_footer[0]->footer_content ?></p>
+          </div>
+      </footer>
   </div>  

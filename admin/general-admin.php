@@ -231,6 +231,38 @@
                         <input name="dwnld_block_backgorund_dark_color" type="text" value="<?php echo ($result[0]->dwnld_block_backgorund_dark_color ? $result[0]->dwnld_block_backgorund_dark_color : "#0a141c"); ?>" />
                     </td>
                 </tr>
+                <tr>
+                    <th scope="row">
+                        <label>Footer text color dark theme</label>
+                    </th>
+                    <td>                 
+                        <input name="footer_text_color" type="text" value="<?php echo ($result[0]->footer_text_color ? $result[0]->footer_text_color : "#ffffff"); ?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label>Footer links color dark theme</label>
+                    </th>
+                    <td>                 
+                        <input name="footer_link_color" type="text" value="<?php echo ($result[0]->footer_link_color ? $result[0]->footer_link_color : "#0a141c"); ?>" />
+                    </td>
+                </tr>
+                tr>
+                    <th scope="row">
+                        <label>Footer text color light theme</label>
+                    </th>
+                    <td>                 
+                        <input name="footer_light_text_color" type="text" value="<?php echo ($result[0]->footer_dark_text_color ? $result[0]->footer_dark_text_color : "#000000"); ?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label>Footer links color light theme</label>
+                    </th>
+                    <td>                 
+                        <input name="footer_light_link_color" type="text" value="<?php echo ($result[0]->footer_dark_link_color ? $result[0]->footer_dark_link_color : "#0a141c"); ?>" />
+                    </td>
+                </tr>
                 <tr class="big-tr">
                     <th scope="row">
                         <label>Download block img</label>
