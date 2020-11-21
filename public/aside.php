@@ -1134,7 +1134,7 @@ $accountLevel = "";
               </div>
 
               <?php } ?>
-          
+          </div>
         <?php  } else 
           if  ( strpos($atts['state'], 'http') === 0){ ?>
             <div>
