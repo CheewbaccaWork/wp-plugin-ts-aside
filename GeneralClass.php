@@ -56,7 +56,7 @@ class GeneralClass{
         // show_documents - show or hide label if user do not confiremt documents
         // show_account - show or hide label of user account level
         // default_theme - dark / light
-        // ...
+        // ...  
 
 
         if ($wpdb->get_var("SHOW TABLES LIKE 'wp_aside_general'" ) != $ptbd_table_name ) {
@@ -84,6 +84,10 @@ class GeneralClass{
                 paragraph_color_text_page VARCHAR(255),
                 title_color_text_page_light VARCHAR(255),
                 paragraph_color_text_page_light VARCHAR(255),
+                footer_text_color VARCHAR(255),
+                footer_link_color VARCHAR(255),
+                footer_light_text_color VARCHAR(255),
+                footer_light_link_color VARCHAR(255),
                 dwnld_img VARCHAR(255),
                 log_img VARCHAR(255),
                 log_link VARCHAR(255),
@@ -167,24 +171,30 @@ class GeneralClass{
 
     public static function upgrade()
     {   
-        // global $wpdb;
+        //TODO: Don`t forget to remove this  
+
+        global $wpdb;
         
-        // if (!isset($row->switch_btn_color_light)) {
-        //     $wpdb->query("ALTER TABLE wp_aside_general ADD switch_btn_color_light VARCHAR(255)");
-        // }
+        if (!isset($row->footer_text_color)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD footer_text_color VARCHAR(255)");
+        }
 
-        // if (!isset($row->switch_btn_color_text)) {
-        //     $wpdb->query("ALTER TABLE wp_aside_general ADD switch_btn_color_text VARCHAR(255)");
-        // }
+        if (!isset($row->footer_link_color)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD footer_link_color VARCHAR(255)");
+        }
 
-        // if (!isset($row->switch_btn_color_text_light)) {
-        //     $wpdb->query("ALTER TABLE wp_aside_general ADD switch_btn_color_text_light VARCHAR(255)");
-        // }
+        if (!isset($row->footer_light_text_color)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD footer_light_text_color VARCHAR(255)");
+        }
 
-        // $wpdb->query("UPDATE wp_aside_general SET switch_btn_color_text_light = '#000000'");
-        // $wpdb->query("UPDATE wp_aside_general SET switch_btn_color_text = '#ffffff'");
-        // $wpdb->query("UPDATE wp_aside_general SET switch_btn_color_light = '#07fe76'");
+        if (!isset($row->footer_light_link_color)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD footer_light_link_color VARCHAR(255)");
+        }
 
+        // $wpdb->query("UPDATE wp_aside_general SET footer_text_color = '#ffffff'");
+        // $wpdb->query("UPDATE wp_aside_general SET footer_link_color = '#07fe76'");
+        // $wpdb->query("UPDATE wp_aside_general SET footer_light_text_color = '#000000'");
+        // $wpdb->query("UPDATE wp_aside_general SET footer_light_link_color = '#07fe76'");
     }
 
     // Check plugins version
@@ -270,6 +280,10 @@ class GeneralClass{
         $paragraph_color_text_page = $_POST['paragraph_color_text_page'];
         $title_color_text_page_light = $_POST['title_color_text_page_light'];
         $paragraph_color_text_page_light = $_POST['paragraph_color_text_page_light'];
+        $footer_text_color = $_POST['footer_text_color'];
+        $footer_link_color = $_POST['footer_link_color'];
+        $footer_light_text_color = $_POST['footer_light_text_color'];
+        $footer_light_link_color = $_POST['footer_light_link_color'];
         $img_with_link = $_POST['img_with_link'];
         $img_with_link_link = $_POST['img_with_link_link'];
         $hide_left_panel = $_POST['hide_left_panel'];
@@ -314,6 +328,10 @@ class GeneralClass{
                     'paragraph_color_text_page' => $paragraph_color_text_page,
                     'title_color_text_page_light' => $title_color_text_page_light,
                     'paragraph_color_text_page_light' => $paragraph_color_text_page_light,
+                    'footer_text_color' => $footer_text_color,
+                    'footer_link_color' => $footer_link_color,
+                    'footer_light_text_color' => $footer_light_text_color,
+                    'footer_light_link_color' => $footer_light_link_color,
                     'dwnld_img' => $dwnld_img,
                     'log_img' => $log_img,
                     'log_link' => $log_link,

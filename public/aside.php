@@ -15,10 +15,10 @@
     $readyLanguages = $wpdb->get_results('SELECT t1.lang_id from wp_tradesmarter_top_panel t1, wp_tradesmarter_aside_test t2 WHERE t1.lang_id = t2.lang_id ' );
     
     // set ApiHost in cookie
-    if(!isset($_COOKIE['apiHost'])){ setcookie('apiHost', $result_general[0]->api_host , time()+31556926, '/'); }
+    // if(!isset($_COOKIE['apiHost'])){ setcookie('apiHost', $result_general[0]->api_host , time()+31556926, '/'); }
 
     // set theme in cookie
-    if (!isset($_COOKIE['theme'])){ setcookie('theme', $result_general[0]->default_theme , time()+31556926, '/'); $_COOKIE['theme'] = $result_general[0]->default_theme; };
+    // if (!isset($_COOKIE['theme'])){ setcookie('theme', $result_general[0]->default_theme , time()+31556926, '/'); $_COOKIE['theme'] = $result_general[0]->default_theme; };
   ?>
 
 
@@ -389,6 +389,30 @@
   .top-section__wrapper.light .left_burger-content ul li ul li.li__with_items_opened span::after,
   .top-section__wrapper.light .right_burger::after{
     color: <?php echo $result_general[0]->color_light ?> !important;
+  }
+
+  .aside_wrapper footer.footer{
+    background-color: <?php echo $result_general[0]->dark_bg ?> !important;
+  }
+
+  .aside_wrapper.light_content footer.footer{
+    background-color: <?php echo $result_general[0]->light_bg ?> !important;
+  }
+
+  .aside_wrapper footer.footer .footer_content p {
+    color: <?php echo $result_general[0]->footer_text_color ?> !important;
+  }
+
+  .aside_wrapper footer.footer .footer_content p a{
+    color: <?php echo $result_general[0]->footer_link_color ?> !important;
+  }
+
+  .aside_wrapper.light_content footer.footer .footer_content p {
+    color: <?php echo $result_general[0]->footer_light_text_color ?> !important;
+  }
+
+  .aside_wrapper.light_content footer.footer .footer_content p a{
+    color: <?php echo $result_general[0]->footer_light_link_color ?> !important;
   }
 
 </style>  

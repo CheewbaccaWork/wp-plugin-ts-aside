@@ -244,10 +244,10 @@
                         <label>Footer links color dark theme</label>
                     </th>
                     <td>                 
-                        <input name="footer_link_color" type="text" value="<?php echo ($result[0]->footer_link_color ? $result[0]->footer_link_color : "#0a141c"); ?>" />
+                        <input name="footer_link_color" type="text" value="<?php echo ($result[0]->footer_link_color ? $result[0]->footer_link_color : "#07fe76"); ?>" />
                     </td>
                 </tr>
-                tr>
+                <tr>
                     <th scope="row">
                         <label>Footer text color light theme</label>
                     </th>
@@ -260,7 +260,7 @@
                         <label>Footer links color light theme</label>
                     </th>
                     <td>                 
-                        <input name="footer_light_link_color" type="text" value="<?php echo ($result[0]->footer_dark_link_color ? $result[0]->footer_dark_link_color : "#0a141c"); ?>" />
+                        <input name="footer_light_link_color" type="text" value="<?php echo ($result[0]->footer_light_link_color ? $result[0]->footer_light_link_color : "#07fe76"); ?>" />
                     </td>
                 </tr>
                 <tr class="big-tr">
