@@ -146,7 +146,7 @@ class FooterClass{
                     "wp_tradesmarter_footer", 
                     array(
                         'lang_id' => $currentLanguage,
-                        'footer_content' => $content,
+                        'footer_content' => html_entity_decode(stripslashes($content),ENT_QUOTES,'UTF-8'),
                     ),
                     array(  
                         '%s',
@@ -158,7 +158,7 @@ class FooterClass{
                 $wpdb->update(
                     "wp_tradesmarter_footer", 
                     array(
-                        'footer_content' => $content,
+                        'footer_content' => html_entity_decode(stripslashes($content),ENT_QUOTES,'UTF-8'),
                     ),
                     array(
                         'id' => $isExists
