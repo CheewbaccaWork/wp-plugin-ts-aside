@@ -15,10 +15,10 @@
     $readyLanguages = $wpdb->get_results('SELECT t1.lang_id from wp_tradesmarter_top_panel t1, wp_tradesmarter_aside_test t2 WHERE t1.lang_id = t2.lang_id ' );
     
     // set ApiHost in cookie
-    // if(!isset($_COOKIE['apiHost'])){ setcookie('apiHost', $result_general[0]->api_host , time()+31556926, '/'); }
+    if(!isset($_COOKIE['apiHost'])){ setcookie('apiHost', $result_general[0]->api_host , time()+31556926, '/'); }
 
     // set theme in cookie
-    // if (!isset($_COOKIE['theme'])){ setcookie('theme', $result_general[0]->default_theme , time()+31556926, '/'); $_COOKIE['theme'] = $result_general[0]->default_theme; };
+    if (!isset($_COOKIE['theme'])){ setcookie('theme', $result_general[0]->default_theme , time()+31556926, '/'); $_COOKIE['theme'] = $result_general[0]->default_theme; };
   ?>
 
 
@@ -419,7 +419,7 @@
 
 <!-- Template for site with hiden left panel or full template -->
 
-<div class="aside_wrapper closet_left_panel <?php if ($result_general[0]->hide_top_panel){ echo ' hide_top_panel '; } ?> <?php if ($result_general[0]->hide_left_panel){ echo ' hide_left_panel '; } ?>">
+<div class="aside_wrapper closet_left_panel <?php if ($result_general[0]->hide_top_panel){ echo ' hide_top_panel '; } ?> <?php if ($result_general[0]->hide_left_panel){ echo ' hide_left_panel '; } ?> <?php if ($result_general[0]->hide_bottom_panel){ echo ' hide_bottom_panel '; } ?>">
 
 
 <?php

@@ -359,6 +359,15 @@
                 </tr>
                 <tr>
                     <th scope="row">
+                        <label>Footer: </label>
+                    </th>
+                    <td> 
+                        <input <?php echo ($result[0]->hide_bottom_panel == '1' ? 'checked' : ''); ?> class="hide_panels" name="hide_bottom_panel" type="checkbox"  value="<?php echo ($result[0]->hide_bottom_panel ? $result[0]->hide_bottom_panel : "0"); ?>">
+                            Hide footer</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
                         <label>Theme switcher: </label>
                     </th>
                     <td> 

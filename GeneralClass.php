@@ -98,6 +98,7 @@ class GeneralClass{
                 hide_left_panel TINYINT(1), 
                 hide_top_panel TINYINT(1), 
                 hide_theme_switcher TINYINT(1), 
+                hide_bottom_panel TINYINT(1),
                 show_documents TINYINT(1), 
                 show_account TINYINT(1), 
                 default_theme VARCHAR(255),
@@ -149,6 +150,7 @@ class GeneralClass{
                     'hide_left_panel' => '0',
                     'hide_top_panel' => '0',
                     'hide_theme_switcher' => '0',
+                    'hide_bottom_panel' => '0',
                     'show_documents' => '1',
                     'show_account' => '1',
                     'light_theme_platform' => 'white-blue',
@@ -189,12 +191,17 @@ class GeneralClass{
 
         if (!isset($row->footer_light_link_color)) {
             $wpdb->query("ALTER TABLE wp_aside_general ADD footer_light_link_color VARCHAR(255)");
+        } 
+
+        if (!isset($row->hide_bottom_panel)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD hide_bottom_panel TINYINT(1) ");
         }
 
         // $wpdb->query("UPDATE wp_aside_general SET footer_text_color = '#ffffff'");
         // $wpdb->query("UPDATE wp_aside_general SET footer_link_color = '#07fe76'");
         // $wpdb->query("UPDATE wp_aside_general SET footer_light_text_color = '#000000'");
         // $wpdb->query("UPDATE wp_aside_general SET footer_light_link_color = '#07fe76'");
+        // $wpdb->query("UPDATE wp_aside_general SET hide_bottom_panel = 0 ");
     }
 
     // Check plugins version
@@ -288,6 +295,7 @@ class GeneralClass{
         $img_with_link_link = $_POST['img_with_link_link'];
         $hide_left_panel = $_POST['hide_left_panel'];
         $hide_top_panel = $_POST['hide_top_panel'];
+        $hide_bottom_panel = $_POST['hide_bottom_panel'];
         $hide_theme_switcher = $_POST['hide_theme_switcher'];
         $show_documents = $_POST['show_documents'];
         $show_account = $_POST['show_account'];
@@ -342,6 +350,7 @@ class GeneralClass{
                     'hide_left_panel' => $hide_left_panel,
                     'hide_top_panel' => $hide_top_panel,
                     'hide_theme_switcher' => $hide_theme_switcher,
+                    'hide_bottom_panel' => $hide_bottom_panel,
                     'show_documents' => $show_documents,
                     'show_account' => $show_account,
                     'default_theme' => $default_theme,
