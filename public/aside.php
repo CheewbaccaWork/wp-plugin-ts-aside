@@ -783,8 +783,8 @@ $accountLevel = "";
 
                     echo $activate;
 
-                    $url = "https://platform-api.ap-b.tradesmarter.com/user/practice-mode/user/practice-mode?activate=" . $activate . "&userID=" . $_COOKIE['userID'] . "&session=" . $GLOBALS["session"];
-                    // $url = "https://platform-api.tradesmarter.com/user/practice-mode/user/practice-mode?userID=" . $_COOKIE['userID'] . "&session=". $GLOBALS["session"] . "&activate=" . $activate;
+                    // $url = "https://platform-api.ap-b.tradesmarter.com/user/practice-mode/user/practice-mode?activate=" . $activate . "&userID=" . $_COOKIE['userID'] . "&session=" . $GLOBALS["session"];
+                    $url = "https://platform-api.ap-b.tradesmarter.com/user/practice-mode/user/practice-mode?userID=" . $_COOKIE['userID'] . "&session=". $GLOBALS["session"] . "&activate=" . $activate;
                     echo $url;
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL,$url);
