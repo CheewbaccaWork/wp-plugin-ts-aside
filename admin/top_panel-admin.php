@@ -142,6 +142,22 @@
                 </tr>
                 <tr>
                     <th scope="row">
+                        <label for="logo">Real Mode</label>
+                    </th>
+                    <td>
+                        <input type="text" placeholder="Real Mode" name="real_name" value="<?php echo $result[0]->real_name ? $result[0]->real_name : "" ?>">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="logo">Practice Mode</label>
+                    </th>
+                    <td>
+                        <input type="text" placeholder="Practice Mode" name="practice_name" value="<?php echo $result[0]->practice_name ? $result[0]->practice_name : "" ?>">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
                         <label for="logo">Login</label>
                     </th>
                     <td>

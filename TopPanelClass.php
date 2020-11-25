@@ -35,6 +35,7 @@ class TopPanelClass{
                 deposit_link VARCHAR(255),
                 real_name VARCHAR(255),
                 real_name_link VARCHAR(255),    
+                practice_name VARCHAR(255),
                 logout VARCHAR(255),
                 logout_link VARCHAR(255),
                 login VARCHAR(255),
@@ -70,7 +71,8 @@ class TopPanelClass{
                     'menu_items' => json_encode(['Trade', 'Simple']),
                     'menu_links' => json_encode([get_site_url() , get_site_url() . '/simple']),
                     'deposit' => 'Deposit',
-                    'real_name' => 'Open Real Account',
+                    'real_name' => 'Real Account',
+                    'practice_name' => 'Practice  Account',
                     'logout' => 'logout',
                     'logout_link' => 'https://bpw.brokers-domain.com/index/sign-out?redirectUrl=https://client.brokers-domain.com',
                     'login' => 'Login',
@@ -91,6 +93,7 @@ class TopPanelClass{
                     '%s',
                     '%s',
                     '%s',
+                    '%s',
                     '%s'         
                 )
             );
@@ -99,15 +102,19 @@ class TopPanelClass{
 
         // Check plugin`s version and updates plugin
 
-        if ( self::my_plugin_is_current_version() ){
-            self::upgrade();
-        }
+        self::upgrade();
     }
 
     public static function upgrade()
     {
         // Put here logic for new plugin version
         // If you want to update table for top panel settings
+
+        global $wpdb;
+        
+        if (!isset($row->practice_name)) {
+            $wpdb->query("ALTER TABLE wp_tradesmarter_top_panel ADD practice_name VARCHAR(255)");
+        }
 
         update_option( 'my_plugin_version', self::version );
     }
@@ -151,7 +158,8 @@ class TopPanelClass{
         $my_acc = $_POST['my_acc'];
         $my_acc_link = $_POST['my_acc_link'];
         $deposit = $_POST['deposit'];
-        $real = $_POST['real'];
+        $real = $_POST['real_name'];
+        $practice = $_POST['practice_name'];
         $deposit_link = $_POST['deposit_link'];
         $real_link = $_POST['real_name_link'];
         $login = $_POST['login'];
@@ -194,7 +202,8 @@ class TopPanelClass{
                         'menu_items' => json_encode(['Trade', 'Simple']),
                         'menu_links' => json_encode([get_site_url() , get_site_url() . '/simple']),
                         'deposit' => 'Deposit',
-                        'real_name' => 'Open Real Account',
+                        'real_name' => 'Real Account',
+                        'practice_name' => 'Practice Account',
                         'logout' => 'logout',
                         'logout_link' => 'https://bpw.brokers-domain.com/index/sign-out?redirectUrl=https://client.brokers-domain.com',
                         'login' => 'Login',
@@ -203,6 +212,7 @@ class TopPanelClass{
                         'open_link' => 'wowMain.register',
                     ),
                     array(
+                        '%s',
                         '%s',
                         '%s',
                         '%s',
@@ -238,6 +248,7 @@ class TopPanelClass{
                         'deposit_link' => $deposit_link,
                         'real_name_link' => $real_link,
                         'real_name' => $real,
+                        'practice_name' => $practice,
                         'login' => $login,
                         'login_link' => $login_link,
                         'open' => $open,
@@ -246,6 +257,7 @@ class TopPanelClass{
                         'logout_link' => $logout_link
                     ),
                     array(  
+                        '%s',
                         '%s',
                         '%s',
                         '%s',
@@ -274,6 +286,7 @@ class TopPanelClass{
                         'my_acc_link' => $my_acc_link,
                         'deposit' => $deposit,
                         'real_name' => $real,
+                        'practice_name' => $practice,
                         'deposit_link' => $deposit_link,
                         'real_name_link' => $real_link,
                         'login' => $login,
