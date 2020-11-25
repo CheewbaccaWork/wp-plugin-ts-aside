@@ -765,14 +765,10 @@ $accountLevel = "";
                   {
                     $handle = curl_init();
 
-                    print_r($GLOBALS['resultObj']);
-
                     $login = $GLOBALS['login'];
                     $password = $GLOBALS['password'];
 
                     $activate = " ";
-
-                    echo $activate;
 
                     if($GLOBALS['resultObj']->practiceMode == 1){
                        $activate = 0; 
@@ -780,13 +776,8 @@ $accountLevel = "";
                       $activate = 1; 
                     }
 
-                    echo $GLOBALS['resultObj']->practiceMode;
-
-                    echo $activate;
-
                     // $url = "https://platform-api.ap-b.tradesmarter.com/user/practice-mode/user/practice-mode?activate=" . $activate . "&userID=" . $_COOKIE['userID'] . "&session=" . $GLOBALS["session"];
                     $url = "https://platform-api.ap-b.tradesmarter.com/user/practice-mode/user/practice-mode?userID=" . $_COOKIE['userID'] . "&session=". $GLOBALS["session"] . "&activate=" . $activate;
-                    echo $url;
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL,$url);
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
@@ -798,7 +789,6 @@ $accountLevel = "";
                   }
                   if( isset( $_POST['test'] )){
                     changestate();
-                    print_r($GLOBALS['resultObj']);
                     unset($_POST);
                     header("Location: ".$_SERVER['PHP_SELF']);
                     exit;
