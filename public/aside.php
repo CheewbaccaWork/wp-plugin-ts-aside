@@ -317,6 +317,16 @@
     color: <?php echo $result_general[0]->switch_btn_color_text_light ?> !important;  
   }
 
+  .aside_wrapper .top-section__wrapper .top-section-align-block .top-section__burger .modes li form #test{
+    background-color: <?php echo $result_general[0]->mode_btn_color ?> !important;
+    color: <?php echo $result_general[0]->mode_btn_color_text ?> !important;   
+  }
+
+  .aside_wrapper .top-section__wrapper.light .top-section-align-block .top-section__burger .modes li form #test{
+    background-color: <?php echo $result_general[0]->mode_btn_color_light ?> !important;
+    color: <?php echo $result_general[0]->mode_btn_color_text_light ?> !important;  
+  }
+
   .ts-aside.light .aside__content .download p {
     color: <?php echo $result_general[0]->color_light ?> !important;
   }
@@ -341,6 +351,16 @@
   .top-section__wrapper.light .right_burger-content .modes li a{
     background-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;
     color: <?php echo $result_general[0]->switch_btn_color_text_light ?> !important;  
+  }
+
+  .top-section__wrapper .right_burger-content .modes li form #test{
+    background-color: <?php echo $result_general[0]->mode_btn_color ?> !important;
+    color: <?php echo $result_general[0]->mode_btn_color_text ?> !important;   
+  }
+
+  .top-section__wrapper.light .right_burger-content .modes li form #test{
+    background-color: <?php echo $result_general[0]->mode_btn_color_light ?> !important;
+    color: <?php echo $result_general[0]->mode_btn_color_text_light ?> !important;  
   }
 
   .top-section__wrapper .left_burger{
@@ -730,7 +750,7 @@ $accountLevel = "";
             ?>
           </ul>
           <?php if ($_COOKIE['userID']) { ?>
-            <ul class="modes">
+            <ul class="modes" style="display: flex">
               <li class="getLoginPopUp">
                 <a href="<?php echo $result_top_panel[0]->deposit_link; ?>"><?php echo $result_top_panel[0]->deposit; ?></a>
               </li>

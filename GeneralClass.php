@@ -74,6 +74,10 @@ class GeneralClass{
                 switch_btn_color_light VARCHAR(255),
                 switch_btn_color_text VARCHAR(255),
                 switch_btn_color_text_light VARCHAR(255),
+                mode_btn_color VARCHAR(255),
+                mode_btn_color_light VARCHAR(255),
+                mode_btn_color_text VARCHAR(255),
+                mode_btn_color_text_light VARCHAR(255),
                 active_link VARCHAR(255),
                 active_link_light VARCHAR(255),
                 color_dark VARCHAR(255),    
@@ -137,6 +141,10 @@ class GeneralClass{
                     'switch_btn_color_light' => "#07fe76",
                     'switch_btn_color_text' => "#ffffff",
                     'switch_btn_color_text_light' => "#000000",
+                    'mode_btn_color' => "#07fe76",
+                    'mode_btn_color_light' => "#07fe76",
+                    'mode_btn_color_text' => "#ffffff",
+                    'mode_btn_color_text_light' => "#000000",
                     'color_dark' => '#ffffff',
                     'color_light' => '#000000',
                     'active_link' => 'rgb(0, 128, 0)',	
@@ -177,31 +185,26 @@ class GeneralClass{
 
         global $wpdb;
         
-        if (!isset($row->footer_text_color)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD footer_text_color VARCHAR(255)");
+        if (!isset($row->mode_btn_color)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD mode_btn_color VARCHAR(255)");
         }
 
-        if (!isset($row->footer_link_color)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD footer_link_color VARCHAR(255)");
+        if (!isset($row->mode_btn_color_light)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD mode_btn_color_light VARCHAR(255)");
         }
 
-        if (!isset($row->footer_light_text_color)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD footer_light_text_color VARCHAR(255)");
+        if (!isset($row->mode_btn_color_text)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD mode_btn_color_text VARCHAR(255)");
         }
 
-        if (!isset($row->footer_light_link_color)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD footer_light_link_color VARCHAR(255)");
+        if (!isset($row->mode_btn_color_text_light)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD mode_btn_color_text_light VARCHAR(255)");
         } 
 
-        if (!isset($row->hide_bottom_panel)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD hide_bottom_panel TINYINT(1) ");
-        }
-
-        // $wpdb->query("UPDATE wp_aside_general SET footer_text_color = '#ffffff'");
-        // $wpdb->query("UPDATE wp_aside_general SET footer_link_color = '#07fe76'");
-        // $wpdb->query("UPDATE wp_aside_general SET footer_light_text_color = '#000000'");
-        // $wpdb->query("UPDATE wp_aside_general SET footer_light_link_color = '#07fe76'");
-        // $wpdb->query("UPDATE wp_aside_general SET hide_bottom_panel = 0 ");
+        $wpdb->query("UPDATE wp_aside_general SET mode_btn_color = '#07fe76'");
+        $wpdb->query("UPDATE wp_aside_general SET mode_btn_color_light = '#07fe76'");
+        $wpdb->query("UPDATE wp_aside_general SET mode_btn_color_text = '#ffffff'");
+        $wpdb->query("UPDATE wp_aside_general SET mode_btn_color_text_light = '#000000'");
     }
 
     // Check plugins version
@@ -272,6 +275,10 @@ class GeneralClass{
         $switch_btn_color_light = $_POST['switch_btn_color_light'];
         $switch_btn_color_text = $_POST['switch_btn_color_text'];
         $switch_btn_color_text_light = $_POST['switch_btn_color_text_light'];
+        $mode_btn_color = $_POST['mode_btn_color'];
+        $mode_btn_color_light = $_POST['mode_btn_color_light'];
+        $mode_btn_color_text = $_POST['mode_btn_color_text'];
+        $mode_btn_color_text_light = $_POST['mode_btn_color_text_light'];
         $active_color = $_POST['color-active'];
         $active_color_light = $_POST['color-active-light'];
         $dark_bg = $_POST['color-bg-dark'];
@@ -326,6 +333,10 @@ class GeneralClass{
                     'switch_btn_color_light' => $switch_btn_color_light,
                     'switch_btn_color_text' => $switch_btn_color_text,
                     'switch_btn_color_text_light' => $switch_btn_color_text_light,
+                    'mode_btn_color' => $mode_btn_color,
+                    'mode_btn_color_light' => $mode_btn_color_light,
+                    'mode_btn_color_text' => $mode_btn_color_text,
+                    'mode_btn_color_text_light' => $mode_btn_color_text_light,
                     'color_dark' => $color_dark,
                     'color_light' => $color_light,
                     'active_link' => $active_color,	

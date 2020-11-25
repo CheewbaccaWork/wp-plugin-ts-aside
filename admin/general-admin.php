@@ -137,6 +137,38 @@
                 </tr>
                 <tr>
                     <th scope="row">
+                        <label>Background color for Mode button dark theme</label>
+                    </th>
+                    <td>                
+                        <input name="mode_btn_color" type="text" value="<?php echo ($result[0]->mode_btn_color ? $result[0]->mode_btn_color : "#008000"); ?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label>Background color for Mode button light theme</label>
+                    </th>
+                    <td>                
+                        <input name="mode_btn_color_light" type="text" value="<?php echo ($result[0]->mode_btn_color_light ? $result[0]->mode_btn_color_light : "#008000"); ?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label>Text color for Mode button dark theme</label>
+                    </th>
+                    <td>                
+                        <input name="mode_btn_color_text" type="text" value="<?php echo ($result[0]->mode_btn_color_text ? $result[0]->mode_btn_color_text : "#008000"); ?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label>Text color for Mode button light theme</label>
+                    </th>
+                    <td>                
+                        <input name="mode_btn_color_text_light" type="text" value="<?php echo ($result[0]->mode_btn_color_text_light ? $result[0]->mode_btn_color_text_light : "#008000"); ?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
                         <label>Link color for dark theme</label>
                     </th>
                     <td>                
