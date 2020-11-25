@@ -758,7 +758,6 @@ $accountLevel = "";
                 <form method="post" >
                   <input type="submit" name="test" id="test" value="<?php if($GLOBALS['resultObj']->practiceMode == 1){ echo $result_top_panel[0]->practice_name; }else{ echo $result_top_panel[0]->real_name; } ?>" />
                 </form>
-                <?php print_r($GLOBALS['resultObj']); ?>
               </li>
               <?php 
                   function changestate()
