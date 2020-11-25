@@ -755,7 +755,7 @@ $accountLevel = "";
                 <a href="<?php echo $result_top_panel[0]->deposit_link; ?>"><?php echo $result_top_panel[0]->deposit; ?></a>
               </li>
               <li>
-                <form method="post">
+                <form method="post" >
                   <input type="submit" name="test" id="test" value="<?php if($GLOBALS['resultObj']->practiceMode == 1){ echo $result_top_panel[0]->practice_name; }else{ echo $result_top_panel[0]->real_name; } ?>" />
                 </form>
                 <?php print_r($GLOBALS['resultObj']); ?>
@@ -800,6 +800,7 @@ $accountLevel = "";
                     changestate();
                     print_r($GLOBALS['resultObj']);
                     unset($_POST);
+                    header("Location: ".$_SERVER['PHP_SELF']);
                     exit;
                   }
               ?>
