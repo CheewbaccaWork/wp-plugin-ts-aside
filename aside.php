@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Tradesmarter aside
  * Description: Display aside using shortcode to insert in a page 
- * Version: 2.1.12
+ * Version: 3.0.1
  * Text Domain: github-updater
  * GitHub Plugin URI: https://github.com/CheewbaccaWork/wp-plugin-ts-aside
  * GitHub Branch: main
@@ -14,12 +14,14 @@ require_once __DIR__ . '/AsideClass.php';
 require_once __DIR__ . '/TopPanelClass.php';
 require_once __DIR__ . '/GeneralClass.php';
 require_once __DIR__ . '/FaqClass.php';
+require_once __DIR__ . '/FooterClass.php';
 
 // Call install method from classes
 
 register_activation_hook( __FILE__, array('AsideClass', 'install'));
 register_activation_hook( __FILE__, array('TopPanelClass', 'install'));
 register_activation_hook( __FILE__, array('FaqClass', 'install'));
+register_activation_hook( __FILE__, array('FooterClass', 'install'));
 register_uninstall_hook( __FILE__, array('GeneralClass', 'uninstall'));
 register_activation_hook( __FILE__, array('GeneralClass', 'install'));
 
@@ -37,11 +39,13 @@ $hook = add_action('admin_menu', array('GeneralClass', 'addMenuItem'));
 $hook_aside = add_action('admin_menu', array('AsideClass', 'addMenuItem'));
 $hook_top_panel = add_action('admin_menu', array('TopPanelClass', 'addMenuItem'));
 $hook_faq = add_action('admin_menu', array('FaqClass', 'addMenuItem'));
+$hook_bottom = add_action('admin_menu', array('FooterClass', 'addMenuItem'));
 
 add_action( "load-$hook", [ 'GeneralClass', 'screen_option' ] );
 add_action( "load-$hook_aside", [ 'AsideClass', 'screen_option' ] );    
 add_action( "load-$hook_top_panel", [ 'TopPanelClass', 'screen_option' ] );
 add_action( "load-$hook_faq", [ 'FaqClass', 'screen_option' ] );
+add_action( "load-$hook_bottom", [ 'FooterClass', 'screen_option' ] );
 
 // Include public css
 

@@ -10,6 +10,7 @@
     // get tables data for selected language
     $result_aside = $wpdb->get_results('SELECT * FROM `wp_tradesmarter_aside_test` WHERE `lang_id` = "' . $lang  . '" ORDER BY `id` desc limit 1');
     $result_top_panel = $wpdb->get_results('SELECT * FROM `wp_tradesmarter_top_panel` WHERE `lang_id` = "' . $lang . '" ORDER BY `id` desc limit 1');
+    $result_footer = $wpdb->get_results('SELECT * FROM `wp_tradesmarter_footer` WHERE `lang_id` = "' . $lang . '" ORDER BY `id` desc limit 1');
     // get list of created language
     $readyLanguages = $wpdb->get_results('SELECT t1.lang_id from wp_tradesmarter_top_panel t1, wp_tradesmarter_aside_test t2 WHERE t1.lang_id = t2.lang_id ' );
     
@@ -390,11 +391,35 @@
     color: <?php echo $result_general[0]->color_light ?> !important;
   }
 
+  .aside_wrapper footer.footer{
+    background-color: <?php echo $result_general[0]->dark_bg ?> !important;
+  }
+
+  .aside_wrapper.light_content footer.footer{
+    background-color: <?php echo $result_general[0]->light_bg ?> !important;
+  }
+
+  .aside_wrapper footer.footer .footer_content p {
+    color: <?php echo $result_general[0]->footer_text_color ?> !important;
+  }
+
+  .aside_wrapper footer.footer .footer_content p a{
+    color: <?php echo $result_general[0]->footer_link_color ?> !important;
+  }
+
+  .aside_wrapper.light_content footer.footer .footer_content p {
+    color: <?php echo $result_general[0]->footer_light_text_color ?> !important;
+  }
+
+  .aside_wrapper.light_content footer.footer .footer_content p a{
+    color: <?php echo $result_general[0]->footer_light_link_color ?> !important;
+  }
+
 </style>  
 
 <!-- Template for site with hiden left panel or full template -->
 
-<div class="aside_wrapper closet_left_panel <?php if ($result_general[0]->hide_top_panel){ echo ' hide_top_panel '; } ?> <?php if ($result_general[0]->hide_left_panel){ echo ' hide_left_panel '; } ?>">
+<div class="aside_wrapper closet_left_panel <?php if ($result_general[0]->hide_top_panel){ echo ' hide_top_panel '; } ?> <?php if ($result_general[0]->hide_left_panel){ echo ' hide_left_panel '; } ?> <?php if ($result_general[0]->hide_bottom_panel){ echo ' hide_bottom_panel '; } ?>">
 
 
 <?php
@@ -1109,7 +1134,7 @@ $accountLevel = "";
               </div>
 
               <?php } ?>
-          
+          </div>
         <?php  } else 
           if  ( strpos($atts['state'], 'http') === 0){ ?>
             <div>
@@ -1155,5 +1180,10 @@ $accountLevel = "";
             }).render('#bpfxcfd');
           </script>
         <?php } ?>
-
+      
+      <footer class="footer">
+          <div class="footer_content">
+            <p><?php echo $result_footer[0]->footer_content ?></p>
+          </div>
+      </footer>
   </div>  
