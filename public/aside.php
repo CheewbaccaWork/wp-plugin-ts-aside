@@ -758,6 +758,7 @@ $accountLevel = "";
                 <form method="post">
                   <input type="submit" name="test" id="test" value="<?php if($GLOBALS['resultObj']->practiceMode == 1){ echo $result_top_panel[0]->practice_name; }else{ echo $result_top_panel[0]->real_name; } ?>" />
                 </form>
+                <?php print_r($GLOBALS['resultObj']); ?>
               </li>
               <?php 
                   function changestate()
@@ -795,28 +796,8 @@ $accountLevel = "";
                     curl_close($ch);  
                     $sessionObj = json_decode($sessionResponse);
                   }
-                  // function createWallet()
-                  // {
-                  //   $handle = curl_init();
-
-                  //   $login = $GLOBALS['login'];
-                  //   $password = $GLOBALS['password'];
-                  //   $activate = " ";
-                  //   if($GLOBALS['resultObj']->practiceMode == 1){ $activate = 0; }else{ $activate = 1; }
-                  //   $url = "https://platform-api.ap-b.tradesmarter.com/fx/create-wallet?userID=" . $_COOKIE['userID'] . "&currency=1&platformID=3&practiceMode=" . $activate;
-                  //   $url = 
-                  //   $ch = curl_init();
-                  //   curl_setopt($ch, CURLOPT_URL,$url);
-                  //   curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-                  //   curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-                  //   curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
-                  //   $sessionResponse = curl_exec($ch);
-                  //   curl_close($ch);  
-                  //   $sessionObj = json_decode($sessionResponse);
-                  // }
                   if( isset( $_POST['test'] )){
                     changestate();
-                    // createWallet();
                     print_r($GLOBALS['resultObj']);
                     unset($_POST);
                     exit;
