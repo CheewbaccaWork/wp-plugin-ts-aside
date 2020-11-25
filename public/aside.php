@@ -790,7 +790,7 @@ $accountLevel = "";
                     if( isset( $_POST['test'] )){
                       changestate();
                       unset($_POST);
-                      header("Location: ".$_SERVER['PHP_SELF']);
+                      header("Location: ".$_SERVER['PHP_SELF'] . "/simple");
                       exit;
                     }
                   } ?>
