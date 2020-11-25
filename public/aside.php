@@ -769,7 +769,17 @@ $accountLevel = "";
 
                     $activate = " ";
 
-                    if($GLOBALS['resultObj']->practiceMode == 1){ $activate = 0; }else{ $activate = 1; }
+                    echo $activate;
+
+                    if($GLOBALS['resultObj']->practiceMode == 1){
+                       $activate = 0; 
+                    }else{ 
+                      $activate = 1; 
+                    }
+
+                    echo $GLOBALS['resultObj']->practiceMode;
+
+                    echo $activate;
 
                     // $url = "https://platform-api.ap-b.tradesmarter.com/user/practice-mode/user/practice-mode?activate=" . $activate . "&userID=" . $_COOKIE['userID'] . "&session=" . $GLOBALS["session"];
                     $url = "https://platform-api.tradesmarter.com/user/practice-mode/user/practice-mode?userID=" . $_COOKIE['userID'] . "&session=". $GLOBALS["session"] . "&activate=" . $activate;
