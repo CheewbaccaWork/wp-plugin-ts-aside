@@ -135,7 +135,7 @@
                         <input name="switch_btn_color_text_light" type="text" value="<?php echo ($result[0]->switch_btn_color_text_light ? $result[0]->switch_btn_color_text_light : "#008000"); ?>" />
                     </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th scope="row">
                         <label>Background color for Mode button dark theme</label>
                     </th>
@@ -166,7 +166,7 @@
                     <td>                
                         <input name="mode_btn_color_text_light" type="text" value="<?php echo ($result[0]->mode_btn_color_text_light ? $result[0]->mode_btn_color_text_light : "#008000"); ?>" />
                     </td>
-                </tr>
+                </tr> -->
                 <tr>
                     <th scope="row">
                         <label>Link color for dark theme</label>

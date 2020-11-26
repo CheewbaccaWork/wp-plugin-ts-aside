@@ -1268,7 +1268,8 @@ body .aside_wrapper .top-section__wrapper .languages li .languages_dropdown li a
 	margin: initial !important;	
 }
 
-.modes li a{
+.modes li a,
+#time_lang form input{
 	text-decoration: none !important;
 	padding: 5px 10px;
 	border-radius: 5px;
@@ -1279,8 +1280,12 @@ body .aside_wrapper .top-section__wrapper .languages li .languages_dropdown li a
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
 	background-color: rgb(7,254,118);
 	color: rgba(0,0,0,0.87);
-	min-height: 36px;
 	font-weight: bold;
+}
+
+#time_lang form input{
+	margin-left: initial;
+	margin-right: 20px;
 }
 
 @media screen and (max-width: 1000px){
