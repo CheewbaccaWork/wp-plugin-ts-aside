@@ -619,46 +619,6 @@ $accountLevel = "";
               <li class="getLoginPopUp">
                 <a href="<?php echo $result_top_panel[0]->deposit_link; ?>"><?php echo $result_top_panel[0]->deposit; ?></a>
               </li>
-              <?php if ( $atts['state'] == "options" ){ ?>
-                <li>
-                  <form method="post" >
-                    <input type="submit" name="test2" id="test2" value="<?php if($GLOBALS['resultObj']->practiceMode == 1){ echo $result_top_panel[0]->practice_name; }else{ echo $result_top_panel[0]->real_name; } ?>" />
-                  </form>
-                </li>
-                <?php 
-                    function changestate()
-                    {
-                      $handle = curl_init();
-
-                      $login = $GLOBALS['login'];
-                      $password = $GLOBALS['password'];
-
-                      $activate = " ";
-
-                      if($GLOBALS['resultObj']->practiceMode == 1){
-                        $activate = 0; 
-                      }else{ 
-                        $activate = 1; 
-                      }
-
-                      // $url = "https://platform-api.ap-b.tradesmarter.com/user/practice-mode/user/practice-mode?activate=" . $activate . "&userID=" . $_COOKIE['userID'] . "&session=" . $GLOBALS["session"];
-                      $url = "https://platform-api.ap-b.tradesmarter.com/user/practice-mode/user/practice-mode?userID=" . $_COOKIE['userID'] . "&session=". $GLOBALS["session"] . "&activate=" . $activate;
-                      $ch = curl_init();
-                      curl_setopt($ch, CURLOPT_URL,$url);
-                      curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-                      curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-                      curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
-                      $sessionResponse = curl_exec($ch);
-                      curl_close($ch);  
-                      $sessionObj = json_decode($sessionResponse);
-                    }
-                    if( isset( $_POST['test2'] )){
-                      changestate();
-                      unset($_POST);
-                      header("Location: ".$_SERVER['PHP_SELF'] . "/simple");
-                      exit;
-                    }
-                  } ?>
             </ul>
           <?php } ?>
             
