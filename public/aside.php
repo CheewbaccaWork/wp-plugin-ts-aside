@@ -307,7 +307,8 @@
 
   .aside_wrapper .top-section__wrapper .top-section-align-block .top-section__burger .modes a,
   .aside_wrapper .top-section__wrapper .login_block li a#OpenPopUp,
-  .aside_wrapper .top-section__wrapper .top-section-align-block #time_lang form #test{
+  .aside_wrapper .top-section__wrapper .top-section-align-block #time_lang form #test,
+  .right_burger-content .modes li form input{
     background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
     color: <?php echo $result_general[0]->switch_btn_color_text ?> !important;   
   }

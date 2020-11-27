@@ -1547,6 +1547,18 @@ body .aside_wrapper .top-section__burger-closed {
 		font-size: 18px !important;
 		margin: initial !important;
 	}
+
+	.right_burger-content .modes li form input{
+		width: 100%;
+		margin-top: 15px;
+		border-radius: 5px;
+		font-size: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 15px;
+		padding: 5px 10px;
+	}
 	
 	.right_burger-content .login_block li{
 		margin: initial !important;
