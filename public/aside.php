@@ -1151,7 +1151,11 @@ $accountLevel = "";
                 hideHeader: true,
               }).render('#optionsContainer');
             </script>
-          <?php } else if ( $atts['state'] ) { ?>
+          <?php } 
+          if ( $atts['state'] == "demo" ){ ?>
+            <?php include 'demo.php' ?>
+          <?php }
+          else if ( $atts['state'] ) { ?>
           <!-- Widgets popups -->
             <div id="bpwidgets"></div>
             <script>
