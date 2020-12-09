@@ -21,8 +21,7 @@ curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
 $getDemoResponse = curl_exec($ch);
 curl_close($ch);  
-$GLOBALS['getDemoResponseJson'] = json_decode($sessionResponse);
-print_r($GLOBALS['getDemoResponseJson']);
+$GLOBALS['getDemoResponseJson'] = json_decode($getDemoResponse);
 ?>
 
 <div class="bg_wrap">
