@@ -49,7 +49,7 @@ class AsideClass{
 
             // Here you can set default images for left panel main links
 
-            $imgArr = ['ico-dashboard.svg', 'ico-profile.svg', 'ico-accounts.svg', 'ico-trading.svg', 'ico-tools.svg', 'ico-education.svg', 'ico-terms.svg'];
+            $imgArr = ['ico-dashboard.svg', 'ico-profile.svg', 'ico-accounts.svg', 'ico-trading.svg', 'ico-tools.svg', 'ico-education.svg', 'ico-terms.svg', 'ico-terms.svg'];
             $defaultImages = [];
 
             foreach($imgArr as &$img){
@@ -63,11 +63,11 @@ class AsideClass{
             $wpdb->insert(
                 "wp_tradesmarter_aside_test", 
                 array(
-                    'lang_id' => 'en',
-                    'menu' => json_encode(['Dashboard', 'Accounts', 'My Profile', 'Trading', 'Tools', 'Education', 'Terms & Privacy']),
-                    'menu_link' => json_encode([get_site_url() . '/dashboard']),
+                    'menu' => json_encode(['Dashboard', 'Guest Demo' , 'Accounts', 'My Profile', 'Trading', 'Tools', 'Education', 'Terms & Privacy']),
+                    'menu_link' => json_encode([get_site_url() . '/dashboard', get_site_url() . '/guest-demo']),
                     'submenu' => json_encode(
                         [
+                            [],
                             [],
                             ['Trading Accounts', 'Add Funds', 'Withdrawal', 'Transfer funds', 'Add account', 'Transactions', 'Delete Account'], 
                             ['Edit Profile', 'Account Verification', 'Change Password', 'Mobile Verification', 'Privacy Center'],
@@ -80,12 +80,13 @@ class AsideClass{
                     'link' => json_encode(
                         [
                             [],
+                            [],
                             [get_site_url() . '/trading-accounts', 'wowMain.banking.deposit' , 'wowMain.banking.withdrawal', 'wowMain.banking.transferFunds', 'wowMain.banking.addAccount', get_site_url() . '/transactions', get_site_url() . '/delete-account'],
                             [get_site_url() . '/edit-profile', get_site_url() . '/account-verification', get_site_url() . '/change-password', get_site_url() . '/mobile-verification', get_site_url() . '/privacy-center'],
                             [get_site_url() . '/#', get_site_url() . '/#'],
                             [get_site_url() . '/#'],
                             [get_site_url() . '/#'],
-                            [get_site_url() . '/#', get_site_url() . '/#'],
+                            [get_site_url() . '/#', get_site_url() . '/#']
                         ]
                     ),
                     'icon' => json_encode($defaultImages),
@@ -105,15 +106,59 @@ class AsideClass{
 
         // check if plugin version in up to date and made upgrade
 
-        if ( self::my_plugin_is_current_version() ){
-            self::upgrade();
-        }
+        self::upgrade();
     }
 
     public static function upgrade()
     {
-        // Put here logic for new plugin version
-        // If you want to update table for left panel settings
+        global $wpdb;
+
+        $imgArr = ['ico-dashboard.svg', 'ico-dashboard.svg', 'ico-profile.svg', 'ico-accounts.svg', 'ico-trading.svg', 'ico-tools.svg', 'ico-education.svg', 'ico-terms.svg'];
+        $defaultImages = [];
+
+        foreach($imgArr as &$img){
+            $defaultImages[] = plugin_dir_url( __FILE__ ) . '/public/img/' . $img ;
+        }
+
+        $link1 = preg_replace('/[^a-zA-Z0-9-]/', '', $string);
+
+        $wpdb->update(
+            "wp_tradesmarter_aside_test", 
+            array(
+                'menu' => json_encode(['Dashboard', 'Guest Demo' , 'Accounts', 'My Profile', 'Trading', 'Tools', 'Education', 'Terms & Privacy']),
+                'menu_link' => json_encode([get_site_url() . '/dashboard', get_site_url() . '/guest-demo']),
+                'submenu' => json_encode(
+                    [
+                        [],
+                        [],
+                        ['Trading Accounts', 'Add Funds', 'Withdrawal', 'Transfer funds', 'Add account', 'Transactions', 'Delete Account'], 
+                        ['Edit Profile', 'Account Verification', 'Change Password', 'Mobile Verification', 'Privacy Center'],
+                        ['Trades History', 'Trading Time'],  
+                        ['News and updates'], 
+                        ['How to videos'], 
+                        ['Terms & conditions', 'Privacy'],
+                    ]
+                ),
+                'link' => json_encode(
+                    [
+                        [],
+                        [],
+                        [get_site_url() . '/trading-accounts', 'wowMain.banking.deposit' , 'wowMain.banking.withdrawal', 'wowMain.banking.transferFunds', 'wowMain.banking.addAccount', get_site_url() . '/transactions', get_site_url() . '/delete-account'],
+                        [get_site_url() . '/edit-profile', get_site_url() . '/account-verification', get_site_url() . '/change-password', get_site_url() . '/mobile-verification', get_site_url() . '/privacy-center'],
+                        [get_site_url() . '/#', get_site_url() . '/#'],
+                        [get_site_url() . '/#'],
+                        [get_site_url() . '/#'],
+                        [get_site_url() . '/#', get_site_url() . '/#']
+                    ]
+                ),
+                'icon' => json_encode($defaultImages),
+                'dwnld_text' => '',
+            ),
+            array(
+                'lang_id' => 'en'
+            )
+        );
+
         update_option( 'my_plugin_version', self::version );
     }
 
