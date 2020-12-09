@@ -490,6 +490,7 @@ $documentsVerified = "";
 $accountLevel = "";
 
   if($_COOKIE['userID']){
+
     // Get user session from API
     $handle = curl_init();
     if ( strcasecmp ( $result_general[0]->api_host , 'brokers-domain.com' ) == 0){
@@ -543,7 +544,6 @@ $accountLevel = "";
     $result = curl_exec($ch);
     curl_close($ch);  
     $GLOBALS['resultObj'] = json_decode($result);
-    print_r($GLOBALS['resultObj']);
     $GLOBALS['pracideMode'] = $GLOBALS['resultObj']->practiceMode;
     $GLOBALS['documentsVerified'] = $GLOBALS['resultObj']->documentsVerified;
     $GLOBALS['accountLevel'] = $GLOBALS['resultObj']->accountLevel;
@@ -551,7 +551,6 @@ $accountLevel = "";
 ?>
 
 <div id="top_panel" class="top-section__wrapper">
-    <?php print_r($sessionObj) ?>
     <div class="left_burger-content">
       <div class="left_burger-content-top">
         <a class="top_section__logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top : $result_general[0]->img_top_white); ?>" alt=""></a>

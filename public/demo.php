@@ -53,7 +53,7 @@
                 if( isset( $_POST['getDemo'] )){
                     getDemo();
                     unset($_POST);
-                    header("Location: ".$_SERVER['PHP_SELF'] . "/quest-demo");
+                    //header("Location: ".$_SERVER['PHP_SELF'] . "/guest-demo");
                     exit;
                 }
             ?>
