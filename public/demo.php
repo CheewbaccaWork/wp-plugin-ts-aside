@@ -15,8 +15,7 @@
         curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
         $getDemoResponse = curl_exec($ch);
         curl_close($ch);  
-        $getDemoResponseJson = json_decode($sessionResponse);
-        print_r($getDemoResponseJson);
+        $GLOBALS['getDemoResponseJson'] = json_decode($sessionResponse);
     }
 ?>
 
@@ -32,6 +31,7 @@
         </p>
         <p class="guest_form_text green_text">
             Free Preview - No need to register
+            <?php print_r($GLOBALS['getDemoResponseJson']); ?>
         </p>
         <div class="btn_wrapper">
             <a class="btn_dark" href="<?php echo get_site_url( ); ?>">cancel</a>
@@ -53,7 +53,7 @@
                 if( isset( $_POST['getDemo'] )){
                     getDemo();
                     unset($_POST);
-                    //header("Location: ".$_SERVER['PHP_SELF'] . "/guest-demo");
+                    header("Location: ".$_SERVER['PHP_SELF'] . "/guest-demo");
                     exit;
                 }
             ?>
