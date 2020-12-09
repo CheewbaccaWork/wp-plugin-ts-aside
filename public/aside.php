@@ -552,7 +552,6 @@ $accountLevel = "";
 
 <div id="top_panel" class="top-section__wrapper">
     <?php print_r($sessionObj) ?>
-    <?php dump($sessionObj) ?>
     <div class="left_burger-content">
       <div class="left_burger-content-top">
         <a class="top_section__logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top : $result_general[0]->img_top_white); ?>" alt=""></a>
