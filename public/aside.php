@@ -479,7 +479,7 @@
     $sessionResponse = curl_exec($ch);
     curl_close($ch);  
     $sessionObj = json_decode($sessionResponse);
-    print_r($sessionObj) 
+    print_r($sessionObj);
     $GLOBALS['session'] = $sessionObj->session;
   }
 ?>

@@ -5,15 +5,18 @@
         $password = $GLOBALS['password'];
 
         $clientId = $_COOKIE['userID'] or '';
+        $siteID = 23;
 
-        $url = "http://admin-api.tradesmarter.com/crm/rest/create-demo-account?siteID=" . "&clientID=" . $clientId;
+        $url = "http://admin-api.tradesmarter.com/crm/rest/create-demo-account?siteID=" . $siteID . "&clientID=" . $clientId;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
-        
-        
+        $getDemoResponse = curl_exec($ch);
+        curl_close($ch);  
+        $getDemoResponseJson = json_decode($sessionResponse);
+        print_r($getDemoResponseJson);
     }
 ?>
 
