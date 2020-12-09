@@ -479,6 +479,7 @@
     $sessionResponse = curl_exec($ch);
     curl_close($ch);  
     $sessionObj = json_decode($sessionResponse);
+    print_r($sessionObj) 
     $GLOBALS['session'] = $sessionObj->session;
   }
 ?>
@@ -543,7 +544,7 @@ $accountLevel = "";
     $result = curl_exec($ch);
     curl_close($ch);  
     $GLOBALS['resultObj'] = json_decode($result);
-
+    
     $GLOBALS['pracideMode'] = $GLOBALS['resultObj']->practiceMode;
     $GLOBALS['documentsVerified'] = $GLOBALS['resultObj']->documentsVerified;
     $GLOBALS['accountLevel'] = $GLOBALS['resultObj']->accountLevel;
