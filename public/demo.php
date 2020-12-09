@@ -1,27 +1,46 @@
 <?php
     function getDemo(){
-        
+        $handle = curl_init();
+        $login = $GLOBALS['login'];
+        $password = $GLOBALS['password'];
+
+        $clientId = $_COOKIE['userID'] or '';
+        $siteID = 23;
+
+        $url = "http://admin-api.tradesmarter.com/crm/rest/create-demo-account?siteID=" . $siteID . "&clientID=" . $clientId;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
+        $getDemoResponse = curl_exec($ch);
+        curl_close($ch);  
+        $GLOBALS['getDemoResponseJson'] = json_decode($getDemoResponse);
     }
 ?>
 
 <?php 
-$handle = curl_init();
-$login = $GLOBALS['login'];
-$password = $GLOBALS['password'];
+    $handle = curl_init();
+    $login = $GLOBALS['login'];
+    $password = $GLOBALS['password'];
 
-$clientId = $_COOKIE['userID'] or '';
-$siteID = 23;
+    $clientId = $_COOKIE['userID'] or '';
+    $siteID = 23;
 
-$url = "http://admin-api.tradesmarter.com/crm/rest/create-demo-account?siteID=" . $siteID . "&clientID=" . $clientId;
+    $url = "http://admin-api.tradesmarter.com/crm/rest/create-demo-account?siteID=23";
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL,$url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
-$getDemoResponse = curl_exec($ch);
-curl_close($ch);  
-$GLOBALS['getDemoResponseJson'] = json_decode($getDemoResponse);
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL,$url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
+
+    $getDemoResponse = curl_exec($ch);
+    curl_close($ch);  
+    $GLOBALS['getDemoResponseJson'] = json_decode($getDemoResponse);
+    print_r($GLOBALS['getDemoResponseJson']); 
+    echo $GLOBALS['getDemoResponseJson']; 
 ?>
 
 <div class="bg_wrap">
@@ -37,20 +56,10 @@ $GLOBALS['getDemoResponseJson'] = json_decode($getDemoResponse);
         <p class="guest_form_text green_text">
             Free Preview - No need to register
             <?php print_r($GLOBALS['getDemoResponseJson']); ?>
+            <?php echo $GLOBALS['getDemoResponseJson']; ?>
         </p>
         <div class="btn_wrapper">
             <a class="btn_dark" href="<?php echo get_site_url( ); ?>">cancel</a>
-            <!-- <form method="post" >
-                <input class="btn_dark" type="submit" name="cancel" id="cancel" value="cancel" />
-            </form>
-            <?php /* 
-                if( isset( $_POST['cancel'] )){
-                    changestate();
-                    unset($_POST);
-                    header("Location: ".$_SERVER['PHP_SELF'] . "/quest-demo");
-                    exit;
-                }
-            */?> -->
             <form method="post" >
                 <input class="btn_light" type="submit" name="getDemo" id="getDemo" value="guest demo" />
             </form>
