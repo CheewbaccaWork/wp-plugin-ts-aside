@@ -19,31 +19,6 @@
 
     // set theme in cookie
     if (!isset($_COOKIE['theme'])){ setcookie('theme', $result_general[0]->default_theme , time()+31556926, '/'); $_COOKIE['theme'] = $result_general[0]->default_theme; };
-
-    function getDemo(){
-      $handle = curl_init();
-      $login = $GLOBALS['login'];
-      $password = $GLOBALS['password'];
-
-      $url = "http://admin-api.tradesmarter.com/crm/rest/create-demo-account?siteID=23";
-
-      $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL,$url);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-      curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-      curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
-      $getDemoResponse = curl_exec($ch);
-      curl_close($ch);  
-      $GLOBALS['getDemoResponseJson'] = json_decode($getDemoResponse);
-    }
-
-    if ($GLOBALS['getDemoResponseJson']){
-      ?> 
-        <script>
-          console.log('<?php $GLOBALS['getDemoResponseJson'] ?>');
-        </script>
-      <?php
-    }
   ?>
 
   
