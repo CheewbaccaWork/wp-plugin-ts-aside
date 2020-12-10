@@ -1154,8 +1154,17 @@ $accountLevel = "";
             </script>
           <?php } 
           if ( $atts['state'] == "demo" ){ ?>
+            <?php if ($_COOKIE['userID']){ ?>
+              <div class="bg_wrap">
+                <div class="guest_form">
+                  <p class="guest_form_head">
+                    Access denied
+                  </p>
+                </div>
+              </div>
+            <?php }else { ?>
             <div class="bg_wrap">
-            <div class="guest_form">
+              <div class="guest_form">
                 <p class="guest_form_head">
                     guest demo
                 </p>
@@ -1187,6 +1196,7 @@ $accountLevel = "";
                         curl_close($ch);  
                         $getDemoResponseJson = json_decode($getDemoResponse);
                         $GLOBALS['clientID'] = $getDemoResponseJson->data->clientID;
+
                         } 
                       ?>
                     <form method="post" >
@@ -1205,9 +1215,10 @@ $accountLevel = "";
                             exit;
                         }
                     ?>
-                </div>
-            </div>
+                  </div>
+              </div>
           </div>
+          <?php } ?>
           <?php }
           else if ( $atts['state'] ) { ?>
           <!-- Widgets popups -->
