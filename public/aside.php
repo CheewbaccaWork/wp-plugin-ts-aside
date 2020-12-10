@@ -427,37 +427,39 @@
   // Get user ID from API
 
   $session = " ";
+
+  if ( strcasecmp ( $result_general[0]->api_host , 'brokers-domain.com' ) == 0){
+    $GLOBALS['login'] = 'bd-api';
+    $GLOBALS['password'] = '5c5918d8';
+    $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
+  } else if ($result_general[0]->api_host == 'tradesmarter.com'){
+    $GLOBALS['login'] = 'tsdemoapi';
+    $GLOBALS['password'] = 'redUzg2PgsfDW34V';
+    $GLOBALS['url'] = "https://platform-api.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
+  } else if ($result_general[0]->api_host == 'w-options.com') {
+    $GLOBALS['login'] = 'woptions-api';
+    $GLOBALS['password'] = '79997219';
+    $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
+  } else if ($result_general[0]->api_host == 'mintesamarkets.com') {
+    $GLOBALS['login'] = 'mintesa-api';
+    $GLOBALS['password'] = 'cec7a39d';
+    $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
+  } else if ($result_general[0]->api_host == 'wow-trader.com') {
+    $GLOBALS['login'] = 'wow-trader-api';
+    $GLOBALS['password'] = '83ddba02';
+    $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
+  } else if ($result_general[0]->api_host == 'upoptions.com') {
+    $GLOBALS['login'] = 'upoptions-api';
+    $GLOBALS['password'] = '7f9f177c';
+    $GLOBALS['url'] = "https://Platform-api.hk-a.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
+  } else if ($result_general[0]->api_host == 'fivestars-markets.com') {
+    $GLOBALS['login'] = 'fsm-dash-api';
+    $GLOBALS['password'] = 'a7819a57';
+    $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
+  }
+  
   if($_COOKIE['userID']){
     $handle = curl_init();
-    if ( strcasecmp ( $result_general[0]->api_host , 'brokers-domain.com' ) == 0){
-      $GLOBALS['login'] = 'bd-api';
-      $GLOBALS['password'] = '5c5918d8';
-      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
-    } else if ($result_general[0]->api_host == 'tradesmarter.com'){
-      $GLOBALS['login'] = 'tsdemoapi';
-      $GLOBALS['password'] = 'redUzg2PgsfDW34V';
-      $GLOBALS['url'] = "https://platform-api.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
-    } else if ($result_general[0]->api_host == 'w-options.com') {
-      $GLOBALS['login'] = 'woptions-api';
-      $GLOBALS['password'] = '79997219';
-      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
-    } else if ($result_general[0]->api_host == 'mintesamarkets.com') {
-      $GLOBALS['login'] = 'mintesa-api';
-      $GLOBALS['password'] = 'cec7a39d';
-      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
-    } else if ($result_general[0]->api_host == 'wow-trader.com') {
-      $GLOBALS['login'] = 'wow-trader-api';
-      $GLOBALS['password'] = '83ddba02';
-      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
-    } else if ($result_general[0]->api_host == 'upoptions.com') {
-      $GLOBALS['login'] = 'upoptions-api';
-      $GLOBALS['password'] = '7f9f177c';
-      $GLOBALS['url'] = "https://Platform-api.hk-a.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
-    } else if ($result_general[0]->api_host == 'fivestars-markets.com') {
-      $GLOBALS['login'] = 'fsm-dash-api';
-      $GLOBALS['password'] = 'a7819a57';
-      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
-    }
 
     // Please, add here new statement for new site :
 
