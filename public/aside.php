@@ -423,7 +423,6 @@
 
 <div class="aside_wrapper closet_left_panel <?php if ($result_general[0]->hide_top_panel){ echo ' hide_top_panel '; } ?> <?php if ($result_general[0]->hide_left_panel){ echo ' hide_left_panel '; } ?> <?php if ($result_general[0]->hide_bottom_panel){ echo ' hide_bottom_panel '; } ?>">
 
-
 <?php
   // Get user ID from API
 
@@ -1155,7 +1154,60 @@ $accountLevel = "";
             </script>
           <?php } 
           if ( $atts['state'] == "demo" ){ ?>
-            <?php include 'demo.php' ?>
+            <div class="bg_wrap">
+            <div class="guest_form">
+                <p class="guest_form_head">
+                    guest demo
+                </p>
+                <p class="guest_form_text">
+                    With platform guest demo you can practice<br>trading anonymously
+                    with $10,000 demo money<br>allowing you yo open & close positions,<br>
+                    experiencing all features of the platform.
+                </p>
+                <p class="guest_form_text green_text">
+                    Free Preview - No need to register
+                </p>
+                <div class="btn_wrapper">
+                    <a class="btn_dark" href="<?php echo get_site_url( ); ?>">cancel</a>
+                    <?php 
+                      function getDemo(){
+                        $handle = curl_init();
+
+                        $login = $GLOBALS['login'];
+                        $password = $GLOBALS['password'];
+
+                        $url = "http://admin-api.tradesmarter.com/crm/rest/create-demo-account?siteID=23";
+
+                        $ch = curl_init();
+                        curl_setopt($ch, CURLOPT_URL,$url);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+                        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+                        curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
+                        $getDemoResponse = curl_exec($ch);
+                        curl_close($ch);  
+                        $getDemoResponseJson = json_decode($getDemoResponse);
+                        $GLOBALS['clientID'] = $getDemoResponseJson->data->clientID;
+                        } 
+                      ?>
+                    <form method="post" >
+                        <input class="btn_light" type="submit" name="getDemo" id="getDemo" value="guest demo" />
+                    </form>
+                    <?php 
+                        if( isset( $_POST['getDemo'] )){
+                            getDemo();
+                            unset($_POST);
+                            ?>
+                            <script>
+                              setCookie('demoAccountID', '<?php echo $GLOBALS['clientID']; ?>', 1);
+                              window.location = '<?php echo get_site_url(); ?>';
+                            </script>
+                            <?php 
+                            exit;
+                        }
+                    ?>
+                </div>
+            </div>
+          </div>
           <?php }
           else if ( $atts['state'] ) { ?>
           <!-- Widgets popups -->
