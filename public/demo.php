@@ -10,7 +10,7 @@
         </p>
         <p class="guest_form_text green_text">
             Free Preview - No need to register
-            <?php print_r( $GLOBALS['getDemoResponseJson'] ) ?>
+            <?php echo $GLOBALS['getDemoResponseJson'] ?>
         </p>
         <div class="btn_wrapper">
             <a class="btn_dark" href="<?php echo get_site_url( ); ?>">cancel</a>

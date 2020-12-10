@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Tradesmarter aside
  * Description: Display aside using shortcode to insert in a page 
- * Version: 3.0.5
+ * Version: 3.0.0
  * Text Domain: github-updater
  * GitHub Plugin URI: https://github.com/CheewbaccaWork/wp-plugin-ts-aside
  * GitHub Branch: main

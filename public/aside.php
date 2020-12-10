@@ -35,6 +35,7 @@
       $getDemoResponse = curl_exec($ch);
       curl_close($ch);  
       $GLOBALS['getDemoResponseJson'] = json_decode($getDemoResponse);
+      print_r(json_decode($getDemoResponse));
     }
   ?>
 
