@@ -457,7 +457,7 @@
     $GLOBALS['password'] = 'a7819a57';
     $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
   }
-  
+
   if($_COOKIE['userID']){
     $handle = curl_init();
 
@@ -1251,6 +1251,10 @@ $accountLevel = "";
               apiHost: 'https://fx-trading.<?php echo $result_general[0]->api_host;  ?>',
               themeSet: theme,
               lang: getCookie('userLanguage').split('_').join('-'),
+              demoAccountSettings: {
+                'allowDemo' : 1,
+                'lifetimeHours' : 24
+              }
             }).render('#bpfxcfd');
           </script>
         <?php } ?>
