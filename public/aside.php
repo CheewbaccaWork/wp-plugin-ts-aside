@@ -417,6 +417,38 @@
     color: <?php echo $result_general[0]->footer_light_link_color ?> !important;
   }
 
+  .aside_wrapper .bg_wrap .guest_form .btn_wrapper form input.btn_light,
+  .aside_wrapper .bg_wrap .guest_form .btn_wrapper a:hover{
+    background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
+    color: <?php echo $result_general[0]->switch_btn_color_text ?> !important;   
+  }
+
+  .aside_wrapper .bg_wrap .guest_form .btn_wrapper a{
+    color: <?php echo $result_general[0]->switch_btn_color ?> !important;   
+    border-color: <?php echo $result_general[0]->switch_btn_color ?> !important;   
+  }
+
+  .aside_wrapper .bg_wrap .guest_form .btn_wrapper form input.btn_light:hover{
+    background-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;
+    color: <?php echo $result_general[0]->switch_btn_color_text_light  ?> !important;   
+  }
+
+  .aside_wrapper.light_content .bg_wrap .guest_form .btn_wrapper form input.btn_light,
+  .aside_wrapper.light_content .bg_wrap .guest_form .btn_wrapper a:hover{
+    background-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;
+    color: <?php echo $result_general[0]->switch_btn_color_text_light  ?> !important;   
+  }
+
+  .aside_wrapper.light_content .bg_wrap .guest_form .btn_wrapper a{
+    color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;   
+    border-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;   
+  }
+
+  .aside_wrapper.light_content .bg_wrap .guest_form .btn_wrapper form input.btn_light:hover{
+    background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
+    color: <?php echo $result_general[0]->switch_btn_color_text ?> !important;     
+  }
+
 </style>  
 
 <!-- Template for site with hiden left panel or full template -->
