@@ -1160,6 +1160,9 @@ $accountLevel = "";
                   <p class="guest_form_head">
                     Access denied
                   </p>
+                  <p class="guest_form_text">
+                    Available only for logged out users
+                  </p>
                 </div>
               </div>
             <?php }else { ?>
