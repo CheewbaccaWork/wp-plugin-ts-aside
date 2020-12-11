@@ -873,7 +873,11 @@ $accountLevel = "";
                   </li>
                   <li>
                     <ul class="dropdown"> 
-                      <li> <a id="logoutButton" href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li>  
+                      <?php if ( !$_COOKIE['demoAccountID']){ ?>
+                        <li> <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li>  
+                      <? }else{ ?>
+                        <li> <a id="logoutButton" href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li>
+                      <?php } ?>
                     </ul>
                   </li>
                 </ul>

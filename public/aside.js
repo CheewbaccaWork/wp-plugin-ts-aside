@@ -530,11 +530,14 @@ ready(function() {
 
     const logoutButton = document.getElementById('logoutButton');
 
-    logoutButton.addEventListener('click', function(){
+    logoutButton.addEventListener('click', function(e){
+        e.preventDefault();
         delete_cookie('userID');
         delete_cookie('demoAccountID');
+        alert();
+        window.location = window.location;
     });
-    
+
 
     // XXX: FAQ section
 
