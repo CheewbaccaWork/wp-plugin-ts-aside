@@ -534,7 +534,7 @@ ready(function() {
         e.preventDefault();
         eraseCookie('userID');
         eraseCookie('demoAccountID');
-        //window.location = window.location;
+        window.location = this.href;
     });
 
 
