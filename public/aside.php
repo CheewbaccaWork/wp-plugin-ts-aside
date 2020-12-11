@@ -1241,10 +1241,10 @@ $accountLevel = "";
                             getDemo();
                             unset($_POST);
                             ?>
-                            <script>
+                            <!-- <script>
                               setCookieWithDomain('demoAccountID', '<?php echo $GLOBALS['clientID']; ?>', 1, '.tradesmarter.com');
                               window.location = '<?php echo get_site_url(); ?>';
-                            </script>
+                            </script> -->
                             <?php 
                             exit;
                         }
