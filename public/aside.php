@@ -108,6 +108,14 @@
     color:  <?php echo $result_general[0]->color_light ?> !important;
   }   
 
+  <?php if ($_COOKIE['demoAccountID']){ ?>
+    body .aside_wrapper .top-section__wrapper .user-block li .dropdown li a{
+      margin-left: initial;
+      margin-right: auto;
+    }
+  <?php } ?>
+
+
   .top-section__wrapper.light .time_block svg{
     --clock-color: <?php echo $result_general[0]->color_light ?> !important;
   }
@@ -726,9 +734,21 @@ $accountLevel = "";
               </ul>
             </li>
           </ul>
-          <?php if($_COOKIE['userID'] || $_COOKIE['demoAccountID']){?>
+          <?php if($_COOKIE['userID']){?>
             <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
-          <?php }else {?>
+          <?php }else if ($_COOKIE['demoAccountID']) {?>
+            <ul class="login_block">
+              <li>
+                <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
+              </li>
+              <li>
+                <a id="LoginPopUp" href="<?php echo $result_top_panel[0]->login_link ?>"><?php echo $result_top_panel[0]->login ?></a>
+              </li>
+              <li>
+                <a id="OpenPopUp" class="sign_in" href="<?php echo $result_top_panel[0]->open_link ?>"><?php echo $result_top_panel[0]->open ?></a>
+              </li>
+            </ul>
+          <?php }else{ ?>
             <ul class="login_block">
               <li>
                 <a id="LoginPopUp" href="<?php echo $result_top_panel[0]->login_link ?>"><?php echo $result_top_panel[0]->login ?></a>
