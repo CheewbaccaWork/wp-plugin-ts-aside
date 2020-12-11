@@ -877,6 +877,8 @@ $accountLevel = "";
                         <li> <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li>  
                       <? }else{ ?>
                         <li> <a id="logoutButton" href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li> 
+                        <li> <a id="LoginPopUp" href="<?php echo $result_top_panel[0]->login_link ?>"><?php echo $result_top_panel[0]->login ?></a> </li>
+                        <li> <a id="OpenPopUp" class="sign_in" href="<?php echo $result_top_panel[0]->open_link ?>"><?php echo $result_top_panel[0]->open ?></a> </li>
                       <?php } ?>
                     </ul>
                   </li>
