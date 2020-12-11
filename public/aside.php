@@ -734,13 +734,9 @@ $accountLevel = "";
               </ul>
             </li>
           </ul>
-          <?php if($_COOKIE['userID']){?>
+          <?php if($_COOKIE['userID'] && $_COOKIE['demoAccountID']){?>
             <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
-          <?php }else if ($_COOKIE['demoAccountID']) {?>
             <ul class="login_block">
-              <li>
-                <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
-              </li>
               <li>
                 <a id="LoginPopUp" href="<?php echo $result_top_panel[0]->login_link ?>"><?php echo $result_top_panel[0]->login ?></a>
               </li>
@@ -748,6 +744,8 @@ $accountLevel = "";
                 <a id="OpenPopUp" class="sign_in" href="<?php echo $result_top_panel[0]->open_link ?>"><?php echo $result_top_panel[0]->open ?></a>
               </li>
             </ul>
+          <?php }else if ($_COOKIE['userID']) {?>
+            <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
           <?php }else{ ?>
             <ul class="login_block">
               <li>
