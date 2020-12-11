@@ -1189,18 +1189,22 @@ $accountLevel = "";
           <?php } 
           if ( $atts['state'] == "demo" ){ ?>
             <?php if ($_COOKIE['userID']){ ?>
-              <div class="bg_wrap">
-                <div class="guest_form">
-                  <p class="guest_form_head">
-                    Access denied
-                  </p>
-                  <p class="guest_form_text">
-                    Available only for logged out users
-                  </p>
-                </div>
-              </div>
+              <script>  
+                window.location = <?php get_site_url(); ?>
+              </script>
             <?php }else { ?>
             <div class="bg_wrap">
+              <script>
+                function setCookieTest(name,value,days, domain) {
+                  var expires = "";
+                  if (days) {
+                      var date = new Date();
+                      date.setTime(date.getTime() + (days*24*60*60*1000));
+                      expires = "; expires=" + date.toUTCString();
+                  }
+                  document.cookie = name + "=" + (value || "")  + expires + "; path=/; domain=" + domain + "; // setting cookie
+              }
+              </script>
               <div class="guest_form">
                 <p class="guest_form_head">
                     guest demo
@@ -1245,7 +1249,7 @@ $accountLevel = "";
                             unset($_POST);
                             ?>
                             <script>
-                              setCookie('demoAccountID', '<?php echo $GLOBALS['clientID']; ?>', 1);
+                              setCookieTest('demoAccountID', '<?php echo $GLOBALS['clientID']; ?>', 1, '.tradesmarter.com');
                               window.location = '<?php echo get_site_url(); ?>';
                             </script>
                             <?php 
