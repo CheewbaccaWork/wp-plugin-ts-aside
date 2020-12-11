@@ -532,8 +532,8 @@ ready(function() {
 
     logoutButton.addEventListener('click', function(e){
         e.preventDefault();
-        delete_cookie('userID');
-        delete_cookie('demoAccountID');
+        eraseCookie('userID');
+        eraseCookie('demoAccountID');
         alert();
         window.location = window.location;
     });
