@@ -1190,7 +1190,7 @@ $accountLevel = "";
           if ( $atts['state'] == "demo" ){ ?>
             <?php if ($_COOKIE['userID']){ ?>
               <script>  
-                window.location = <?php get_site_url(); ?>
+                window.location = <?php echo get_site_url(); ?>
               </script>
             <?php }else { ?>
             <div class="bg_wrap">
