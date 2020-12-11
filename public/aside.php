@@ -876,7 +876,7 @@ $accountLevel = "";
                       <?php if ( !$_COOKIE['demoAccountID']){ ?>
                         <li> <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li>  
                       <? }else{ ?>
-                        <li> <a id="logoutButton" href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li>
+                        <li> <a id="logoutButton" href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li> 
                       <?php } ?>
                     </ul>
                   </li>
@@ -1241,10 +1241,10 @@ $accountLevel = "";
                             getDemo();
                             unset($_POST);
                             ?>
-                            <!-- <script>
+                            <script>
                               setCookieWithDomain('demoAccountID', '<?php echo $GLOBALS['clientID']; ?>', 1, '.tradesmarter.com');
                               window.location = '<?php echo get_site_url(); ?>';
-                            </script> -->
+                            </script>
                             <?php 
                             exit;
                         }
