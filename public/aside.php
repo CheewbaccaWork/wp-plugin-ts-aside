@@ -666,7 +666,7 @@ $accountLevel = "";
           <a class="top_section__logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top : $result_general[0]->img_top_white); ?>" alt=""></a>
           <div class="left_burger-content-top_cross"></div>
         </div>
-          <?php if ($_COOKIE['userID'] || $_COOKIE['demoAccountID']) { ?>
+          <?php if ($_COOKIE['userID'] && !$_COOKIE['demoAccountID']) { ?>
             <ul class="modes">
               <li class="getLoginPopUp">
                 <a href="<?php echo $result_top_panel[0]->deposit_link; ?>"><?php echo $result_top_panel[0]->deposit; ?></a>
@@ -783,7 +783,7 @@ $accountLevel = "";
               }
             ?>
           </ul>
-          <?php if ($_COOKIE['userID'] || $_COOKIE['demoAccountID']) { ?>
+          <?php if ($_COOKIE['userID'] && !$_COOKIE['demoAccountID']) { ?>
             <ul class="modes">
               <li class="getLoginPopUp">
                 <a href="<?php echo $result_top_panel[0]->deposit_link; ?>"><?php echo $result_top_panel[0]->deposit; ?></a>
@@ -1024,7 +1024,7 @@ $accountLevel = "";
 
               for($i = 0; $i < count($name); $i++){
                 ?>
-                  <?php if ($i > 2 || $_COOKIE['userID'] || $_COOKIE['demoAccountID']) { ?>
+                  <?php if ($i > 2 || $_COOKIE['userID']) { ?>
                   <li>
                     <ul>
                       <li>
