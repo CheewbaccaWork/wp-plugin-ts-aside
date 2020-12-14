@@ -943,6 +943,11 @@ body .aside_wrapper .top-section__wrapper .user-block span {
 	}
 }
 
+.video_content iframe{
+	max-width: 70% !important;
+	max-height: 400px !important;
+}
+
 .top-section-align-block{
 	display: flex;
 	align-items: center;
