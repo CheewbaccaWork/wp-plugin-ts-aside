@@ -1285,7 +1285,8 @@ $accountLevel = "";
           </div>
           <?php } ?>
           <?php }
-          else if ( $atts['state'] ) { ?>
+          else if ( $atts['state'] && $atts['state'] != 'text' ) {  ?>
+
           <!-- Widgets popups -->
             <div id="bpwidgets"></div>
             <script>
@@ -1300,6 +1301,7 @@ $accountLevel = "";
                 redirectFailure: '<?php echo get_site_url(); ?>'
               }).render('#bpwidgets');
             </script>
+
         <?php  }  ?>
         <?php } else {  ?>
         <!-- FX & CFD platform page -->
