@@ -575,6 +575,12 @@ ready(function() {
         console.log("this is not FAQ page");
     }
 
+    const urlName = window.location;
+
+    if (urlName.includes('guest-demo') || urlName.indexOf('guest-demo') !== 1){
+        document.getElementsByClassName('login_block')[0].style.display = 'none';
+    }
+
     if (window.innerWidth > 500){
         document.querySelectorAll('a[href="' + temp_window_link + '"]').forEach(element => {
             element.parentElement.classList.toggle('active');
