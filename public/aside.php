@@ -1024,7 +1024,7 @@ $accountLevel = "";
 
               for($i = 0; $i < count($name); $i++){
                 ?>
-                  <?php if ($i > 2 || $_COOKIE['userID']) { ?>
+                  <?php if ($i > 2 || ($_COOKIE['userID'] && !$_COOKIE['demoAccountID']) ) { ?>
                   <li>
                     <ul>
                       <li>
