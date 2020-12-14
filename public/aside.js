@@ -575,9 +575,7 @@ ready(function() {
         console.log("this is not FAQ page");
     }
 
-    const urlName = window.location.href;
-
-    if (urlName.includes('guest-demo') || urlName.indexOf('guest-demo') !== 1){
+    if (window.location.href.includes('guest-demo')){
         document.getElementsByClassName('login_block')[0].style.display = 'none';
     }
 
