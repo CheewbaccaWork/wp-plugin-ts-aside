@@ -21,6 +21,8 @@
     if (!isset($_COOKIE['theme'])){ setcookie('theme', $result_general[0]->default_theme , time()+31556926, '/'); $_COOKIE['theme'] = $result_general[0]->default_theme; };
   ?>
 
+  
+
 
 <!-- Here defined all styles, that are coming from admin side -->
 <style>
@@ -105,6 +107,14 @@
   .top-section__wrapper.light .user-block li span{
     color:  <?php echo $result_general[0]->color_light ?> !important;
   }   
+
+  <?php if ($_COOKIE['demoAccountID']){ ?>
+    body .aside_wrapper .top-section__wrapper .user-block li .dropdown li a{
+      margin-left: initial;
+      margin-right: auto;
+    }
+  <?php } ?>
+
 
   .top-section__wrapper.light .time_block svg{
     --clock-color: <?php echo $result_general[0]->color_light ?> !important;
@@ -391,6 +401,10 @@
     color: <?php echo $result_general[0]->color_light ?> !important;
   }
 
+  .top-section__wrapper.demo .login_block{
+    display: none !important;
+  }
+
   .aside_wrapper footer.footer{
     background-color: <?php echo $result_general[0]->dark_bg ?> !important;
   }
@@ -415,48 +429,81 @@
     color: <?php echo $result_general[0]->footer_light_link_color ?> !important;
   }
 
+  .aside_wrapper .bg_wrap .guest_form .btn_wrapper form input.btn_light,
+  .aside_wrapper .bg_wrap .guest_form .btn_wrapper a:hover{
+    background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
+    color: <?php echo $result_general[0]->switch_btn_color_text ?> !important;   
+  }
+
+  .aside_wrapper .bg_wrap .guest_form .btn_wrapper a{
+    color: <?php echo $result_general[0]->switch_btn_color ?> !important;   
+    border-color: <?php echo $result_general[0]->switch_btn_color ?> !important;   
+  }
+
+  .aside_wrapper .bg_wrap .guest_form .btn_wrapper form input.btn_light:hover{
+    background-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;
+    color: <?php echo $result_general[0]->switch_btn_color_text_light  ?> !important;   
+  }
+
+  .aside_wrapper.light_content .bg_wrap .guest_form .btn_wrapper form input.btn_light,
+  .aside_wrapper.light_content .bg_wrap .guest_form .btn_wrapper a:hover{
+    background-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;
+    color: <?php echo $result_general[0]->switch_btn_color_text_light  ?> !important;   
+  }
+
+  .aside_wrapper.light_content .bg_wrap .guest_form .btn_wrapper a{
+    color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;   
+    border-color: <?php echo $result_general[0]->switch_btn_color_light ?> !important;   
+  }
+
+  .aside_wrapper.light_content .bg_wrap .guest_form .btn_wrapper form input.btn_light:hover{
+    background-color: <?php echo $result_general[0]->switch_btn_color ?> !important;
+    color: <?php echo $result_general[0]->switch_btn_color_text ?> !important;     
+  }
+
 </style>  
 
 <!-- Template for site with hiden left panel or full template -->
 
 <div class="aside_wrapper closet_left_panel <?php if ($result_general[0]->hide_top_panel){ echo ' hide_top_panel '; } ?> <?php if ($result_general[0]->hide_left_panel){ echo ' hide_left_panel '; } ?> <?php if ($result_general[0]->hide_bottom_panel){ echo ' hide_bottom_panel '; } ?>">
 
-
 <?php
   // Get user ID from API
 
   $session = " ";
+
+  if ( strcasecmp ( $result_general[0]->api_host , 'brokers-domain.com' ) == 0){
+    $GLOBALS['login'] = 'bd-api';
+    $GLOBALS['password'] = '5c5918d8';
+    $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
+  } else if ($result_general[0]->api_host == 'tradesmarter.com'){
+    $GLOBALS['login'] = 'tsdemoapi';
+    $GLOBALS['password'] = 'redUzg2PgsfDW34V';
+    $GLOBALS['url'] = "https://platform-api.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
+  } else if ($result_general[0]->api_host == 'w-options.com') {
+    $GLOBALS['login'] = 'woptions-api';
+    $GLOBALS['password'] = '79997219';
+    $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
+  } else if ($result_general[0]->api_host == 'mintesamarkets.com') {
+    $GLOBALS['login'] = 'mintesa-api';
+    $GLOBALS['password'] = 'cec7a39d';
+    $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
+  } else if ($result_general[0]->api_host == 'wow-trader.com') {
+    $GLOBALS['login'] = 'wow-trader-api';
+    $GLOBALS['password'] = '83ddba02';
+    $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
+  } else if ($result_general[0]->api_host == 'upoptions.com') {
+    $GLOBALS['login'] = 'upoptions-api';
+    $GLOBALS['password'] = '7f9f177c';
+    $GLOBALS['url'] = "https://Platform-api.hk-a.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
+  } else if ($result_general[0]->api_host == 'fivestars-markets.com') {
+    $GLOBALS['login'] = 'fsm-dash-api';
+    $GLOBALS['password'] = 'a7819a57';
+    $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
+  }
+
   if($_COOKIE['userID']){
     $handle = curl_init();
-    if ( strcasecmp ( $result_general[0]->api_host , 'brokers-domain.com' ) == 0){
-      $GLOBALS['login'] = 'bd-api';
-      $GLOBALS['password'] = '5c5918d8';
-      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
-    } else if ($result_general[0]->api_host == 'tradesmarter.com'){
-      $GLOBALS['login'] = 'tsdemoapi';
-      $GLOBALS['password'] = 'redUzg2PgsfDW34V';
-      $GLOBALS['url'] = "https://platform-api.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
-    } else if ($result_general[0]->api_host == 'w-options.com') {
-      $GLOBALS['login'] = 'woptions-api';
-      $GLOBALS['password'] = '79997219';
-      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];
-    } else if ($result_general[0]->api_host == 'mintesamarkets.com') {
-      $GLOBALS['login'] = 'mintesa-api';
-      $GLOBALS['password'] = 'cec7a39d';
-      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
-    } else if ($result_general[0]->api_host == 'wow-trader.com') {
-      $GLOBALS['login'] = 'wow-trader-api';
-      $GLOBALS['password'] = '83ddba02';
-      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
-    } else if ($result_general[0]->api_host == 'upoptions.com') {
-      $GLOBALS['login'] = 'upoptions-api';
-      $GLOBALS['password'] = '7f9f177c';
-      $GLOBALS['url'] = "https://Platform-api.hk-a.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
-    } else if ($result_general[0]->api_host == 'fivestars-markets.com') {
-      $GLOBALS['login'] = 'fsm-dash-api';
-      $GLOBALS['password'] = 'a7819a57';
-      $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
-    }
 
     // Please, add here new statement for new site :
 
@@ -490,6 +537,7 @@ $documentsVerified = "";
 $accountLevel = "";
 
   if($_COOKIE['userID']){
+
     // Get user session from API
     $handle = curl_init();
     if ( strcasecmp ( $result_general[0]->api_host , 'brokers-domain.com' ) == 0){
@@ -543,14 +591,13 @@ $accountLevel = "";
     $result = curl_exec($ch);
     curl_close($ch);  
     $GLOBALS['resultObj'] = json_decode($result);
-
     $GLOBALS['pracideMode'] = $GLOBALS['resultObj']->practiceMode;
     $GLOBALS['documentsVerified'] = $GLOBALS['resultObj']->documentsVerified;
     $GLOBALS['accountLevel'] = $GLOBALS['resultObj']->accountLevel;
   }
 ?>
 
-<div id="top_panel" class="top-section__wrapper">
+<div id="top_panel" class="top-section__wrapper <?php echo $atts['state']; ?>">
     <div class="left_burger-content">
       <div class="left_burger-content-top">
         <a class="top_section__logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top : $result_general[0]->img_top_white); ?>" alt=""></a>
@@ -567,7 +614,7 @@ $accountLevel = "";
 
           for($i = 0; $i < count($name); $i++){
             ?>
-              <?php if ($i > 2 || $_COOKIE['userID']) { ?>
+              <?php if ($i > 2 || $_COOKIE['userID'] || $_COOKIE['demoAccountID']) { ?>
               <li>
                 <ul>
                   <li>
@@ -622,7 +669,7 @@ $accountLevel = "";
           <a class="top_section__logo" href="<?php echo $result_general[0]->logo_link; ?>"><img src="<?php echo ( $_COOKIE['theme'] == 'dark' ? $result_general[0]->img_top : $result_general[0]->img_top_white); ?>" alt=""></a>
           <div class="left_burger-content-top_cross"></div>
         </div>
-          <?php if ($_COOKIE['userID']) { ?>
+          <?php if ($_COOKIE['userID'] || $_COOKIE['demoAccountID']) { ?>
             <ul class="modes">
               <li class="getLoginPopUp">
                 <a href="<?php echo $result_top_panel[0]->deposit_link; ?>"><?php echo $result_top_panel[0]->deposit; ?></a>
@@ -631,7 +678,7 @@ $accountLevel = "";
           <?php } ?>
             
           <ul class="top-section__navigation">
-            <?php if($_COOKIE['userID']){?>
+            <?php if($_COOKIE['userID'] || $_COOKIE['demoAccountID']){?>
               <li> 
                 <a href="<?php echo $result_top_panel[0]->my_acc_link ?>"><?php echo $result_top_panel[0]->my_acc ?></a>
               </li>
@@ -691,9 +738,19 @@ $accountLevel = "";
               </ul>
             </li>
           </ul>
-          <?php if($_COOKIE['userID']){?>
+          <?php if($_COOKIE['userID'] && $_COOKIE['demoAccountID']){?>
             <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
-          <?php }else {?>
+            <ul class="login_block">
+              <li>
+                <a id="LoginPopUp" href="<?php echo $result_top_panel[0]->login_link ?>"><?php echo $result_top_panel[0]->login ?></a>
+              </li>
+              <li>
+                <a id="OpenPopUp" class="sign_in" href="<?php echo $result_top_panel[0]->open_link ?>"><?php echo $result_top_panel[0]->open ?></a>
+              </li>
+            </ul>
+          <?php }else if ($_COOKIE['userID']) {?>
+            <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
+          <?php }else if (basename(get_permalink()) != 'guest-demo'){ ?>
             <ul class="login_block">
               <li>
                 <a id="LoginPopUp" href="<?php echo $result_top_panel[0]->login_link ?>"><?php echo $result_top_panel[0]->login ?></a>
@@ -709,7 +766,7 @@ $accountLevel = "";
         <div class="top-section__burger">
           <div id="top_section_cross"></div>
           <ul class="top-section__navigation">
-            <?php if($_COOKIE['userID']){?>
+            <?php if($_COOKIE['userID'] || $_COOKIE['demoAccountID']){?>
               <li> 
                 <a href="<?php echo $result_top_panel[0]->my_acc_link ?>"><?php echo $result_top_panel[0]->my_acc ?></a>
               </li>
@@ -729,7 +786,7 @@ $accountLevel = "";
               }
             ?>
           </ul>
-          <?php if ($_COOKIE['userID']) { ?>
+          <?php if ($_COOKIE['userID'] || $_COOKIE['demoAccountID']) { ?>
             <ul class="modes">
               <li class="getLoginPopUp">
                 <a href="<?php echo $result_top_panel[0]->deposit_link; ?>"><?php echo $result_top_panel[0]->deposit; ?></a>
@@ -739,7 +796,7 @@ $accountLevel = "";
         </div>
           <div id="time_lang" style="display: flex; align-items: center; justify-content: center;">  
               <div class="time_block">
-              <svg id="Capa_1" enable-background="new 0 0 443.294 443.294" height="" viewBox="0 0 443.294 443.294" width="512" xmlns="http://www.w3.org/2000/svg">
+              <svg id="Capa_2" enable-background="new 0 0 443.294 443.294" height="" viewBox="0 0 443.294 443.294" width="512" xmlns="http://www.w3.org/2000/svg">
                 <path fill="var(--clock-color)" d="m221.647 0c-122.214 0-221.647 99.433-221.647 221.647s99.433 221.647 221.647 221.647 221.647-99.433 221.647-221.647-99.433-221.647-221.647-221.647zm0 415.588c-106.941 0-193.941-87-193.941-193.941s87-193.941 193.941-193.941 193.941 87 193.941 193.941-87 193.941-193.941 193.941z"/>
                 <path fill="var(--clock-color)" d="m235.5 83.118h-27.706v144.265l87.176 87.176 19.589-19.589-79.059-79.059z"/>
               </svg>
@@ -785,7 +842,7 @@ $accountLevel = "";
                   </ul>
                 </li>
               </ul>
-              <?php if($_COOKIE['userID']){ ?>
+              <?php if($_COOKIE['userID'] || $_COOKIE['demoAccountID']){ ?>
                 <ul class="user-block">
                   <li>
                     <?php if ($GLOBALS['resultObj']){
@@ -827,7 +884,7 @@ $accountLevel = "";
                          ?>
                         <img src="<?php echo plugins_url("", __FILE__) . '/img/' . $statusImg ; ?>" alt="">
                       </div>
-                      <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540.4 540.3">
+                      <svg id="Capa_3" data-name="user badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540.4 540.3">
                         <g>
                           <path fill="var(--clock-color)" d="M306,381.1A91.1,91.1,0,1,0,215,290,91.3,91.3,0,0,0,306,381.1Z" transform="translate(-35.8 -40.3)"/>
                           <path fill="var(--clock-color)" d="M379.7,382.6c-20.5,16-46.3,25.8-73.6,25.8a117.6,117.6,0,0,1-72.9-25c-82,41.7-94.1,116.2-95.6,138.2,46.3,37.2,104.8,59.2,169.4,59.2a270.5,270.5,0,0,0,169.2-59.9C473.8,497.2,460.9,424.3,379.7,382.6Z" transform="translate(-35.8 -40.3)"/>
@@ -838,7 +895,12 @@ $accountLevel = "";
                   </li>
                   <li>
                     <ul class="dropdown"> 
-                      <li> <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li>  
+                      <?php if ( !$_COOKIE['demoAccountID']){ ?>
+                        <li> <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li>  
+                      <? }else{ ?>
+                        <li> <a id="OpenPopUp" href="<?php echo $result_top_panel[0]->open_link ?>"><?php echo $result_top_panel[0]->open ?></a> </li>
+                        <li> <a id="logoutButton" href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li> 
+                      <?php } ?>
                     </ul>
                   </li>
                 </ul>
@@ -863,7 +925,7 @@ $accountLevel = "";
         <div class="top_section"> 
           <?php if (!$result_general[0]->hide_theme_switcher){ ?>
             <div class="theme_switcher" id="switch_theme">
-            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 45.16 45.16" style="enable-background:new 0 0 45.16 45.16;" xml:space="preserve">
+            <svg version="1.1" id="Capa_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 45.16 45.16" style="enable-background:new 0 0 45.16 45.16;" xml:space="preserve">
               <g>
                 <g>
                   <path d="M22.58,11.269c-6.237,0-11.311,5.075-11.311,11.312s5.074,11.312,11.311,11.312c6.236,0,11.311-5.074,11.311-11.312
@@ -954,7 +1016,7 @@ $accountLevel = "";
 
               for($i = 0; $i < count($name); $i++){
                 ?>
-                  <?php if ($i > 2 || $_COOKIE['userID']) { ?>
+                  <?php if ($i > 2 || $_COOKIE['userID'] || $_COOKIE['demoAccountID']) { ?>
                   <li>
                     <ul>
                       <li>
@@ -1151,7 +1213,71 @@ $accountLevel = "";
                 hideHeader: true,
               }).render('#optionsContainer');
             </script>
-          <?php } else if ( $atts['state'] ) { ?>
+          <?php } 
+          if ( $atts['state'] == "demo" ){ ?>
+            <?php if ($_COOKIE['userID']){ ?>
+              <script>  
+                window.location = '<?php echo get_site_url(); ?>';
+              </script>
+            <?php }else { ?>
+            <div class="bg_wrap">
+              <div class="guest_form">
+                <p class="guest_form_head">
+                    guest demo
+                </p>
+                <p class="guest_form_text">
+                    With platform guest demo you can practice<br>trading anonymously
+                    with $10,000 demo money<br>allowing you yo open & close positions,<br>
+                    experiencing all features of the platform.
+                </p>
+                <p class="guest_form_text green_text">
+                    Free Preview - No need to register
+                </p>
+                <div class="btn_wrapper">
+                    <a class="btn_dark" href="<?php echo get_site_url( ); ?>">cancel</a>
+                    <?php 
+                      function getDemo(){
+                        $handle = curl_init();
+
+                        $login = $GLOBALS['login'];
+                        $password = $GLOBALS['password'];
+
+                        $url = "http://admin-api.tradesmarter.com/crm/rest/create-demo-account?siteID=23";
+
+                        $ch = curl_init();
+                        curl_setopt($ch, CURLOPT_URL,$url);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+                        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+                        curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
+                        $getDemoResponse = curl_exec($ch);
+                        curl_close($ch);  
+                        $getDemoResponseJson = json_decode($getDemoResponse);
+                        $GLOBALS['clientID'] = $getDemoResponseJson->data->clientID;
+
+                        } 
+                      ?>
+                    <form method="post" >
+                        <input class="btn_light" type="submit" name="getDemo" id="getDemo" value="guest demo" />
+                    </form>
+                    <?php 
+                        if( isset( $_POST['getDemo'] )){
+                            getDemo();
+                            unset($_POST);
+                            ?>
+                            <script>
+                              setCookieWithDomain('demoAccountID', '<?php echo $GLOBALS['clientID']; ?>', 1, '.tradesmarter.com');
+                              window.location = '<?php echo get_site_url(); ?>';
+                            </script>
+                            <?php 
+                            exit;
+                        }
+                    ?>
+                  </div>
+              </div>
+          </div>
+          <?php } ?>
+          <?php }
+          else if ( $atts['state'] ) { ?>
           <!-- Widgets popups -->
             <div id="bpwidgets"></div>
             <script>
@@ -1177,6 +1303,10 @@ $accountLevel = "";
               apiHost: 'https://fx-trading.<?php echo $result_general[0]->api_host;  ?>',
               themeSet: theme,
               lang: getCookie('userLanguage').split('_').join('-'),
+              demoAccountSettings: {
+                'allowDemo' : 1,
+                'lifetimeHours' : 24
+              }
             }).render('#bpfxcfd');
           </script>
         <?php } ?>
