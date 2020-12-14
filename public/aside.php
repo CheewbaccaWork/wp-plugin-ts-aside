@@ -746,7 +746,7 @@ $accountLevel = "";
             </ul>
           <?php }else if ($_COOKIE['userID']) {?>
             <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
-          <?php }else{ ?>
+          <?php }else if (basename(get_permalink()) != 'guest-demo'){ ?>
             <ul class="login_block">
               <li>
                 <a id="LoginPopUp" href="<?php echo $result_top_panel[0]->login_link ?>"><?php echo $result_top_panel[0]->login ?></a>
@@ -894,9 +894,8 @@ $accountLevel = "";
                       <?php if ( !$_COOKIE['demoAccountID']){ ?>
                         <li> <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li>  
                       <? }else{ ?>
+                        <li> <a id="OpenPopUp" href="<?php echo $result_top_panel[0]->open_link ?>"><?php echo $result_top_panel[0]->open ?></a> </li>
                         <li> <a id="logoutButton" href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a></li> 
-                        <li> <a id="LoginPopUp" href="<?php echo $result_top_panel[0]->login_link ?>"><?php echo $result_top_panel[0]->login ?></a> </li>
-                        <li> <a id="OpenPopUp" class="sign_in" href="<?php echo $result_top_panel[0]->open_link ?>"><?php echo $result_top_panel[0]->open ?></a> </li>
                       <?php } ?>
                     </ul>
                   </li>
