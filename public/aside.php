@@ -842,7 +842,7 @@ $accountLevel = "";
               <?php if($_COOKIE['userID'] || $_COOKIE['demoAccountID']){ ?>
                 <ul class="user-block">
                   <li>
-                    <?php if ($GLOBALS['resultObj'] || $_COOKIE['demoAccountID']){
+                    <?php if ($GLOBALS['resultObj']){
                       ?>
                       <div class="user-info">
                         <span><?php echo $GLOBALS['resultObj']->firstName . ' ' . $GLOBALS['resultObj']->lastName ; ?></span>
@@ -888,7 +888,18 @@ $accountLevel = "";
                           <path fill="var(--clock-color)" d="M306,40.3C157.3,40.3,35.8,161.8,35.8,310.5A265,265,0,0,0,113.3,498c6.8-35.7,29.6-96.4,100.1-135.8-15.2-20.5-25-45.5-25-72.9a118.4,118.4,0,0,1,236.8,0c0,27.3-9.1,53.1-25,72.9C470,401.6,492.8,462.3,500.3,498a268.4,268.4,0,0,0,75.9-187.5C576.2,161.8,454.8,40.3,306,40.3Z" transform="translate(-35.8 -40.3)"/>
                         </g>
                       </svg>
-                    <?php } ?>
+                    <?php }else if ($_COOKIE['demoAccountID']){ ?>
+                      <div class="user-info">
+                      <img src="<?php echo plugins_url("", __FILE__) . '/img/badge-demo-practice.png' . $statusImg ; ?>" alt="">
+                      <svg id="Capa_3" data-name="user badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540.4 540.3">
+                        <g>
+                          <path fill="var(--clock-color)" d="M306,381.1A91.1,91.1,0,1,0,215,290,91.3,91.3,0,0,0,306,381.1Z" transform="translate(-35.8 -40.3)"/>
+                          <path fill="var(--clock-color)" d="M379.7,382.6c-20.5,16-46.3,25.8-73.6,25.8a117.6,117.6,0,0,1-72.9-25c-82,41.7-94.1,116.2-95.6,138.2,46.3,37.2,104.8,59.2,169.4,59.2a270.5,270.5,0,0,0,169.2-59.9C473.8,497.2,460.9,424.3,379.7,382.6Z" transform="translate(-35.8 -40.3)"/>
+                          <path fill="var(--clock-color)" d="M306,40.3C157.3,40.3,35.8,161.8,35.8,310.5A265,265,0,0,0,113.3,498c6.8-35.7,29.6-96.4,100.1-135.8-15.2-20.5-25-45.5-25-72.9a118.4,118.4,0,0,1,236.8,0c0,27.3-9.1,53.1-25,72.9C470,401.6,492.8,462.3,500.3,498a268.4,268.4,0,0,0,75.9-187.5C576.2,161.8,454.8,40.3,306,40.3Z" transform="translate(-35.8 -40.3)"/>
+                        </g>
+                      </svg>
+                      </div>
+                    <?php }  ?>
                   </li>
                   <li>
                     <ul class="dropdown"> 
