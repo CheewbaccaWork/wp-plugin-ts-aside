@@ -21,9 +21,6 @@
     if (!isset($_COOKIE['theme'])){ setcookie('theme', $result_general[0]->default_theme , time()+31556926, '/'); $_COOKIE['theme'] = $result_general[0]->default_theme; };
   ?>
 
-  
-
-
 <!-- Here defined all styles, that are coming from admin side -->
 <style>
 
@@ -845,7 +842,7 @@ $accountLevel = "";
               <?php if($_COOKIE['userID'] || $_COOKIE['demoAccountID']){ ?>
                 <ul class="user-block">
                   <li>
-                    <?php if ($GLOBALS['resultObj']){
+                    <?php if ($GLOBALS['resultObj'] || $_COOKIE['demoAccountID']){
                       ?>
                       <div class="user-info">
                         <span><?php echo $GLOBALS['resultObj']->firstName . ' ' . $GLOBALS['resultObj']->lastName ; ?></span>
