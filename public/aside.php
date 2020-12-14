@@ -890,7 +890,8 @@ $accountLevel = "";
                       </svg>
                     <?php }else if ($_COOKIE['demoAccountID']){ ?>
                       <div class="user-info">
-                      <img src="<?php echo plugins_url("", __FILE__) . '/img/badge-demo-practice.png' . $statusImg ; ?>" alt="">
+                        <img src="<?php echo plugins_url("", __FILE__) . '/img/badge-demo-practice.png' . $statusImg ; ?>" alt="">
+                      </div>
                       <svg id="Capa_3" data-name="user badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540.4 540.3">
                         <g>
                           <path fill="var(--clock-color)" d="M306,381.1A91.1,91.1,0,1,0,215,290,91.3,91.3,0,0,0,306,381.1Z" transform="translate(-35.8 -40.3)"/>
@@ -898,7 +899,6 @@ $accountLevel = "";
                           <path fill="var(--clock-color)" d="M306,40.3C157.3,40.3,35.8,161.8,35.8,310.5A265,265,0,0,0,113.3,498c6.8-35.7,29.6-96.4,100.1-135.8-15.2-20.5-25-45.5-25-72.9a118.4,118.4,0,0,1,236.8,0c0,27.3-9.1,53.1-25,72.9C470,401.6,492.8,462.3,500.3,498a268.4,268.4,0,0,0,75.9-187.5C576.2,161.8,454.8,40.3,306,40.3Z" transform="translate(-35.8 -40.3)"/>
                         </g>
                       </svg>
-                      </div>
                     <?php }  ?>
                   </li>
                   <li>
