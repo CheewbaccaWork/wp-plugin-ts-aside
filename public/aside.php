@@ -659,7 +659,7 @@ $accountLevel = "";
               }
             ?>
           </ul>
-          <?php if ( !$result_top_panel[0]->hide_languages ) { ?>
+          <?php if ( !$result_general[0]->hide_languages ) { ?>
           <ul class="languages">
             <?php 
               $langArr = [
@@ -755,7 +755,7 @@ $accountLevel = "";
               </svg>
               <span id="time">13:15:12</span><small id="timeZone">TIME ZONE </small>
             </div>
-            <?php if ( !$result_top_panel[0]->hide_languages ) { ?>
+            <?php if ( !$result_general[0]->hide_languages ) { ?>
               <ul class="languages">
                 <?php 
                   $langArr = [
