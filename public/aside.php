@@ -456,6 +456,10 @@
       $GLOBALS['login'] = 'fsm-dash-api';
       $GLOBALS['password'] = 'a7819a57';
       $GLOBALS['url'] = "https://platform-api.ap-b.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
+    } else if ($result_general[0]->api_host == 'livemarkets.co.za') {
+      $GLOBALS['login'] = 'livemarkets-api';
+      $GLOBALS['password'] = 'ef3d940f';
+      $GLOBALS['url'] = "https://platform-api.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
     }
 
     // Please, add here new statement for new site :
@@ -520,6 +524,10 @@ $accountLevel = "";
       $GLOBALS['login'] = 'fsm-dash-api';
       $GLOBALS['password'] = 'a7819a57';
       $GLOBALS['url2'] = "https://platform-api.ap-b.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
+    } else if ($result_general[0]->api_host == 'livemarkets.co.za') {
+      $GLOBALS['login'] = 'livemarkets-api';
+      $GLOBALS['password'] = 'ef3d940f';
+      $GLOBALS['url2'] = "https://platform-api.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
     } 
 
     // Please, add here new statement for new site :
