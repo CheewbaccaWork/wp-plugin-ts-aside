@@ -99,6 +99,7 @@ class GeneralClass{
                 hide_top_panel TINYINT(1), 
                 hide_theme_switcher TINYINT(1), 
                 hide_bottom_panel TINYINT(1),
+                hide_languages TINYINT(1),
                 show_documents TINYINT(1), 
                 show_account TINYINT(1), 
                 default_theme VARCHAR(255),
@@ -151,6 +152,7 @@ class GeneralClass{
                     'hide_top_panel' => '0',
                     'hide_theme_switcher' => '0',
                     'hide_bottom_panel' => '0',
+                    'hide_languages' => '0',
                     'show_documents' => '1',
                     'show_account' => '1',
                     'light_theme_platform' => 'white-blue',
@@ -177,24 +179,24 @@ class GeneralClass{
 
         global $wpdb;
         
-        if (!isset($row->footer_text_color)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD footer_text_color VARCHAR(255)");
-        }
+        // if (!isset($row->hide_languages)) {
+        //     $wpdb->query("ALTER TABLE wp_aside_general ADD hide_languages TINYINT");
+        // }
 
-        if (!isset($row->footer_link_color)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD footer_link_color VARCHAR(255)");
-        }
+        // if (!isset($row->footer_link_color)) {
+        //     $wpdb->query("ALTER TABLE wp_aside_general ADD footer_link_color VARCHAR(255)");
+        // }
 
-        if (!isset($row->footer_light_text_color)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD footer_light_text_color VARCHAR(255)");
-        }
+        // if (!isset($row->footer_light_text_color)) {
+        //     $wpdb->query("ALTER TABLE wp_aside_general ADD footer_light_text_color VARCHAR(255)");
+        // }
 
-        if (!isset($row->footer_light_link_color)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD footer_light_link_color VARCHAR(255)");
-        } 
+        // if (!isset($row->footer_light_link_color)) {
+        //     $wpdb->query("ALTER TABLE wp_aside_general ADD footer_light_link_color VARCHAR(255)");
+        // } 
 
-        if (!isset($row->hide_bottom_panel)) {
-            $wpdb->query("ALTER TABLE wp_aside_general ADD hide_bottom_panel TINYINT(1) ");
+        if (!isset($row->hide_languages)) {
+            $wpdb->query("ALTER TABLE wp_aside_general ADD hide_languages TINYINT(1) ");
         }
 
         // $wpdb->query("UPDATE wp_aside_general SET footer_text_color = '#ffffff'");
@@ -297,6 +299,7 @@ class GeneralClass{
         $hide_top_panel = $_POST['hide_top_panel'];
         $hide_bottom_panel = $_POST['hide_bottom_panel'];
         $hide_theme_switcher = $_POST['hide_theme_switcher'];
+        $hide_languages = $_POST['hide_languages'];
         $show_documents = $_POST['show_documents'];
         $show_account = $_POST['show_account'];
         $default_theme = $_POST['default_theme'];
@@ -351,6 +354,7 @@ class GeneralClass{
                     'hide_top_panel' => $hide_top_panel,
                     'hide_theme_switcher' => $hide_theme_switcher,
                     'hide_bottom_panel' => $hide_bottom_panel,
+                    'hide_languages' => $hide_languages,
                     'show_documents' => $show_documents,
                     'show_account' => $show_account,
                     'default_theme' => $default_theme,

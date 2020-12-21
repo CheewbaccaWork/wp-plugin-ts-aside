@@ -377,6 +377,15 @@
                 </tr>
                 <tr>
                     <th scope="row">
+                        <label>Languages dropdown: </label>
+                    </th>
+                    <td> 
+                        <input <?php echo ($result[0]->hide_languages == '1' ? 'checked' : ''); ?> class="hide_panels" name="hide_languages" type="checkbox"  value="<?php echo ($result[0]->hide_languages ? $result[0]->hide_languages : "0"); ?>">
+                            Hide additional languages</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
                         <label>Documents status badge: </label>
                     </th>
                     <td> 
@@ -393,6 +402,7 @@
                     Show</label>
                     </td>
                 </tr>
+                
                 <tr>
                     <th scope="row">
                         <label>Default theme: </label>
