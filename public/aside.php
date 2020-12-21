@@ -659,6 +659,7 @@ $accountLevel = "";
               }
             ?>
           </ul>
+          <?php if ( !$result_top_panel[0]->hide_languages ) { ?>
           <ul class="languages">
             <?php 
               $langArr = [
@@ -699,6 +700,7 @@ $accountLevel = "";
               </ul>
             </li>
           </ul>
+          <?php } ?>
           <?php if($_COOKIE['userID']){?>
             <a href="<?php echo $result_top_panel[0]->logout_link ?>"><?php echo $result_top_panel[0]->logout ?></a>
           <?php }else {?>
@@ -753,6 +755,7 @@ $accountLevel = "";
               </svg>
               <span id="time">13:15:12</span><small id="timeZone">TIME ZONE </small>
             </div>
+            <?php if ( !$result_top_panel[0]->hide_languages ) { ?>
               <ul class="languages">
                 <?php 
                   $langArr = [
@@ -793,6 +796,7 @@ $accountLevel = "";
                   </ul>
                 </li>
               </ul>
+              <?php } ?>
               <?php if($_COOKIE['userID']){ ?>
                 <ul class="user-block">
                   <li>
