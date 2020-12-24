@@ -1285,7 +1285,7 @@ $accountLevel = "";
           </div>
           <?php } ?>
           <?php }
-          else if ( $atts['state'] && $atts['state'] != 'text' ) {  ?>
+          else if ( $atts['state'] && $atts['state'] != 'text' && $atts['state'] != 'options' ) {  ?>
 
           <!-- Widgets popups -->
             <div id="bpwidgets"></div>
