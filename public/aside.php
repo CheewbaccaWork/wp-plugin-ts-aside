@@ -22,6 +22,13 @@
   ?>
 
 
+<script>
+  if (!getCookie('apiHost')){
+      setCookie('apiHost', '<?php echo $result_general[0]->api_host; ?>', 360);
+    } 
+</script>
+
+
 <!-- Here defined all styles, that are coming from admin side -->
 <style>
 
@@ -1163,7 +1170,7 @@ $accountLevel = "";
                 hideHeader: true,
               }).render('#optionsContainer');
             </script>
-          <?php } else if ( $atts['state'] ) { ?>
+          <?php } else if ( $atts['state'] && $atts['state'] != 'options' ) { ?>
           <!-- Widgets popups -->
             <div id="bpwidgets"></div>
             <script>
