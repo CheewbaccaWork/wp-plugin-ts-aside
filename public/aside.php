@@ -467,7 +467,7 @@
       $GLOBALS['login'] = 'livemarkets-api';
       $GLOBALS['password'] = 'ef3d940f';
       $GLOBALS['url'] = "https://platform-api.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
-    } else if ($result_general[0]->api_host == 'myeasytrade.wpengine.com') {
+    } else if ($result_general[0]->api_host == 'easytrade.io') {
       $GLOBALS['login'] = 'easytrade-api';
       $GLOBALS['password'] = 'a8194041';
       $GLOBALS['url'] = "https://Platform-api.hk-a.tradesmarter.com/index/get-session?userID=" . $_COOKIE['userID'];;
@@ -539,7 +539,7 @@ $accountLevel = "";
       $GLOBALS['login'] = 'livemarkets-api';
       $GLOBALS['password'] = 'ef3d940f';
       $GLOBALS['url2'] = "https://platform-api.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
-    } else if ($result_general[0]->api_host == 'myeasytrade.wpengine.com') {
+    } else if ($result_general[0]->api_host == 'easytrade.io') {
       $GLOBALS['login'] = 'easytrade-api';
       $GLOBALS['password'] = 'a8194041';
       $GLOBALS['url2'] = "https://Platform-api.hk-a.tradesmarter.com/user/info?session=" . $GLOBALS['session'];
