@@ -127,7 +127,7 @@ class GeneralClass{
             $wpdb->insert(
                 "wp_aside_general", 
                 array(
-                    'logo_link' => 'https://my.easytrade.io/',
+                    'logo_link' => 'https://my.easytrade.io',
                     'img' => plugin_dir_url( __FILE__ ) . '/public/img/logo.png',
                     'img_white' => plugin_dir_url( __FILE__ ) . '/public/img/logo.png',
                     'img_top' => plugin_dir_url( __FILE__ ) . '/public/img/trade-Logo.png',
