@@ -65,7 +65,7 @@ class AsideClass{
                 array(
                     'lang_id' => 'en',
                     'menu' => json_encode(['Dashboard', 'Accounts', 'My Profile', 'Trading', 'Tools', 'Education', 'Terms & Privacy']),
-                    'menu_link' => json_encode([get_site_url() . '/dashboard']),
+                    'menu_link' => json_encode(['https://my.easytrade.io/' . '/dashboard']),
                     'submenu' => json_encode(
                         [
                             [],
@@ -80,12 +80,12 @@ class AsideClass{
                     'link' => json_encode(
                         [
                             [],
-                            [get_site_url() . '/trading-accounts', 'wowMain.banking.deposit' , 'wowMain.banking.withdrawal', 'wowMain.banking.transferFunds', 'wowMain.banking.addAccount', get_site_url() . '/transactions', get_site_url() . '/delete-account'],
-                            [get_site_url() . '/edit-profile', get_site_url() . '/account-verification', get_site_url() . '/change-password', get_site_url() . '/mobile-verification', get_site_url() . '/privacy-center'],
-                            [get_site_url() . '/#', get_site_url() . '/#'],
-                            [get_site_url() . '/#'],
-                            [get_site_url() . '/#'],
-                            [get_site_url() . '/#', get_site_url() . '/#'],
+                            ['https://my.easytrade.io/' . '/trading-accounts', 'wowMain.banking.deposit' , 'wowMain.banking.withdrawal', 'wowMain.banking.transferFunds', 'wowMain.banking.addAccount', 'https://my.easytrade.io/' . '/transactions', 'https://my.easytrade.io/' . '/delete-account'],
+                            ['https://my.easytrade.io/' . '/edit-profile', 'https://my.easytrade.io/' . '/account-verification', 'https://my.easytrade.io/' . '/change-password', 'https://my.easytrade.io/' . '/mobile-verification', 'https://my.easytrade.io/' . '/privacy-center'],
+                            ['https://my.easytrade.io/' . '/#', 'https://my.easytrade.io/' . '/#'],
+                            ['https://my.easytrade.io/' . '/#'],
+                            ['https://my.easytrade.io/' . '/#'],
+                            ['https://my.easytrade.io/' . '/#', 'https://my.easytrade.io/' . '/#'],
                         ]
                     ),
                     'icon' => json_encode($defaultImages),

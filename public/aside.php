@@ -1070,8 +1070,8 @@ $accountLevel = "";
           themeSet: theme_widget_login, 
           lang: getCookie('userLanguage').split('_').join('-'),
           state: 'wowMain.login',
-          redirectSuccess: '<?php echo get_site_url(); ?>',
-          redirectFailure: '<?php echo get_site_url(); ?>'
+          redirectSuccess: '<?php echo 'https://my.easytrade.io/'; ?>',
+          redirectFailure: '<?php echo 'https://my.easytrade.io/'; ?>'
         }).render('#bpwidgets_popup_login')
       </script>
       <!-- SignUp popup -->
@@ -1084,8 +1084,8 @@ $accountLevel = "";
             themeSet: theme_widget_login, 
             lang: getCookie('userLanguage').split('_').join('-'),
             state: 'wowMain.register',
-            redirectSuccess: '<?php echo get_site_url(); ?>',
-            redirectFailure: '<?php echo get_site_url(); ?>'
+            redirectSuccess: '<?php echo 'https://my.easytrade.io/'; ?>',
+            redirectFailure: '<?php echo 'https://my.easytrade.io/'; ?>'
           }).render('#bpwidgets_popup_signup')
         </script>
 
@@ -1189,8 +1189,8 @@ $accountLevel = "";
                 themeSet: theme_widget, 
                 lang: getCookie('userLanguage').split('_').join('-'),
                 state: <?php echo "'" . $atts['state'] . "'"; ?>,
-                redirectSuccess: '<?php echo get_site_url(); ?>',
-                redirectFailure: '<?php echo get_site_url(); ?>'
+                redirectSuccess: '<?php echo 'https://my.easytrade.io/'; ?>',
+                redirectFailure: '<?php echo 'https://my.easytrade.io/'; ?>'
               }).render('#bpwidgets');
             </script>
         <?php  }  ?>
