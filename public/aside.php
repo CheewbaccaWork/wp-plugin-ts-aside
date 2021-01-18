@@ -1202,8 +1202,8 @@ $accountLevel = "";
             if ( getCookie('theme') == 'light' ) { theme = '<?php echo $result_general[0]->light_theme_platform; ?>' } else { theme = '<?php echo $result_general[0]->dark_theme_platform; ?>' }
             tsApp({
               apiHost: 'https://fx-trading.<?php echo $result_general[0]->api_host;  ?>',
-              themeSet: theme,
               lang: getCookie('userLanguage').split('_').join('-'),
+              themeSet: theme,
             }).render('#bpfxcfd');
           </script>
         <?php } ?>
