@@ -4,7 +4,7 @@
     $result_general = $wpdb->get_results('SELECT * FROM `wp_aside_general` ORDER BY `id` desc limit 1');
 
     // get user language from 'userLanguage' cookie or get default language
-    if(!isset($_COOKIE['userLanguage'])){ setcookie('userLanguage', $result_general[0]->default_language , time()+31556926, '/'); $_COOKIE['userLanguage'] = $result_general[0]->default_language; $lang = result_general[0]->default_language; }
+    //if(!isset($_COOKIE['userLanguage'])){ setcookie('userLanguage', $result_general[0]->default_language , time()+31556926, '/'); $_COOKIE['userLanguage'] = $result_general[0]->default_language; $lang = result_general[0]->default_language; }
     if(isset($_COOKIE['userLanguage'])){ $lang = $_COOKIE['userLanguage']; }
 
     // get tables data for selected language
@@ -1207,7 +1207,7 @@ $accountLevel = "";
             }).render('#bpfxcfd');
 
             console.log(getCookie('userLanguage').split('_').join('-'));
-            
+
           </script>
         <?php } ?>
       
