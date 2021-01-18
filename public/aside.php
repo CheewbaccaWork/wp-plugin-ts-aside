@@ -1205,6 +1205,9 @@ $accountLevel = "";
               lang: getCookie('userLanguage').split('_').join('-'),
               themeSet: theme,
             }).render('#bpfxcfd');
+
+            console.log(getCookie('userLanguage').split('_').join('-'));
+            
           </script>
         <?php } ?>
       
