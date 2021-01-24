@@ -96,12 +96,7 @@ ready(function() {
         language.addEventListener('click', function(e){
             e.preventDefault();
             setCookie('userLanguage', langArr[ this.children[1].innerHTML ], 360 );
-            var currentPage = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-            if (langArr[ this.children[1].innerHTML ]  == 'en' ){
-                window.location.href = window.location.href;
-            }else{
-                window.location.href = '/' + langArr[ this.children[1].innerHTML ] + '/' + currentPage;
-            }
+            window.location.href = window.location.href;
         });
     });
 
