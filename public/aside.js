@@ -96,7 +96,7 @@ ready(function() {
         language.addEventListener('click', function(e){
             e.preventDefault();
             setCookie('userLanguage', langArr[ this.children[1].innerHTML ], 360 );
-            window.location.href = window.location.href;
+            window.location.href = 'https://my.easytrade.io/';
         });
     });
 
