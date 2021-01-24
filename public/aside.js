@@ -100,7 +100,7 @@ ready(function() {
             if (langArr[ this.children[1].innerHTML ]  == 'en' ){
                 window.location.href = window.location.href;
             }else{
-                window.location.href = window.location.hostname + '/' + langArr[ this.children[1].innerHTML ] + '/' + currentPage;
+                window.location.href = '/' + langArr[ this.children[1].innerHTML ] + '/' + currentPage;
             }
         });
     });
