@@ -989,7 +989,7 @@ $accountLevel = "";
                         <?php 
                           if($menu_link[$i] && $menu_link[$i] != " "){
                             ?>
-                            <a href="<?php echo $menu_link[$i]?>"><?php echo $name[$i]; ?></a>
+                            <a href="<?php echo $lang.$menu_link[$i]?>"><?php echo $name[$i]; ?></a>
                             <?php
                           } else {
                             ?>
@@ -1004,7 +1004,7 @@ $accountLevel = "";
                             ?>
                             <?php  if ($subname[$i][$j] != " "){ ?>
                               <li>
-                                <a href="<?php echo $links[$i][$j]; ?>"><?php echo $subname[$i][$j]; ?></a> 
+                                <a href="<?php echo $lang.$links[$i][$j]; ?>"><?php echo $subname[$i][$j]; ?></a> 
                               </li>
                             <?php
                             }

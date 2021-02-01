@@ -95,8 +95,9 @@ ready(function() {
     languagesDropdown.forEach(function(language){
         language.addEventListener('click', function(e){
             e.preventDefault();
-            setCookie('userLanguage', langArr[ this.children[1].innerHTML ], 360 );
-            window.location = window.location;
+            var userLang = langArr[ this.children[1].innerHTML ]
+            setCookie('userLanguage', userLang, 360 );
+            window.location.href = userLang;
         });
     });
 
