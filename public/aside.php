@@ -21,7 +21,6 @@
     if (!isset($_COOKIE['theme'])){ setcookie('theme', $result_general[0]->default_theme , time()+31556926, '/'); $_COOKIE['theme'] = $result_general[0]->default_theme; };
   ?>
 
-
 <script>
   if (!getCookie('apiHost')){
       setCookie('apiHost', '<?php echo $result_general[0]->api_host; ?>', 360);
