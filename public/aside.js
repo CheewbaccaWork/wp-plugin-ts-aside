@@ -528,7 +528,16 @@ ready(function() {
     if (window.location.href.substr(-1) == '/'){
         temp_window_link = window.location.href.slice(0, -1);
     }
-    
+
+    const logoutButton = document.getElementById('logoutButton');
+
+    logoutButton.addEventListener('click', function(e){
+        e.preventDefault();
+        eraseCookie('userID');
+        eraseCookie('demoAccountID');
+        window.location = this.href;
+    });
+
 
     // XXX: FAQ section
 
@@ -565,6 +574,10 @@ ready(function() {
         });
     }catch(e){
         console.log("this is not FAQ page");
+    }
+
+    if (window.location.href.includes('guest-demo')){
+        document.getElementsByClassName('login_block')[0].style.display = 'none';
     }
 
     if (window.innerWidth > 500){

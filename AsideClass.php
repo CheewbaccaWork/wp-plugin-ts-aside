@@ -63,9 +63,8 @@ class AsideClass{
             $wpdb->insert(
                 "wp_tradesmarter_aside_test", 
                 array(
-                    'lang_id' => 'en',
                     'menu' => json_encode(['Dashboard', 'Accounts', 'My Profile', 'Trading', 'Tools', 'Education', 'Terms & Privacy']),
-                    'menu_link' => json_encode([get_site_url() . '/dashboard']),
+                    'menu_link' => json_encode([get_site_url() . '/dashboard', get_site_url() . '/guest-demo']),
                     'submenu' => json_encode(
                         [
                             [],
@@ -85,7 +84,7 @@ class AsideClass{
                             [get_site_url() . '/#', get_site_url() . '/#'],
                             [get_site_url() . '/#'],
                             [get_site_url() . '/#'],
-                            [get_site_url() . '/#', get_site_url() . '/#'],
+                            [get_site_url() . '/#', get_site_url() . '/#']
                         ]
                     ),
                     'icon' => json_encode($defaultImages),
@@ -105,16 +104,12 @@ class AsideClass{
 
         // check if plugin version in up to date and made upgrade
 
-        if ( self::my_plugin_is_current_version() ){
-            self::upgrade();
-        }
+        self::upgrade();
     }
 
     public static function upgrade()
     {
-        // Put here logic for new plugin version
-        // If you want to update table for left panel settings
-        update_option( 'my_plugin_version', self::version );
+       
     }
 
     public static function my_plugin_is_current_version(){
