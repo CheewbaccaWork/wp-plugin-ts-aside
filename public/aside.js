@@ -253,7 +253,9 @@ ready(function() {
         });
     });
 
-    document.querySelectorAll('a[href^="wow"]').forEach(function(element){
+    document.querySelectorAll('a[href*="wow"]').forEach(function(element){
+        var splitHREF = element.getAttribute('href').split('/')[1];
+        element.setAttribute('href', splitHREF);
         element.parentElement.classList.add('getLoginPopUp');
     });
 
